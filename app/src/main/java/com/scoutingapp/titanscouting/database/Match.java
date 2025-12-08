@@ -109,45 +109,67 @@ public class Match {
     }
     public String getAutoPath() { return autoPath; }
     public void setAutoPath(String autoPath) { this.autoPath = autoPath; }
-    public int getL1Count() {
-        return l1Count;
-    }
-    public void setL1Count(int l1Count) {
-        this.l1Count = l1Count;
-    }
-    public int getL2Count() {
-        return l2Count;
-    }
-    public void setL2Count(int l2Count) {
-        this.l2Count = l2Count;
-    }
-    public int getL3Count() {
-        return l3Count;
-    }
-    public void setL3Count(int l3Count) {
-        this.l3Count = l3Count;
-    }
-    public int getL4Count() {
-        return l4Count;
-    }
-    public void setL4Count(int l4Count) {
-        this.l4Count = l4Count;
-    }
 
     public boolean getLeave() {return leave; }
     public void setLeave(boolean leave) {this.leave = leave;}
 
-    public int get() {return leave; }
-    public void setLeave(boolean leave) {this.leave = leave;}
+    public int getAutoCubeL1() {return autoCubeL1; }
+    public void setAutoCubeL1(int autoCubeL1) {this.autoCubeL1 = autoCubeL1;}
+
+    public int getAutoCubeL2() {return autoCubeL2; }
+    public void setAutoCubeL2(int autoCubeL2) {this.autoCubeL2 = autoCubeL2;}
+
+    public int getAutoCubeL3() {return autoCubeL3; }
+    public void setAutoCubeL3(int autoCubeL3) {this.autoCubeL3 = autoCubeL3;}
+
+    public int getAutoConeL1() {return autoConeL1; }
+    public void setAutoConeL1(int autoConeL1) {this.autoConeL1 = autoConeL1;}
+
+    public int getAutoConeL2() {return autoConeL2; }
+    public void setAutoConeL2(int autoConeL2) {this.autoConeL2 = autoConeL2;}
+
+    public int getAutoConeL3() {return autoConeL3; }
+    public void setAutoConeL3(int autoConeL3) {this.autoConeL3 = autoConeL3;}
+
+    public int getTeleCubeL1() {return teleCubeL1; }
+    public void setTeleCubeL1(int teleCubeL1) {this.teleCubeL1 = teleCubeL1;}
+
+    public int getTeleCubeL2() {return teleCubeL2; }
+    public void setTeleCubeL2(int teleCubeL2) {this.teleCubeL2 = teleCubeL2;}
+
+    public int getTeleCubeL3() {return teleCubeL3; }
+    public void setTeleCubeL3(int teleCubeL3) {this.teleCubeL3 = teleCubeL3;}
+
+    public int getTeleConeL1() {return teleConeL1; }
+    public void setTeleConeL1(int teleConeL1) {this.teleConeL1 = teleConeL1;}
+
+    public int getTeleConeL2() {return teleConeL2; }
+    public void setTeleConeL2(int teleConeL2) {this.teleConeL2 = teleConeL2;}
+
+    public int getTeleConeL3() {return teleConeL3; }
+    public void setTeleConeL3(int teleConeL3) {this.teleConeL3 = teleConeL3;}
+
+    public boolean getParked() {return parked; }
+    public void setParked(boolean parked) {this.parked = parked;}
+
+    public boolean getDocked() {return docked; }
+    public void setDocked(boolean docked) {this.docked = docked;}
+
+    public boolean getEngaged() {return engaged; }
+    public void setEngaged(boolean engaged) {this.engaged = engaged;}
+
+    public String getComments() {return comments; }
+    public void setComments(String comments) {this.comments = comments;}
+
+
+
 
     public String getEndgamePos() {
         return endgamePos;
     }
     public void setEndgamePos(String endgamePos) {
         this.endgamePos = endgamePos;
-    }public void setGroundAlgae(boolean groundAlgae) {
-        this.groundAlgae = groundAlgae;
-    }
+
     public boolean getMechanicalReliability() {
         return mechanicalReliability;
     }
