@@ -21,42 +21,57 @@ public class Match {
     private boolean noShow;
     @ColumnInfo(name="autoPath", defaultValue = "0")
     private String autoPath;
-    @ColumnInfo(name = "l1Count", defaultValue = "0")
-    private int l1Count;
-    @ColumnInfo(name = "l2Count", defaultValue = "0")
-    private int l2Count;
-    @ColumnInfo(name = "l3Count", defaultValue = "0")
-    private int l3Count;
-    @ColumnInfo(name = "l4Count", defaultValue = "0")
-    private int l4Count;
-    @ColumnInfo(name = "processorCount", defaultValue = "0")
-    private int processorCount;
-    @ColumnInfo(name = "netCount", defaultValue = "0")
-    private int netCount;
-    @ColumnInfo(name = "l1MissedCount", defaultValue = "0")
-    private int l1MissedCount;
-    @ColumnInfo(name = "l2MissedCount", defaultValue = "0")
-    private int l2MissedCount;
-    @ColumnInfo(name = "l3MissedCount", defaultValue = "0")
-    private int l3MissedCount;
-    @ColumnInfo(name = "l4MissedCount", defaultValue = "0")
-    private int l4MissedCount;
-    @ColumnInfo(name = "processorMissedCount", defaultValue = "0")
-    private int processorMissedCount;
-    @ColumnInfo(name = "netMissedCount", defaultValue = "0")
-    private int netMissedCount;
+
+    @ColumnInfo(name = "autoCubeL1", defaultValue = "0")
+    private int autoCubeL1;
+    @ColumnInfo(name = "autoCubeL2", defaultValue = "0")
+    private int autoCubeL2;
+    @ColumnInfo(name = "autoCubeL3", defaultValue = "0")
+    private int autoCubeL3;
+    @ColumnInfo(name = "autoConeL1", defaultValue = "0")
+    private int autoConeL1;
+    @ColumnInfo(name = "autoConeL2", defaultValue = "0")
+    private int autoConeL2;
+    @ColumnInfo(name = "autoConeL3", defaultValue = "0")
+    private int autoConeL3;
+
+    @ColumnInfo(name = "teleCubeL1", defaultValue = "0")
+    private int teleCubeL1;
+    @ColumnInfo(name = "teleCubeL2", defaultValue = "0")
+    private int teleCubeL2;
+    @ColumnInfo(name = "teleCubeL3", defaultValue = "0")
+    private int teleCubeL3;
+
+    @ColumnInfo(name = "teleConeL1", defaultValue = "0")
+    private int teleConeL1;
+    @ColumnInfo(name = "teleConeL2", defaultValue = "0")
+    private int teleConeL2;
+    @ColumnInfo(name = "teleConeL3", defaultValue = "0")
+    private int teleConeL3;
+
+    @ColumnInfo(name = "parked", defaultValue = "0")
+    private boolean parked;
+
+    @ColumnInfo(name = "docked", defaultValue = "0")
+    private boolean docked;
+
+    @ColumnInfo(name = "engaged", defaultValue = "0")
+    private boolean engaged;
+
+    @ColumnInfo(name = "comments", defaultValue = "None")
+    private String comments;
+
     @ColumnInfo(name = "endgamePos", defaultValue = "None")
     private String endgamePos;
-    @ColumnInfo(name = "groundCoral", defaultValue = "0")
-    private boolean groundCoral;
-    @ColumnInfo(name = "groundAlgae", defaultValue = "0")
-    private boolean groundAlgae;
     @ColumnInfo(name = "mechanicalReliability", defaultValue = "1")
     private boolean mechanicalReliability;
     @ColumnInfo(name = "defenseAbility", defaultValue = "0")
     private int defenseAbility;
     @ColumnInfo(name = "notes", defaultValue = "0")
     private String notes;
+    @ColumnInfo(name = "leave", defaultValue = "0")
+    private boolean leave;
+
     public int getMatchNum() {
         return matchNum;
     }
@@ -118,70 +133,19 @@ public class Match {
     public void setL4Count(int l4Count) {
         this.l4Count = l4Count;
     }
-    public int getProcessorCount() {
-        return processorCount;
-    }
-    public void setProcessorCount(int processorCount) {
-        this.processorCount = processorCount;
-    }
-    public int getNetCount() {
-        return netCount;
-    }
-    public void setNetCount(int netCount) {
-        this.netCount = netCount;
-    }
-    public int getL1MissedCount() {
-        return l1MissedCount;
-    }
-    public void setL1MissedCount(int l1MissedCount) {
-        this.l1MissedCount = l1MissedCount;
-    }
-    public int getL2MissedCount() {
-        return l2MissedCount;
-    }
-    public void setL2MissedCount(int l2MissedCount) {
-        this.l2MissedCount = l2MissedCount;
-    }
-    public int getL3MissedCount() {
-        return l3MissedCount;
-    }
-    public void setL3MissedCount(int l3MissedCount) {
-        this.l3MissedCount = l3MissedCount;
-    }
-    public int getL4MissedCount() {
-        return l4MissedCount;
-    }
-    public void setL4MissedCount(int l4MissedCount) {
-        this.l4MissedCount = l4MissedCount;
-    }
-    public int getProcessorMissedCount() {
-        return processorMissedCount;
-    }
-    public void setProcessorMissedCount(int processorMissedCount) {
-        this.processorMissedCount = processorMissedCount;
-    }
-    public int getNetMissedCount() {
-        return netMissedCount;
-    }
-    public void setNetMissedCount(int netMissedCount) {
-        this.netMissedCount = netMissedCount;
-    }
+
+    public boolean getLeave() {return leave; }
+    public void setLeave(boolean leave) {this.leave = leave;}
+
+    public int get() {return leave; }
+    public void setLeave(boolean leave) {this.leave = leave;}
+
     public String getEndgamePos() {
         return endgamePos;
     }
     public void setEndgamePos(String endgamePos) {
         this.endgamePos = endgamePos;
-    }
-    public boolean isGroundCoral() {
-        return groundCoral;
-    }
-    public void setGroundCoral(boolean groundCoral) {
-        this.groundCoral = groundCoral;
-    }
-    public boolean isGroundAlgae() {
-        return groundAlgae;
-    }
-    public void setGroundAlgae(boolean groundAlgae) {
+    }public void setGroundAlgae(boolean groundAlgae) {
         this.groundAlgae = groundAlgae;
     }
     public boolean getMechanicalReliability() {
