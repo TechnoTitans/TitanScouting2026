@@ -19,8 +19,6 @@ public class Match {
     private String scouterName;
     @ColumnInfo(name = "noShow", defaultValue = "0")
     private boolean noShow;
-    @ColumnInfo(name="autoPath", defaultValue = "0")
-    private String autoPath;
 
     @ColumnInfo(name = "autoCubeL1", defaultValue = "0")
     private int autoCubeL1;
@@ -61,16 +59,16 @@ public class Match {
     @ColumnInfo(name = "comments", defaultValue = "None")
     private String comments;
 
-    @ColumnInfo(name = "endgamePos", defaultValue = "None")
-    private String endgamePos;
-    @ColumnInfo(name = "mechanicalReliability", defaultValue = "1")
-    private boolean mechanicalReliability;
+    @ColumnInfo(name = "brokeDown", brokeDown = "0")
+    private boolean brokeDown;
+
     @ColumnInfo(name = "defenseAbility", defaultValue = "0")
     private int defenseAbility;
     @ColumnInfo(name = "notes", defaultValue = "0")
     private String notes;
     @ColumnInfo(name = "leave", defaultValue = "0")
     private boolean leave;
+
 
     public int getMatchNum() {
         return matchNum;
@@ -161,21 +159,11 @@ public class Match {
     public String getComments() {return comments; }
     public void setComments(String comments) {this.comments = comments;}
 
+    public boolean getBrokeDown() {return brokeDown; }
+    public void setBrokeDown(boolean brokeDown) {this.brokeDown = brokeDown;}
 
 
-
-    public String getEndgamePos() {
-        return endgamePos;
-    }
-    public void setEndgamePos(String endgamePos) {
-        this.endgamePos = endgamePos;
-
-    public boolean getMechanicalReliability() {
-        return mechanicalReliability;
-    }
-    public void setMechanicalReliability(boolean mechanicalReliability) {
-        this.mechanicalReliability = mechanicalReliability;
-    }
+    
     public int getDefenseAbility() {
         return defenseAbility;
     }
