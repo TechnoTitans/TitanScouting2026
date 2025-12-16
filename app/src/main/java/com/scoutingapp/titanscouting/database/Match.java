@@ -21,40 +21,34 @@ public class Match {
     private boolean noShow;
     @ColumnInfo(name="autoPath", defaultValue = "0")
     private String autoPath;
-    @ColumnInfo(name = "l1Count", defaultValue = "0")
-    private int l1Count;
-    @ColumnInfo(name = "l2Count", defaultValue = "0")
-    private int l2Count;
-    @ColumnInfo(name = "l3Count", defaultValue = "0")
-    private int l3Count;
-    @ColumnInfo(name = "l4Count", defaultValue = "0")
-    private int l4Count;
-    @ColumnInfo(name = "processorCount", defaultValue = "0")
-    private int processorCount;
-    @ColumnInfo(name = "netCount", defaultValue = "0")
-    private int netCount;
-    @ColumnInfo(name = "l1MissedCount", defaultValue = "0")
-    private int l1MissedCount;
-    @ColumnInfo(name = "l2MissedCount", defaultValue = "0")
-    private int l2MissedCount;
-    @ColumnInfo(name = "l3MissedCount", defaultValue = "0")
-    private int l3MissedCount;
-    @ColumnInfo(name = "l4MissedCount", defaultValue = "0")
-    private int l4MissedCount;
-    @ColumnInfo(name = "processorMissedCount", defaultValue = "0")
-    private int processorMissedCount;
-    @ColumnInfo(name = "netMissedCount", defaultValue = "0")
-    private int netMissedCount;
+    @ColumnInfo(name = "highCount", defaultValue = "0")
+    private int highCount;
+    @ColumnInfo(name = "highMissedCount", defaultValue = "0")
+    private int highMissedCount;
+    @ColumnInfo(name = "lowCount", defaultValue = "0")
+    private int lowCount;
+    @ColumnInfo(name = "lowMissedCount", defaultValue = "0")
+    private int lowMissedCount;
+    @ColumnInfo(name = "moat", defaultValue = "false")
+    private boolean moat;
+    @ColumnInfo(name = "ramparts", defaultValue = "false")
+    private boolean ramparts;
+    @ColumnInfo(name = "drawbridge", defaultValue = "false")
+    private boolean drawbridge;
+    @ColumnInfo(name = "sallyPort", defaultValue = "false")
+    private boolean sallyPort;
+    @ColumnInfo(name = "rockwall", defaultValue = "false")
+    private boolean rockwall;
+    @ColumnInfo(name = "roughterrain", defaultValue = "false")
+    private boolean roughterrain;
+    @ColumnInfo(name = "portcullis", defaultValue = "false")
+    private boolean portcullis;
+    @ColumnInfo(name = "cheval", defaultValue = "false")
+    private boolean cheval;
     @ColumnInfo(name = "endgamePos", defaultValue = "None")
     private String endgamePos;
-    @ColumnInfo(name = "groundCoral", defaultValue = "0")
-    private boolean groundCoral;
-    @ColumnInfo(name = "groundAlgae", defaultValue = "0")
-    private boolean groundAlgae;
-    @ColumnInfo(name = "mechanicalReliability", defaultValue = "1")
-    private boolean mechanicalReliability;
-    @ColumnInfo(name = "defenseAbility", defaultValue = "0")
-    private int defenseAbility;
+    @ColumnInfo(name = "brokedown", defaultValue = "false")
+    private boolean brokedown;
     @ColumnInfo(name = "notes", defaultValue = "0")
     private String notes;
     public int getMatchNum() {
@@ -94,107 +88,93 @@ public class Match {
     }
     public String getAutoPath() { return autoPath; }
     public void setAutoPath(String autoPath) { this.autoPath = autoPath; }
-    public int getL1Count() {
-        return l1Count;
+    public int getHighCount() {
+        return highCount;
     }
-    public void setL1Count(int l1Count) {
-        this.l1Count = l1Count;
+    public void setHighCount(int highCount) {
+        this.highCount = highCount;
     }
-    public int getL2Count() {
-        return l2Count;
+    public int getHighMissedCount() {
+        return highMissedCount;
     }
-    public void setL2Count(int l2Count) {
-        this.l2Count = l2Count;
+    public void setHighMissedCount(int highMissedCount) {
+        this.highMissedCount = highMissedCount;
     }
-    public int getL3Count() {
-        return l3Count;
+    public int getLowCount() {
+        return lowCount;
     }
-    public void setL3Count(int l3Count) {
-        this.l3Count = l3Count;
+    public void setLowCount(int lowCount) {
+        this.lowCount = lowCount;
     }
-    public int getL4Count() {
-        return l4Count;
+    public int getLowMissedCount() {
+        return lowMissedCount;
     }
-    public void setL4Count(int l4Count) {
-        this.l4Count = l4Count;
+    public void setLowMissedCount(int lowMissedCount) {
+        this.lowMissedCount = lowMissedCount;
     }
-    public int getProcessorCount() {
-        return processorCount;
+    public boolean getBrokedown() {
+        return brokedown;
     }
-    public void setProcessorCount(int processorCount) {
-        this.processorCount = processorCount;
+    public void setBrokedown(boolean brokedown) {
+        this.brokedown = brokedown;
     }
-    public int getNetCount() {
-        return netCount;
+
+    public boolean isMoat() {
+        return moat;
     }
-    public void setNetCount(int netCount) {
-        this.netCount = netCount;
+    public void setMoat(boolean moat) {
+        this.moat = moat;
     }
-    public int getL1MissedCount() {
-        return l1MissedCount;
+
+    public boolean isRamparts() {
+        return ramparts;
     }
-    public void setL1MissedCount(int l1MissedCount) {
-        this.l1MissedCount = l1MissedCount;
+    public void setRamparts(boolean ramparts) {
+        this.ramparts = ramparts;
     }
-    public int getL2MissedCount() {
-        return l2MissedCount;
+    public boolean isDrawbridge() {
+        return drawbridge;
     }
-    public void setL2MissedCount(int l2MissedCount) {
-        this.l2MissedCount = l2MissedCount;
+    public void setDrawbridge(boolean drawbridge) {
+        this.drawbridge = drawbridge;
     }
-    public int getL3MissedCount() {
-        return l3MissedCount;
+
+    public boolean isSallyPort() {
+        return sallyPort;
     }
-    public void setL3MissedCount(int l3MissedCount) {
-        this.l3MissedCount = l3MissedCount;
+    public void setSallyPort(boolean sallyPort) {
+        this.sallyPort = sallyPort;
     }
-    public int getL4MissedCount() {
-        return l4MissedCount;
+    public boolean isRockwall() {
+        return rockwall;
     }
-    public void setL4MissedCount(int l4MissedCount) {
-        this.l4MissedCount = l4MissedCount;
+    public void setRockwall(boolean rockwall) {
+        this.rockwall = rockwall;
     }
-    public int getProcessorMissedCount() {
-        return processorMissedCount;
+    public boolean isRoughterrain() {
+        return roughterrain;
     }
-    public void setProcessorMissedCount(int processorMissedCount) {
-        this.processorMissedCount = processorMissedCount;
+    public void setRoughterrain(boolean roughterrain) {
+        this.roughterrain = roughterrain;
     }
-    public int getNetMissedCount() {
-        return netMissedCount;
+    public boolean isPortcullis() {
+        return portcullis;
     }
-    public void setNetMissedCount(int netMissedCount) {
-        this.netMissedCount = netMissedCount;
+    public void setPortcullis(boolean portcullis) {
+        this.portcullis = portcullis;
     }
+    public boolean isCheval() {
+        return cheval;
+    }
+    public void setCheval(boolean cheval) {
+        this.cheval = cheval;
+    }
+
     public String getEndgamePos() {
         return endgamePos;
     }
     public void setEndgamePos(String endgamePos) {
         this.endgamePos = endgamePos;
-    }
-    public boolean isGroundCoral() {
-        return groundCoral;
-    }
-    public void setGroundCoral(boolean groundCoral) {
-        this.groundCoral = groundCoral;
-    }
-    public boolean isGroundAlgae() {
-        return groundAlgae;
-    }
-    public void setGroundAlgae(boolean groundAlgae) {
-        this.groundAlgae = groundAlgae;
-    }
-    public boolean getMechanicalReliability() {
-        return mechanicalReliability;
-    }
-    public void setMechanicalReliability(boolean mechanicalReliability) {
-        this.mechanicalReliability = mechanicalReliability;
-    }
-    public int getDefenseAbility() {
-        return defenseAbility;
-    }
-    public void setDefenseAbility(int defenseAbility) {
-        this.defenseAbility = defenseAbility;
     }
     public String getNotes() {
         return notes;

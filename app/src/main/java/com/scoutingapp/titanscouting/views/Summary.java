@@ -70,7 +70,7 @@ public class Summary extends AppCompatActivity {
                 ((TextView) (findViewById(R.id.noShowSummary))).setText("False");
             }
 
-
+/*
             ((TextView) (findViewById(R.id.l1Summary))).setText(String.format("%d/%d", match.getL1Count(), match.getL1MissedCount()));
 
             ((TextView) (findViewById(R.id.l2Summary))).setText(String.format("%d/%d", match.getL2Count(), match.getL2MissedCount()));
@@ -88,7 +88,7 @@ public class Summary extends AppCompatActivity {
             ((TextView) (findViewById(R.id.mechanicalReliabilitySummary))).setText(String.valueOf(match.getMechanicalReliability()));
 
 
-            ((TextView) (findViewById(R.id.notesSummary))).setText(match.getNotes());
+            ((TextView) (findViewById(R.id.notesSummary))).setText(match.getNotes());*/
 
             // Sets click listener for submit button to navigate to QR
             submit.setOnClickListener(v -> {

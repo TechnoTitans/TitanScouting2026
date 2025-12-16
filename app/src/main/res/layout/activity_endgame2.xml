@@ -66,38 +66,17 @@
         app:layout_constraintTop_toBottomOf="@+id/subTitle1"
         app:layout_constraintVertical_bias="0.05">
         <RadioButton
+            android:id="@+id/climbRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="Climb"
+            android:textSize="18sp" />
+
+        <RadioButton
             android:id="@+id/parkRadio"
             android:layout_width="wrap_content"
             android:layout_height="36dp"
             android:text="Park"
-            android:textSize="18sp" />
-
-        <RadioButton
-            android:id="@+id/deepCageRadio"
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:text="Deep Cage"
-            android:textSize="18sp" />
-
-        <RadioButton
-            android:id="@+id/attemptedDeepRadio"
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:text="Attempted Deep Cage"
-            android:textSize="18sp" />
-
-        <RadioButton
-            android:id="@+id/shallowCageRadio"
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:text="Shallow Cage"
-            android:textSize="18sp" />
-
-        <RadioButton
-            android:id="@+id/attemptedShallowRadio"
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:text="Attempted Shallow Cage"
             android:textSize="18sp" />
 
         <RadioButton
@@ -132,33 +111,6 @@
         app:layout_constraintTop_toTopOf="@+id/mechReliability"
         app:layout_constraintBottom_toBottomOf="@id/mechReliability"/>
 
-    <TextView
-        android:id="@+id/defenseAbility"
-        android:layout_width="wrap_content"
-        android:layout_height="36dp"
-        android:layout_marginBottom="4dp"
-        android:text="Defense Ability"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.3"
-        app:layout_constraintStart_toEndOf="@+id/parkPosition"
-        app:layout_constraintTop_toBottomOf="@id/mechReliability"
-        app:layout_constraintVertical_bias="0.1" />
-
-    <RatingBar
-        android:id="@+id/defenseAbilityBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleX="0.8"
-        android:scaleY="0.8"
-        android:stepSize="1"
-        app:layout_constraintBottom_toBottomOf="@id/defenseAbility"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1"
-        app:layout_constraintStart_toEndOf="@+id/parkPosition"
-        app:layout_constraintTop_toTopOf="@+id/defenseAbility" />
-
     <Button
         android:id="@+id/back_to_teleop"
         android:layout_width="100dp"
@@ -182,27 +134,5 @@
         app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/back_to_teleop" />
-
-    <CheckBox
-        android:id="@+id/groundCoralCheckbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleX="1"
-        android:scaleY="1"
-        android:text="Ground Coral?"
-        app:layout_constraintBottom_toTopOf="@+id/groundAlgaeCheckbox"
-        app:layout_constraintStart_toStartOf="@+id/parkPosition"
-        app:layout_constraintTop_toBottomOf="@+id/parkPosition" />
-
-    <CheckBox
-        android:id="@+id/groundAlgaeCheckbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleX="1"
-        android:scaleY="1"
-        android:text="Ground Algae?"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/groundCoralCheckbox"
-        app:layout_constraintTop_toBottomOf="@+id/groundCoralCheckbox" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

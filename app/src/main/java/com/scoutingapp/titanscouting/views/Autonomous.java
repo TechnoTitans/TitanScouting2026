@@ -32,11 +32,11 @@ public class Autonomous extends AppCompatActivity {
                 Objects.equals(getIntent().getStringExtra("color"), "B") ?
                         R.layout.activity_autonomous_blue : R.layout.activity_autonomous_red
         );
-
+/*
         // Setup UI Elements
         EditText autoText = findViewById(R.id.autoDisplay);
         CheckBox leave = findViewById(R.id.leaveCheckbox);
-        Button resetButton = findViewById(R.id.reset_button);
+        Button resetButton = findViewById(R.id.reset_button);*/
         Button toPregame = findViewById(R.id.back_to_pregame);
         Button toTeleop = findViewById(R.id.to_teleop);
 
@@ -66,7 +66,7 @@ public class Autonomous extends AppCompatActivity {
                 return;
             }
             this.match = match;
-
+/*
             autoText.setText(match.getAutoPath());
 
             if (match.getAutoPath() != null && match.getAutoPath().startsWith("LEAVE")) {
@@ -122,7 +122,7 @@ public class Autonomous extends AppCompatActivity {
             cs2.setOnClickListener(v -> safeAppendToAutoPath("CS2", autoText));
             lollipopNet.setOnClickListener(v -> safeAppendToAutoPath("Q1", autoText));
             lollipopMiddle.setOnClickListener(v -> safeAppendToAutoPath("Q2", autoText));
-            lollipopProcessor.setOnClickListener(v -> safeAppendToAutoPath("Q3", autoText));
+            lollipopProcessor.setOnClickListener(v -> safeAppendToAutoPath("Q3", autoText));*/
 
             toPregame.setOnClickListener(v -> {
                 matchViewModel.addMatchInformation(match);

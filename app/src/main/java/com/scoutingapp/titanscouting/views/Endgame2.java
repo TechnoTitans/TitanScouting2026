@@ -43,13 +43,8 @@ public class Endgame2 extends AppCompatActivity {
         EditText e = findViewById(R.id.comments); /*assigns variable e to what is typed in the comments (id)*/
         RadioGroup r = findViewById(R.id.parkPosition); /*assigns variable r to which park position is chosen (id)*/
         RadioButton parkRadio = findViewById(R.id.parkRadio);
-        RadioButton deepCageRadio = findViewById(R.id.deepCageRadio);
-        RadioButton attemptedDeepRadio = findViewById(R.id.attemptedDeepRadio);
-        RadioButton shallowCageRadio = findViewById(R.id.shallowCageRadio);
-        RadioButton attemptedShallowRadio = findViewById(R.id.attemptedShallowRadio);
+        RadioButton climbRadio = findViewById(R.id.climbRadio);
         RadioButton noneRadio = findViewById(R.id.noneRadio);
-        CheckBox groundCoral = findViewById(R.id.groundCoralCheckbox);
-        CheckBox groundAlgae = findViewById(R.id.groundAlgaeCheckbox);
         matchViewModel = new ViewModelProvider(this).get(MatchViewModel.class);
         matchViewModel.getMatch(getIntent().getIntExtra("matchNumber", 0)).observe(this, match -> {
             if(match == null) {
@@ -62,20 +57,8 @@ public class Endgame2 extends AppCompatActivity {
                     case "Park":
                         r.check(R.id.parkRadio);
                         break;
-                    case "Deep Cage":
-                        r.check(R.id.deepCageRadio);
-                        break;
-                    case "Attempted Deep Cage":
-                        r.check(R.id.attemptedDeepRadio);
-                        break;
-                    case "Shallow Cage":
-                        r.check(R.id.shallowCageRadio);
-                        break;
-                    case "Attempted Shallow Cage":
-                        r.check(R.id.attemptedShallowRadio);
-                        break;
-                    case "None":
-                        r.check(R.id.noneRadio);
+                    case "Climb":
+                        r.check(R.id.climbRadio);
                         break;
                     default:
                         r.check(R.id.noneRadio);
@@ -89,19 +72,9 @@ public class Endgame2 extends AppCompatActivity {
                     match.setEndgamePos(b.getText().toString()); /* set match game to a string */
                 }
             });
-            groundCoral.setChecked(match.isGroundCoral());
-            groundAlgae.setChecked(match.isGroundAlgae());
-            groundCoral.setOnClickListener(v -> {
-                match.setGroundCoral(!match.isGroundCoral());
-            });
-            groundAlgae.setOnClickListener(v -> {
-                match.setGroundAlgae(!match.isGroundAlgae());
-            });
 
             final float[] previousDefenseRating = {0};
-
-            ((RatingBar) (findViewById(R.id.defenseAbilityBar))).setRating(match.getDefenseAbility());
-
+/*
             findViewById(R.id.defenseAbilityBar).setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
@@ -122,21 +95,7 @@ public class Endgame2 extends AppCompatActivity {
                     }
                     return false;
                 }
-            });
-
-// Mechanical Reliability Bar
-            CheckBox mechReliability = findViewById(R.id.mechanicalReliabilityBar);
-            mechReliability.setChecked(match.getMechanicalReliability());
-
-            mechReliability.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                if (isChecked) {
-                    // CheckBox is checked
-                    match.setMechanicalReliability(true);
-                } else {
-                    // CheckBox is unchecked
-                    match.setMechanicalReliability(false);
-                }
-            });
+            });*/
 
             e.setText(match.getNotes());
             ((EditText) (findViewById(R.id.comments))).addTextChangedListener(new TextWatcher() {

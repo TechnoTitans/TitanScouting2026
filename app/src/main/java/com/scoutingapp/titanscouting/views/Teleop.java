@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.scoutingapp.titanscouting.R;
@@ -21,43 +22,28 @@ public class Teleop extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teleop_2);
 
-        Button l4inc = findViewById(R.id.inc_l4_scored);
-        Button l4dec = findViewById(R.id.dec_l4_scored);
-        TextView l4 = findViewById(R.id.l4_score);
-        Button l3inc = findViewById(R.id.inc_l3_scored);
-        Button l3dec = findViewById(R.id.dec_l3_scored);
-        TextView l3 = findViewById(R.id.l3_score);
-        Button l2inc = findViewById(R.id.inc_l2_scored);
-        Button l2dec = findViewById(R.id.dec_l2_scored);
-        TextView l2 = findViewById(R.id.l2_score);
-        Button l1inc = findViewById(R.id.inc_l1_scored);
-        Button l1dec = findViewById(R.id.dec_l1_scored);
-        TextView l1 = findViewById(R.id.l1_score);
-        Button netInc = findViewById(R.id.inc_net);
-        Button netDec = findViewById(R.id.dec_net);
-        TextView net = findViewById(R.id.net_score);
-        Button procInc = findViewById(R.id.inc_proc);
-        Button procDec = findViewById(R.id.dec_proc);
-        TextView proc = findViewById(R.id.proc_score);
+        Button highScoredInc = findViewById(R.id.inc_high_scored);
+        Button highScoredDec = findViewById(R.id.dec_high_scored);
+        TextView highScored = findViewById(R.id.high_scored);
+        Button lowScoredInc = findViewById(R.id.inc_low_scored);
+        Button lowScoredDec = findViewById(R.id.dec_low_scored);
+        TextView lowScored = findViewById(R.id.low_scored);
 
-        Button l4incMissed = findViewById(R.id.inc_l4_missed);
-        Button l4decMissed = findViewById(R.id.dec_l4_missed);
-        TextView l4Missed = findViewById(R.id.l4_missed_score);
-        Button l3incMissed = findViewById(R.id.inc_l3_missed);
-        Button l3decMissed = findViewById(R.id.dec_l3_missed);
-        TextView l3Missed = findViewById(R.id.l3_missed_score);
-        Button l2incMissed = findViewById(R.id.inc_l2_missed);
-        Button l2decMissed = findViewById(R.id.dec_l2_missed);
-        TextView l2Missed = findViewById(R.id.l2_missed_score);
-        Button l1incMissed = findViewById(R.id.inc_l1_missed);
-        Button l1decMissed = findViewById(R.id.dec_l1_missed);
-        TextView l1Missed = findViewById(R.id.l1_missed_score);
-        Button netIncMissed = findViewById(R.id.inc_net_missed);
-        Button netDecMissed = findViewById(R.id.dec_net_missed);
-        TextView netMissed = findViewById(R.id.net_missed_score);
-        Button procIncMissed = findViewById(R.id.inc_proc_missed);
-        Button procDecMissed = findViewById(R.id.dec_proc_missed);
-        TextView procMissed = findViewById(R.id.proc_missed_score);
+        Button highMissedInc = findViewById(R.id.inc_high_missed);
+        Button highMissedDec = findViewById(R.id.dec_high_missed);
+        TextView highMissed = findViewById(R.id.high_missed);
+        TextView lowMissed = findViewById(R.id.low_missed);
+        Button lowMissedInc = findViewById(R.id.inc_low_missed);
+        Button lowMissedDec = findViewById(R.id.dec_low_missed);
+
+        CheckBox moat = findViewById(R.id.moat);
+        CheckBox ramparts = findViewById(R.id.rampart);
+        CheckBox drawbridge = findViewById(R.id.drawbridge);
+        CheckBox sallyPort = findViewById(R.id.sallyport);
+        CheckBox rockWall = findViewById(R.id.rock_wall);
+        CheckBox roughTerrain = findViewById(R.id.rough_terrain);
+        CheckBox portcullis = findViewById(R.id.portcullis);
+        CheckBox cheval = findViewById(R.id.cheval);
 
         Button backToAuto = findViewById(R.id.back_to_auto);
         Button toEndgame = findViewById(R.id.to_endgame);
@@ -72,140 +58,93 @@ public class Teleop extends AppCompatActivity {
 
             //(TextView) ;
 
-            l4.setText(String.valueOf(match.getL4Count()));
-            l3.setText(String.valueOf(match.getL3Count()));
-            l2.setText(String.valueOf(match.getL2Count()));
-            l1.setText(String.valueOf(match.getL1Count()));
-            net.setText(String.valueOf(match.getNetCount()));
-            proc.setText(String.valueOf(match.getProcessorCount()));
+            highScored.setText(String.valueOf(match.getHighCount()));
+            lowScored.setText(String.valueOf(match.getLowCount()));
+            highMissed.setText(String.valueOf(match.getHighMissedCount()));
+            lowMissed.setText(String.valueOf(match.getLowMissedCount()));
 
-            l4Missed.setText(String.valueOf(match.getL4MissedCount()));
-            l3Missed.setText(String.valueOf(match.getL3MissedCount()));
-            l2Missed.setText(String.valueOf(match.getL2MissedCount()));
-            l1Missed.setText(String.valueOf(match.getL1MissedCount()));
-            netMissed.setText(String.valueOf(match.getNetMissedCount()));
-            procMissed.setText(String.valueOf(match.getProcessorMissedCount()));
 
-            l4inc.setOnClickListener(v -> {
-                match.setL4Count(match.getL4Count() + 1);
-                l4.setText(String.valueOf(match.getL4Count()));
+
+            highScoredInc.setOnClickListener(v -> {
+                match.setHighCount(match.getHighCount() + 1);
+                highScored.setText(String.valueOf(match.getHighCount()));
                 matchViewModel.addMatchInformation(match);
             });
-            l4dec.setOnClickListener(v -> {
-                match.setL4Count(match.getL4Count() == 0 ? 0 : match.getL4Count() - 1);
-                l4.setText(String.valueOf(match.getL4Count()));
+            highScoredDec.setOnClickListener(v -> {
+                match.setHighCount(match.getHighCount() == 0 ? 0 : match.getHighCount() - 1);
+                highScored.setText(String.valueOf(match.getHighCount()));
                 matchViewModel.addMatchInformation(match);
             });
-            l3inc.setOnClickListener(v -> {
-                match.setL3Count(match.getL3Count() + 1);
-                l3.setText(String.valueOf(match.getL3Count()));
+            lowScoredInc.setOnClickListener(v -> {
+                match.setLowCount(match.getLowCount() + 1);
+                lowScored.setText(String.valueOf(match.getLowCount()));
                 matchViewModel.addMatchInformation(match);
             });
-            l3dec.setOnClickListener(v -> {
-                match.setL3Count(match.getL3Count() == 0 ? 0 : match.getL3Count() - 1);
-                l3.setText(String.valueOf(match.getL3Count()));
+            lowScoredDec.setOnClickListener(v -> {
+                match.setLowCount(match.getLowCount() == 0 ? 0 : match.getLowCount() - 1);
+                lowScored.setText(String.valueOf(match.getLowCount()));
                 matchViewModel.addMatchInformation(match);
             });
-            l2inc.setOnClickListener(v -> {
-                match.setL2Count(match.getL2Count() + 1);
-                l2.setText(String.valueOf(match.getL2Count()));
+            highMissedInc.setOnClickListener(v -> {
+                match.setHighMissedCount(match.getHighMissedCount() + 1);
+                highMissed.setText(String.valueOf(match.getHighMissedCount()));
                 matchViewModel.addMatchInformation(match);
             });
-            l2dec.setOnClickListener(v -> {
-                match.setL2Count(match.getL2Count() == 0 ? 0 : match.getL2Count() - 1);
-                l2.setText(String.valueOf(match.getL2Count()));
+            highMissedDec.setOnClickListener(v -> {
+                match.setHighMissedCount(match.getHighMissedCount() == 0 ? 0 : match.getHighMissedCount() - 1);
+                highMissed.setText(String.valueOf(match.getHighMissedCount()));
                 matchViewModel.addMatchInformation(match);
             });
-            l1inc.setOnClickListener(v -> {
-                match.setL1Count(match.getL1Count() + 1);
-                l1.setText(String.valueOf(match.getL1Count()));
+            lowMissedInc.setOnClickListener(v -> {
+                match.setLowMissedCount(match.getLowMissedCount() + 1);
+                lowMissed.setText(String.valueOf(match.getLowMissedCount()));
                 matchViewModel.addMatchInformation(match);
             });
-            l1dec.setOnClickListener(v -> {
-                match.setL1Count(match.getL1Count() == 0 ? 0 : match.getL1Count() - 1);
-                l1.setText(String.valueOf(match.getL1Count()));
-                matchViewModel.addMatchInformation(match);
-            });
-            procInc.setOnClickListener(v -> {
-                match.setProcessorCount(match.getProcessorCount() + 1);
-                proc.setText(String.valueOf(match.getProcessorCount()));
-                matchViewModel.addMatchInformation(match);
-            });
-            procDec.setOnClickListener(v -> {
-                match.setProcessorCount(match.getProcessorCount() == 0 ? 0 : match.getProcessorCount() - 1);
-                proc.setText(String.valueOf(match.getProcessorCount()));
-                matchViewModel.addMatchInformation(match);
-            });
-            netInc.setOnClickListener(v -> {
-                match.setNetCount(match.getNetCount() + 1);
-                net.setText(String.valueOf(match.getNetCount()));
-                matchViewModel.addMatchInformation(match);
-            });
-            netDec.setOnClickListener(v -> {
-                match.setNetCount(match.getNetCount() == 0 ? 0 : match.getNetCount() - 1);
-                net.setText(String.valueOf(match.getNetCount()));
+            lowMissedDec.setOnClickListener(v -> {
+                match.setLowMissedCount(match.getLowMissedCount() == 0 ? 0 : match.getLowMissedCount() - 1);
+                lowMissed.setText(String.valueOf(match.getLowMissedCount()));
                 matchViewModel.addMatchInformation(match);
             });
 
+            moat.setChecked(match.isMoat());
+            ramparts.setChecked(match.isRamparts());
+            drawbridge.setChecked(match.isDrawbridge());
+            sallyPort.setChecked(match.isSallyPort());
+            rockWall.setChecked(match.isRockwall());
+            roughTerrain.setChecked(match.isRoughterrain());
+            portcullis.setChecked(match.isPortcullis());
+            cheval.setChecked(match.isCheval());
 
-            l4incMissed.setOnClickListener(v -> {
-                match.setL4MissedCount(match.getL4MissedCount() + 1);
-                l4Missed.setText(String.valueOf(match.getL4MissedCount()));
+            moat.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                match.setMoat(isChecked);
                 matchViewModel.addMatchInformation(match);
             });
-            l4decMissed.setOnClickListener(v -> {
-                match.setL4MissedCount(match.getL4MissedCount() == 0 ? 0 : match.getL4MissedCount() - 1);
-                l4Missed.setText(String.valueOf(match.getL4MissedCount()));
+            ramparts.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                match.setRamparts(isChecked);
                 matchViewModel.addMatchInformation(match);
             });
-            l3incMissed.setOnClickListener(v -> {
-                match.setL3MissedCount(match.getL3MissedCount() + 1);
-                l3Missed.setText(String.valueOf(match.getL3MissedCount()));
+            drawbridge.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                match.setDrawbridge(isChecked);
                 matchViewModel.addMatchInformation(match);
             });
-            l3decMissed.setOnClickListener(v -> {
-                match.setL3MissedCount(match.getL3MissedCount() == 0 ? 0 : match.getL3MissedCount() - 1);
-                l3Missed.setText(String.valueOf(match.getL3MissedCount()));
+            sallyPort.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                match.setSallyPort(isChecked);
                 matchViewModel.addMatchInformation(match);
             });
-            l2incMissed.setOnClickListener(v -> {
-                match.setL2MissedCount(match.getL2MissedCount() + 1);
-                l2Missed.setText(String.valueOf(match.getL2MissedCount()));
+            rockWall.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                match.setRockwall(isChecked);
                 matchViewModel.addMatchInformation(match);
             });
-            l2decMissed.setOnClickListener(v -> {
-                match.setL2MissedCount(match.getL2MissedCount() == 0 ? 0 : match.getL2MissedCount() - 1);
-                l2Missed.setText(String.valueOf(match.getL2MissedCount()));
+            roughTerrain.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                match.setRoughterrain(isChecked);
                 matchViewModel.addMatchInformation(match);
             });
-            l1incMissed.setOnClickListener(v -> {
-                match.setL1MissedCount(match.getL1MissedCount() + 1);
-                l1Missed.setText(String.valueOf(match.getL1MissedCount()));
+            portcullis.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                match.setPortcullis(isChecked);
                 matchViewModel.addMatchInformation(match);
             });
-            l1decMissed.setOnClickListener(v -> {
-                match.setL1MissedCount(match.getL1MissedCount() == 0 ? 0 : match.getL1MissedCount() - 1);
-                l1Missed.setText(String.valueOf(match.getL1MissedCount()));
-                matchViewModel.addMatchInformation(match);
-            });
-            procIncMissed.setOnClickListener(v -> {
-                match.setProcessorMissedCount(match.getProcessorMissedCount() + 1);
-                procMissed.setText(String.valueOf(match.getProcessorMissedCount()));
-                matchViewModel.addMatchInformation(match);
-            });
-            procDecMissed.setOnClickListener(v -> {
-                match.setProcessorMissedCount(match.getProcessorMissedCount() == 0 ? 0 : match.getProcessorMissedCount() - 1);
-                procMissed.setText(String.valueOf(match.getProcessorMissedCount()));
-                matchViewModel.addMatchInformation(match);
-            });
-            netIncMissed.setOnClickListener(v -> {
-                match.setNetMissedCount(match.getNetMissedCount() + 1);
-                netMissed.setText(String.valueOf(match.getNetMissedCount()));
-                matchViewModel.addMatchInformation(match);
-            });
-            netDecMissed.setOnClickListener(v -> {
-                match.setNetMissedCount(match.getNetMissedCount() == 0 ? 0 : match.getNetMissedCount() - 1);
-                netMissed.setText(String.valueOf(match.getNetMissedCount()));
+            cheval.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                match.setCheval(isChecked);
                 matchViewModel.addMatchInformation(match);
             });
 
