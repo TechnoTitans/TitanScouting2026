@@ -36,9 +36,21 @@ public class Autonomous extends AppCompatActivity {
         // Setup UI Elements
         EditText autoText = findViewById(R.id.autoDisplay);
         CheckBox leave = findViewById(R.id.leaveCheckbox);
-        Button resetButton = findViewById(R.id.reset_button);
         Button toPregame = findViewById(R.id.back_to_pregame);
         Button toTeleop = findViewById(R.id.to_teleop);
+        Button yesDepot = findViewById(R.id.yes_depot);
+        Button noDepot = findViewById(R.id.no_depot);
+
+        // 0 for not pressed, 1 for no depot, 2 for yes depot
+        yesDepot.setOnClickListener(v->{
+            match.setDepot(2);
+        });
+        noDepot.setOnClickListener(
+                v->{
+                    match.setDepot(1);
+                }
+        );
+
 
         // Branch buttons A–L
         int[] branchIds = {
