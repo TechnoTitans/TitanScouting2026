@@ -36,6 +36,10 @@ public class Match {
     private int defenseAbility;
     @ColumnInfo(name = "notes", defaultValue = "0")
     private String notes;
+    @ColumnInfo(name = "leave", defaultValue = "0")
+    private boolean leave;
+
+
     public int getMatchNum() {
         return matchNum;
     }
