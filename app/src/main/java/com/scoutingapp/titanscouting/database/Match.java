@@ -21,38 +21,17 @@ public class Match {
     private boolean noShow;
     @ColumnInfo(name="autoPath", defaultValue = "0")
     private String autoPath;
-    @ColumnInfo(name = "l1Count", defaultValue = "0")
-    private int l1Count;
-    @ColumnInfo(name = "l2Count", defaultValue = "0")
-    private int l2Count;
-    @ColumnInfo(name = "l3Count", defaultValue = "0")
-    private int l3Count;
-    @ColumnInfo(name = "l4Count", defaultValue = "0")
-    private int l4Count;
-    @ColumnInfo(name = "processorCount", defaultValue = "0")
-    private int processorCount;
-    @ColumnInfo(name = "netCount", defaultValue = "0")
-    private int netCount;
-    @ColumnInfo(name = "l1MissedCount", defaultValue = "0")
-    private int l1MissedCount;
-    @ColumnInfo(name = "l2MissedCount", defaultValue = "0")
-    private int l2MissedCount;
-    @ColumnInfo(name = "l3MissedCount", defaultValue = "0")
-    private int l3MissedCount;
-    @ColumnInfo(name = "l4MissedCount", defaultValue = "0")
-    private int l4MissedCount;
-    @ColumnInfo(name = "processorMissedCount", defaultValue = "0")
-    private int processorMissedCount;
-    @ColumnInfo(name = "netMissedCount", defaultValue = "0")
-    private int netMissedCount;
-    @ColumnInfo(name = "endgamePos", defaultValue = "None")
-    private String endgamePos;
-    @ColumnInfo(name = "groundCoral", defaultValue = "0")
-    private boolean groundCoral;
-    @ColumnInfo(name = "groundAlgae", defaultValue = "0")
-    private boolean groundAlgae;
-    @ColumnInfo(name = "mechanicalReliability", defaultValue = "1")
-    private boolean mechanicalReliability;
+    @ColumnInfo(name = "depot", defaultValue = "0")
+    private int depot;
+    @ColumnInfo(name = "climb", defaultValue = "0")
+    private int climb;
+    @ColumnInfo(name = "collectedFuel", defaultValue = "0")
+    private int collectedFuel;
+    @ColumnInfo(name = "scored", defaultValue = "0")
+    private int scored;
+    @ColumnInfo(name = "wentToNeutral", defaultValue = "0")
+    private int wentToNeutral;
+
     @ColumnInfo(name = "defenseAbility", defaultValue = "0")
     private int defenseAbility;
     @ColumnInfo(name = "notes", defaultValue = "0")
@@ -94,6 +73,16 @@ public class Match {
     }
     public String getAutoPath() { return autoPath; }
     public void setAutoPath(String autoPath) { this.autoPath = autoPath; }
+    public void setDepot(int depot) { this.depot = depot; }
+    public int getDepot() { return depot; }
+    public void setClimb(int climb) { this.climb = climb; }
+    public int getClimb() { return climb; }
+    public void setCollectedFuel(int collectedFuel) { this.collectedFuel = collectedFuel; }
+    public int getCollectedFuel() { return collectedFuel; }
+    public void setScored(int scored) { this.scored = scored; }
+    public int getScored() { return scored; }
+    public void setWentToNeutral(int wentToNeutral) { this.wentToNeutral = wentToNeutral; }
+    public int getWentToNeutral() { return wentToNeutral; }
     public int getL1Count() {
         return l1Count;
     }
