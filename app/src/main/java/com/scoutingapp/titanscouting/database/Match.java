@@ -21,42 +21,46 @@ public class Match {
     private boolean noShow;
     @ColumnInfo(name="autoPath", defaultValue = "0")
     private String autoPath;
-    @ColumnInfo(name = "l1Count", defaultValue = "0")
-    private int l1Count;
-    @ColumnInfo(name = "l2Count", defaultValue = "0")
-    private int l2Count;
-    @ColumnInfo(name = "l3Count", defaultValue = "0")
-    private int l3Count;
-    @ColumnInfo(name = "l4Count", defaultValue = "0")
-    private int l4Count;
-    @ColumnInfo(name = "processorCount", defaultValue = "0")
-    private int processorCount;
-    @ColumnInfo(name = "netCount", defaultValue = "0")
-    private int netCount;
-    @ColumnInfo(name = "l1MissedCount", defaultValue = "0")
-    private int l1MissedCount;
-    @ColumnInfo(name = "l2MissedCount", defaultValue = "0")
-    private int l2MissedCount;
-    @ColumnInfo(name = "l3MissedCount", defaultValue = "0")
-    private int l3MissedCount;
-    @ColumnInfo(name = "l4MissedCount", defaultValue = "0")
-    private int l4MissedCount;
-    @ColumnInfo(name = "processorMissedCount", defaultValue = "0")
-    private int processorMissedCount;
-    @ColumnInfo(name = "netMissedCount", defaultValue = "0")
-    private int netMissedCount;
-    @ColumnInfo(name = "endgamePos", defaultValue = "None")
-    private String endgamePos;
-    @ColumnInfo(name = "groundCoral", defaultValue = "0")
-    private boolean groundCoral;
-    @ColumnInfo(name = "groundAlgae", defaultValue = "0")
-    private boolean groundAlgae;
-    @ColumnInfo(name = "mechanicalReliability", defaultValue = "1")
-    private boolean mechanicalReliability;
-    @ColumnInfo(name = "defenseAbility", defaultValue = "0")
-    private int defenseAbility;
+    @ColumnInfo(name = "depot", defaultValue = "0")
+    private int depot;
+    @ColumnInfo(name = "climb", defaultValue = "0")
+    private int climb;
+    @ColumnInfo(name = "collectedFuel", defaultValue = "0")
+    private int collectedFuel;
+    @ColumnInfo(name = "scored", defaultValue = "0")
+    private int scored;
+    @ColumnInfo(name = "wentToNeutral", defaultValue = "0")
+    private int wentToNeutral;
+    @ColumnInfo(name = "scoringLocations", defaultValue = "")
+    private String scoringLocations;
+    @ColumnInfo(name = "shotWhileMoving", defaultValue = "false")
+    private boolean shotWhileMoving;
+    @ColumnInfo(name = "pinRating", defaultValue = "0")
+    private int pinRating;
+    @ColumnInfo(name = "stealRating", defaultValue = "0")
+    private int stealRating;
+    @ColumnInfo(name = "blockRating", defaultValue = "0")
+    private int blockRating;
+    @ColumnInfo(name = "ramRating", defaultValue = "0")
+    private int ramRating;
+    @ColumnInfo(name = "antiPinRating", defaultValue = "0")
+    private int antiPinRating;
+    @ColumnInfo(name = "antiStealRating", defaultValue = "0")
+    private int antiStealRating;
+    @ColumnInfo(name = "antiBlockRating", defaultValue = "0")
+    private int antiBlockRating;
+    @ColumnInfo(name = "antiRamRating", defaultValue = "0")
+    private int antiRamRating;
+    @ColumnInfo(name = "endgameClimb", defaultValue = "")
+    private String endgameClimb;
     @ColumnInfo(name = "notes", defaultValue = "0")
     private String notes;
+    @ColumnInfo(name = "trench", defaultValue = "false")
+    private boolean trench;
+    @ColumnInfo(name = "bump", defaultValue = "false")
+    private boolean bump;
+
+
     public int getMatchNum() {
         return matchNum;
     }
@@ -94,112 +98,98 @@ public class Match {
     }
     public String getAutoPath() { return autoPath; }
     public void setAutoPath(String autoPath) { this.autoPath = autoPath; }
-    public int getL1Count() {
-        return l1Count;
+    public void setDepot(int depot) { this.depot = depot; }
+    public int getDepot() { return depot; }
+    public void setClimb(int climb) { this.climb = climb; }
+    public int getClimb() { return climb; }
+    public void setCollectedFuel(int collectedFuel) { this.collectedFuel = collectedFuel; }
+    public int getCollectedFuel() { return collectedFuel; }
+    public void setScored(int scored) { this.scored = scored; }
+    public int getScored() { return scored; }
+    public void setWentToNeutral(int wentToNeutral) { this.wentToNeutral = wentToNeutral; }
+    public int getWentToNeutral() { return wentToNeutral; }
+    public void setScoringLocations(String scoringLocations) {
+        this.scoringLocations = scoringLocations;
     }
-    public void setL1Count(int l1Count) {
-        this.l1Count = l1Count;
+    public String getScoringLocations() {
+        return scoringLocations;
     }
-    public int getL2Count() {
-        return l2Count;
+    public void setShotWhileMoving(boolean shotWhileMoving) {
+        this.shotWhileMoving = shotWhileMoving;
     }
-    public void setL2Count(int l2Count) {
-        this.l2Count = l2Count;
+    public boolean isShotWhileMoving() {
+        return shotWhileMoving;
     }
-    public int getL3Count() {
-        return l3Count;
+    public void setPinRating(int pinRating) {
+        this.pinRating = pinRating;
     }
-    public void setL3Count(int l3Count) {
-        this.l3Count = l3Count;
+    public int getPinRating() {
+        return pinRating;
     }
-    public int getL4Count() {
-        return l4Count;
+    public void setStealRating(int stealRating) {
+        this.stealRating = stealRating;
     }
-    public void setL4Count(int l4Count) {
-        this.l4Count = l4Count;
+    public int getStealRating() {
+        return stealRating;
     }
-    public int getProcessorCount() {
-        return processorCount;
+    public void setBlockRating(int blockRating) {
+        this.blockRating = blockRating;
     }
-    public void setProcessorCount(int processorCount) {
-        this.processorCount = processorCount;
+    public int getBlockRating() {
+        return blockRating;
     }
-    public int getNetCount() {
-        return netCount;
+    public void setRamRating(int ramRating) {
+        this.ramRating = ramRating;
     }
-    public void setNetCount(int netCount) {
-        this.netCount = netCount;
+    public int getRamRating() {
+        return ramRating;
     }
-    public int getL1MissedCount() {
-        return l1MissedCount;
+    public void setAntiPinRating(int antiPinRating) {
+        this.antiPinRating = antiPinRating;
     }
-    public void setL1MissedCount(int l1MissedCount) {
-        this.l1MissedCount = l1MissedCount;
+    public int getAntiPinRating() {
+        return antiPinRating;
     }
-    public int getL2MissedCount() {
-        return l2MissedCount;
+    public void setAntiStealRating(int antiStealRating) {
+        this.antiStealRating = antiStealRating;
     }
-    public void setL2MissedCount(int l2MissedCount) {
-        this.l2MissedCount = l2MissedCount;
+    public int getAntiStealRating() {
+        return antiStealRating;
     }
-    public int getL3MissedCount() {
-        return l3MissedCount;
+    public void setAntiBlockRating(int antiBlockRating) {
+        this.antiBlockRating = antiBlockRating;
     }
-    public void setL3MissedCount(int l3MissedCount) {
-        this.l3MissedCount = l3MissedCount;
+    public int getAntiBlockRating() {
+        return antiBlockRating;
     }
-    public int getL4MissedCount() {
-        return l4MissedCount;
+    public void setAntiRamRating(int antiRamRating) {
+        this.antiRamRating = antiRamRating;
     }
-    public void setL4MissedCount(int l4MissedCount) {
-        this.l4MissedCount = l4MissedCount;
+    public int getAntiRamRating() {
+        return antiRamRating;
     }
-    public int getProcessorMissedCount() {
-        return processorMissedCount;
+    public void setEndgameClimb(String endgameClimb) {
+        this.endgameClimb = endgameClimb;
     }
-    public void setProcessorMissedCount(int processorMissedCount) {
-        this.processorMissedCount = processorMissedCount;
-    }
-    public int getNetMissedCount() {
-        return netMissedCount;
-    }
-    public void setNetMissedCount(int netMissedCount) {
-        this.netMissedCount = netMissedCount;
-    }
-    public String getEndgamePos() {
-        return endgamePos;
-    }
-    public void setEndgamePos(String endgamePos) {
-        this.endgamePos = endgamePos;
-    }
-    public boolean isGroundCoral() {
-        return groundCoral;
-    }
-    public void setGroundCoral(boolean groundCoral) {
-        this.groundCoral = groundCoral;
-    }
-    public boolean isGroundAlgae() {
-        return groundAlgae;
-    }
-    public void setGroundAlgae(boolean groundAlgae) {
-        this.groundAlgae = groundAlgae;
-    }
-    public boolean getMechanicalReliability() {
-        return mechanicalReliability;
-    }
-    public void setMechanicalReliability(boolean mechanicalReliability) {
-        this.mechanicalReliability = mechanicalReliability;
-    }
-    public int getDefenseAbility() {
-        return defenseAbility;
-    }
-    public void setDefenseAbility(int defenseAbility) {
-        this.defenseAbility = defenseAbility;
+    public String getEndgameClimb() {
+        return endgameClimb;
     }
     public String getNotes() {
         return notes;
     }
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+    public void setTrench(boolean trench) {
+        this.trench = trench;
+    }
+    public boolean getTrench() {
+        return this.trench;
+    }
+    public void setBump(boolean bump) {
+        this.bump = bump;
+    }
+    public boolean setBump() {
+        return this.bump;
     }
 }
