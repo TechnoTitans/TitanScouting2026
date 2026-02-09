@@ -7,44 +7,27 @@
     android:layout_height="match_parent"
     tools:context=".views.Teleop">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="867dp"
-        android:layout_height="503dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.458"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/img_4991" />
-
     <Button
         android:id="@+id/inc_l4_scored"
         android:layout_width="83dp"
         android:layout_height="63dp"
-        android:layout_marginTop="4dp"
         android:gravity="center"
         android:text="+"
         android:textSize="15pt"
         app:backgroundTint="#2DD7AF"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.428"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        tools:layout_editor_absoluteX="525dp"
+        tools:layout_editor_absoluteY="153dp" />
 
     <Button
         android:id="@+id/dec_l4_scored"
         android:layout_width="83dp"
         android:layout_height="63dp"
-        android:layout_marginTop="4dp"
         android:gravity="center"
         android:text="-"
         android:textSize="15pt"
         app:backgroundTint="#2DD7AF"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.577"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        tools:layout_editor_absoluteX="642dp"
+        tools:layout_editor_absoluteY="153dp" />
 
     <TextView
         android:id="@+id/l4_score"
@@ -53,96 +36,74 @@
         android:gravity="center"
         android:text="0"
         android:textSize="15pt"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.008" />
+        tools:layout_editor_absoluteX="603dp"
+        tools:layout_editor_absoluteY="152dp" />
 
     <Button
         android:id="@+id/inc_l4_missed"
         android:layout_width="83dp"
         android:layout_height="63dp"
-        android:layout_marginTop="80dp"
         android:gravity="center"
         android:text="+"
         android:textSize="15pt"
         app:backgroundTint="@color/red"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.426"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        tools:layout_editor_absoluteX="523dp"
+        tools:layout_editor_absoluteY="229dp" />
 
     <Button
         android:id="@+id/inc_l3_missed"
         android:layout_width="83dp"
         android:layout_height="63dp"
-        android:layout_marginTop="204dp"
         android:gravity="center"
         android:text="+"
         android:textSize="15pt"
         app:backgroundTint="@color/red"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.428"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        tools:layout_editor_absoluteX="525dp"
+        tools:layout_editor_absoluteY="353dp" />
 
     <Button
         android:id="@+id/inc_l2_missed"
         android:layout_width="83dp"
         android:layout_height="63dp"
-        android:layout_marginTop="324dp"
         android:gravity="center"
         android:text="+"
         android:textSize="15pt"
         app:backgroundTint="@color/red"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.426"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        tools:layout_editor_absoluteX="523dp"
+        tools:layout_editor_absoluteY="473dp" />
 
     <Button
         android:id="@+id/inc_l1_missed"
         android:layout_width="83dp"
         android:layout_height="63dp"
-        android:layout_marginTop="448dp"
         android:gravity="center"
         android:text="+"
         android:textSize="15pt"
         app:backgroundTint="@color/red"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.426"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        tools:layout_editor_absoluteX="523dp"
+        tools:layout_editor_absoluteY="597dp" />
 
     <Button
         android:id="@+id/inc_net_missed"
         android:layout_width="83dp"
         android:layout_height="63dp"
-        android:layout_marginTop="208dp"
         android:gravity="center"
         android:text="+"
         android:textSize="15pt"
         app:backgroundTint="@color/red"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.709"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        tools:layout_editor_absoluteX="745dp"
+        tools:layout_editor_absoluteY="357dp" />
 
     <Button
         android:id="@+id/inc_proc_missed"
         android:layout_width="83dp"
         android:layout_height="63dp"
-        android:layout_marginTop="380dp"
         android:gravity="center"
         android:text="+"
         android:textSize="15pt"
         app:backgroundTint="@color/red"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.709"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        tools:layout_editor_absoluteX="745dp"
+        tools:layout_editor_absoluteY="529dp" />
 
     <TextView
         android:id="@+id/l4_missed_score"
@@ -151,12 +112,8 @@
         android:gravity="center"
         android:text="0"
         android:textSize="15pt"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.186" />
+        tools:layout_editor_absoluteX="605dp"
+        tools:layout_editor_absoluteY="232dp" />
 
 
     <TextView
@@ -166,12 +123,8 @@
         android:gravity="center"
         android:text="0"
         android:textSize="15pt"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.448" />
+        tools:layout_editor_absoluteX="603dp"
+        tools:layout_editor_absoluteY="346dp" />
 
     <TextView
         android:id="@+id/l2_missed_score"
@@ -180,12 +133,8 @@
         android:gravity="center"
         android:text="0"
         android:textSize="15pt"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.739" />
+        tools:layout_editor_absoluteX="603dp"
+        tools:layout_editor_absoluteY="473dp" />
 
     <TextView
         android:id="@+id/l1_missed_score"
@@ -194,12 +143,8 @@
         android:gravity="center"
         android:text="0"
         android:textSize="15pt"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:layout_constraintVertical_bias="1.0" />
+        tools:layout_editor_absoluteX="603dp"
+        tools:layout_editor_absoluteY="592dp" />
 
     <TextView
         android:id="@+id/net_missed_score"
@@ -208,12 +153,8 @@
         android:gravity="center"
         android:text="0"
         android:textSize="15pt"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.76"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.47" />
+        tools:layout_editor_absoluteX="825dp"
+        tools:layout_editor_absoluteY="359dp" />
 
     <TextView
         android:id="@+id/proc_missed_score"
@@ -222,124 +163,96 @@
         android:gravity="center"
         android:text="0"
         android:textSize="15pt"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.76"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.872" />
+        tools:layout_editor_absoluteX="824dp"
+        tools:layout_editor_absoluteY="536dp" />
 
     <Button
         android:id="@+id/dec_l4_missed"
         android:layout_width="83dp"
         android:layout_height="63dp"
-        android:layout_marginTop="80dp"
         android:gravity="center"
         android:text="-"
         android:textSize="15pt"
         app:backgroundTint="@color/red"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.577"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        tools:layout_editor_absoluteX="642dp"
+        tools:layout_editor_absoluteY="229dp" />
 
     <Button
         android:id="@+id/dec_l3_missed"
         android:layout_width="83dp"
         android:layout_height="63dp"
-        android:layout_marginTop="204dp"
         android:gravity="center"
         android:text="-"
         android:textSize="15pt"
         app:backgroundTint="@color/red"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.577"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        tools:layout_editor_absoluteX="642dp"
+        tools:layout_editor_absoluteY="353dp" />
 
     <Button
         android:id="@+id/dec_l2_missed"
         android:layout_width="83dp"
         android:layout_height="63dp"
-        android:layout_marginTop="324dp"
         android:gravity="center"
         android:text="-"
         android:textSize="15pt"
         app:backgroundTint="@color/red"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.577"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        tools:layout_editor_absoluteX="642dp"
+        tools:layout_editor_absoluteY="473dp" />
 
     <Button
         android:id="@+id/dec_l1_missed"
         android:layout_width="83dp"
         android:layout_height="63dp"
-        android:layout_marginTop="448dp"
         android:gravity="center"
         android:text="-"
         android:textSize="15pt"
         app:backgroundTint="@color/red"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.577"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        tools:layout_editor_absoluteX="642dp"
+        tools:layout_editor_absoluteY="597dp" />
 
     <Button
         android:id="@+id/dec_net_missed"
         android:layout_width="83dp"
         android:layout_height="63dp"
-        android:layout_marginTop="208dp"
         android:gravity="center"
         android:text="-"
         android:textSize="15pt"
         app:backgroundTint="@color/red"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.854"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        tools:layout_editor_absoluteX="859dp"
+        tools:layout_editor_absoluteY="357dp" />
 
     <Button
         android:id="@+id/dec_proc_missed"
         android:layout_width="83dp"
         android:layout_height="63dp"
-        android:layout_marginTop="380dp"
         android:gravity="center"
         android:text="-"
         android:textSize="15pt"
         app:backgroundTint="@color/red"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.849"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        tools:layout_editor_absoluteX="855dp"
+        tools:layout_editor_absoluteY="529dp" />
 
     <Button
         android:id="@+id/inc_l3_scored"
         android:layout_width="83dp"
         android:layout_height="63dp"
-        android:layout_marginTop="144dp"
         android:gravity="center"
         android:text="+"
         android:textSize="15pt"
         app:backgroundTint="#2DD7AF"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.428"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        tools:layout_editor_absoluteX="525dp"
+        tools:layout_editor_absoluteY="293dp" />
 
     <Button
         android:id="@+id/dec_l3_scored"
         android:layout_width="83dp"
         android:layout_height="63dp"
-        android:layout_marginTop="144dp"
         android:gravity="center"
         android:text="-"
         android:textSize="15pt"
         app:backgroundTint="#2DD7AF"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.577"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        tools:layout_editor_absoluteX="642dp"
+        tools:layout_editor_absoluteY="293dp" />
 
     <TextView
         android:id="@+id/l3_score"
@@ -348,26 +261,19 @@
         android:gravity="center"
         android:text="0"
         android:textSize="15pt"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.336" />
+        tools:layout_editor_absoluteX="603dp"
+        tools:layout_editor_absoluteY="299dp" />
 
     <Button
         android:id="@+id/inc_l2_scored"
         android:layout_width="83dp"
         android:layout_height="63dp"
-        android:layout_marginTop="264dp"
         android:gravity="center"
         android:text="+"
         android:textSize="15pt"
         app:backgroundTint="#2DD7AF"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.428"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        tools:layout_editor_absoluteX="525dp"
+        tools:layout_editor_absoluteY="413dp" />
 
     <TextView
         android:id="@+id/l2_score"
@@ -376,40 +282,30 @@
         android:gravity="center"
         android:text="0"
         android:textSize="15pt"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.607" />
+        tools:layout_editor_absoluteX="605dp"
+        tools:layout_editor_absoluteY="418dp" />
 
     <Button
         android:id="@+id/dec_l2_scored"
         android:layout_width="83dp"
         android:layout_height="63dp"
-        android:layout_marginTop="264dp"
         android:gravity="center"
         android:text="-"
         android:textSize="15pt"
         app:backgroundTint="#2DD7AF"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.577"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        tools:layout_editor_absoluteX="642dp"
+        tools:layout_editor_absoluteY="413dp" />
 
     <Button
         android:id="@+id/inc_l1_scored"
         android:layout_width="83dp"
         android:layout_height="63dp"
-        android:layout_marginTop="384dp"
         android:gravity="center"
         android:text="+"
         android:textSize="15pt"
         app:backgroundTint="#2DD7AF"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.426"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        tools:layout_editor_absoluteX="523dp"
+        tools:layout_editor_absoluteY="533dp" />
 
     <TextView
         android:id="@+id/l1_score"
@@ -418,54 +314,41 @@
         android:gravity="center"
         android:text="0"
         android:textSize="15pt"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.874" />
+        tools:layout_editor_absoluteX="603dp"
+        tools:layout_editor_absoluteY="535dp" />
 
     <Button
         android:id="@+id/dec_l1_scored"
         android:layout_width="83dp"
         android:layout_height="63dp"
-        android:layout_marginTop="388dp"
         android:gravity="center"
         android:text="-"
         android:textSize="15pt"
         app:backgroundTint="#2DD7AF"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.577"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        tools:layout_editor_absoluteX="642dp"
+        tools:layout_editor_absoluteY="537dp" />
 
     <Button
         android:id="@+id/inc_net"
         android:layout_width="83dp"
         android:layout_height="63dp"
-        android:layout_marginTop="132dp"
         android:gravity="center"
         android:text="+"
         android:textSize="15pt"
         app:backgroundTint="#3F51B5"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.71"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        tools:layout_editor_absoluteX="746dp"
+        tools:layout_editor_absoluteY="281dp" />
 
     <Button
         android:id="@+id/dec_net"
         android:layout_width="83dp"
         android:layout_height="63dp"
-        android:layout_marginTop="132dp"
         android:gravity="center"
         android:text="-"
         android:textSize="15pt"
         app:backgroundTint="#3F51B5"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.854"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        tools:layout_editor_absoluteX="859dp"
+        tools:layout_editor_absoluteY="281dp" />
 
     <TextView
         android:id="@+id/net_score"
@@ -474,26 +357,19 @@
         android:gravity="center"
         android:text="0"
         android:textSize="15pt"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.765"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.313" />
+        tools:layout_editor_absoluteX="830dp"
+        tools:layout_editor_absoluteY="287dp" />
 
     <Button
         android:id="@+id/inc_proc"
         android:layout_width="83dp"
         android:layout_height="63dp"
-        android:layout_marginTop="300dp"
         android:gravity="center"
         android:text="+"
         android:textSize="15pt"
         app:backgroundTint="#3F51B5"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.709"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        tools:layout_editor_absoluteX="745dp"
+        tools:layout_editor_absoluteY="449dp" />
 
     <TextView
         android:id="@+id/proc_score"
@@ -502,26 +378,19 @@
         android:gravity="center"
         android:text="0"
         android:textSize="15pt"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.763"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.688" />
+        tools:layout_editor_absoluteX="824dp"
+        tools:layout_editor_absoluteY="454dp" />
 
     <Button
         android:id="@+id/dec_proc"
         android:layout_width="83dp"
         android:layout_height="63dp"
-        android:layout_marginTop="300dp"
         android:gravity="center"
         android:text="-"
         android:textSize="15pt"
         app:backgroundTint="#3F51B5"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.853"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        tools:layout_editor_absoluteX="858dp"
+        tools:layout_editor_absoluteY="449dp" />
 
     <Button
         android:id="@+id/back_to_auto"

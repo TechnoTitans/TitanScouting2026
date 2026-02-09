@@ -1,5 +1,7 @@
 package com.scoutingapp.titanscouting.views;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -51,6 +53,19 @@ public class Endgame2 extends AppCompatActivity {
         CheckBox groundCoral = findViewById(R.id.groundCoralCheckbox);
         CheckBox groundAlgae = findViewById(R.id.groundAlgaeCheckbox);
         matchViewModel = new ViewModelProvider(this).get(MatchViewModel.class);
+        ImageView dockx = findViewById(R.id.dockx);
+
+        Drawable drawable = dockx.getDrawable().mutate();
+
+        final int RED = Color.parseColor("#e05a47");
+        final int BLUE = Color.parseColor("#3F51B5");
+
+        final boolean[] isRed = {true};
+
+        parkIcon.setOnClickListener(v -> {
+            drawable.setTint(isRed[0] ? BLUE : RED);
+            isRed[0] = !isRed[0];
+        });
         matchViewModel.getMatch(getIntent().getIntExtra("matchNumber", 0)).observe(this, match -> {
             if(match == null) {
                 finish();
