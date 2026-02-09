@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".views.Autonomous"
-    android:background="@drawable/img_3188_rotated">
+    android:background="@drawable/auton_blue">
 
     <CheckBox
         android:id="@+id/leaveCheckbox"

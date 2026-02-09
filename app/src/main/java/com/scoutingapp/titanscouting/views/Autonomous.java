@@ -36,9 +36,70 @@ public class Autonomous extends AppCompatActivity {
         // Setup UI Elements
         EditText autoText = findViewById(R.id.autoDisplay);
         CheckBox leave = findViewById(R.id.leaveCheckbox);
-        Button resetButton = findViewById(R.id.reset_button);
         Button toPregame = findViewById(R.id.back_to_pregame);
         Button toTeleop = findViewById(R.id.to_teleop);
+        Button yesDepot = findViewById(R.id.yes_depot);
+        Button noDepot = findViewById(R.id.no_depot);
+        Button yesClimb = findViewById(R.id.yes_climb);
+        Button noClimb = findViewById(R.id.no_climb);
+        Button yesCollectedFuel = findViewById(R.id.yes_collected_fuel);
+        Button noCollectedFuel = findViewById(R.id.no_collected_fuel);
+        Button yesScored = findViewById(R.id.yes_scored);
+        Button noScored = findViewById(R.id.no_scored);
+        Button yesWentToNeutral = findViewById(R.id.yes_went_to_neutral);
+        Button noWentToNeutral = findViewById(R.id.no_went_to_neutral);
+
+
+        // 0 for not pressed, 1 for no depot, 2 for yes depot
+        yesDepot.setOnClickListener(v->{
+            match.setDepot(2);
+        });
+        noDepot.setOnClickListener(
+                v->{
+                    match.setDepot(1);
+                }
+        );
+        yesClimb.setOnClickListener(
+                v->{
+                    match.setClimb(2);
+                }
+        );
+        noClimb.setOnClickListener(
+                v->{
+                    match.setClimb(1);
+                }
+        );
+        yesCollectedFuel.setOnClickListener(
+                v->{
+                    match.setCollectedFuel(2);
+                }
+        );
+        noCollectedFuel.setOnClickListener(
+                v->{
+                    match.setCollectedFuel(1);
+                }
+        );
+        yesScored.setOnClickListener(
+                v->{
+                    match.setScored(2);
+                }
+        );
+        noScored.setOnClickListener(
+                v->{
+                    match.setScored(1);
+                }
+        );
+        yesWentToNeutral.setOnClickListener(
+                v->{
+                    match.setWentToNeutral(2);
+                }
+        );
+        noWentToNeutral.setOnClickListener(
+                v->{
+                    match.setWentToNeutral(1);
+                }
+        );
+
 
         // Branch buttons A–L
         int[] branchIds = {

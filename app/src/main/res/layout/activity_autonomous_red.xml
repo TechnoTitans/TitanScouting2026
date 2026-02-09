@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".views.Autonomous"
-    android:background="@drawable/img_3188">
+    android:background="@drawable/auton_red">
 
     <Button
         android:id="@+id/branch_l"
@@ -222,12 +222,12 @@
         android:id="@+id/lollipop1"
         android:layout_width="75dp"
         android:layout_height="110dp"
-        android:layout_marginStart="68dp"
+        android:layout_marginStart="32dp"
         android:backgroundTint="#2DD7AF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.166" />
+        app:layout_constraintVertical_bias="0.318" />
 
     <Button
         android:id="@+id/lollipop3"
