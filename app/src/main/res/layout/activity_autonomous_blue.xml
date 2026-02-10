@@ -4,287 +4,160 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.Autonomous"
-    android:background="@drawable/auton_blue">
-
-    <CheckBox
-        android:id="@+id/leaveCheckbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="160dp"
-        android:scaleX="2"
-        android:scaleY="2"
-        android:text="Leave?"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:background="@drawable/auton_blue"
+    tools:context=".views.Autonomous">
 
     <Button
-        android:id="@+id/branch_l"
+        android:id="@+id/yes_scored"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:backgroundTint="#E91E63"
+        android:text="Button"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.68"
+        app:layout_constraintHorizontal_bias="0.407"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.767" />
+        app:layout_constraintVertical_bias="0.695" />
 
     <Button
-        android:id="@+id/branch_i"
+        android:id="@+id/yes_went_to_neutral"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:backgroundTint="#E91E63"
+        android:text="Button"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.364"
+        app:layout_constraintHorizontal_bias="0.19"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.733" />
+        app:layout_constraintVertical_bias="0.736" />
 
     <Button
-        android:id="@+id/branch_j"
+        android:id="@+id/no_scored"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:backgroundTint="#E91E63"
+        android:text="Button"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.453"
+        app:layout_constraintHorizontal_bias="0.455"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.832" />
+        app:layout_constraintVertical_bias="0.695" />
 
     <Button
-        android:id="@+id/branch_h"
+        android:id="@+id/no_climb"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:backgroundTint="#E91E63"
+        android:text="Button"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.296"
+        app:layout_constraintHorizontal_bias="0.615"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.605" />
+        app:layout_constraintVertical_bias="0.659" />
 
     <Button
-        android:id="@+id/branch_g"
+        android:id="@+id/yes_climb"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:backgroundTint="#E91E63"
+        android:text="Button"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.307"
+        app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintVertical_bias="0.659" />
 
     <Button
-        android:id="@+id/branch_f"
+        android:id="@+id/no_depot"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:backgroundTint="#E91E63"
+        android:text="Button"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.354"
+        app:layout_constraintHorizontal_bias="0.635"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.35" />
+        app:layout_constraintVertical_bias="0.904" />
 
     <Button
-        android:id="@+id/branch_e"
+        android:id="@+id/yes_depot"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:backgroundTint="#E91E63"
+        android:text="Button"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.432"
+        app:layout_constraintHorizontal_bias="0.587"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.275" />
+        app:layout_constraintVertical_bias="0.903" />
 
     <Button
-        android:id="@+id/branch_d"
+        android:id="@+id/no_collected_fuel"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:backgroundTint="#E91E63"
+        android:text="Button"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.601"
+        app:layout_constraintHorizontal_bias="0.676"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.275" />
+        app:layout_constraintVertical_bias="0.338" />
 
     <Button
-        android:id="@+id/branch_c"
+        android:id="@+id/yes_collected_fuel"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:backgroundTint="#E91E63"
+        android:text="Button"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.688"
+        app:layout_constraintHorizontal_bias="0.629"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.335" />
-
-    <Button
-        android:id="@+id/branch_b"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:backgroundTint="#E91E63"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.761"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.491" />
-
-    <Button
-        android:id="@+id/branch_a"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:backgroundTint="#E91E63"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.761"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.605" />
-
-    <Button
-        android:id="@+id/branch_k"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:backgroundTint="#E91E63"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.601"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.832" />
-
-    <Button
-        android:id="@+id/processor_button"
-        android:layout_width="180dp"
-        android:layout_height="77dp"
-        android:backgroundTint="@color/darkergray"
-        android:text="Processor"
-        app:cornerRadius="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.296"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/cs1_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CS1"
-        app:cornerRadius="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/cs2_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:text="CS2"
-        app:cornerRadius="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/back_to_pregame"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="To Pregame"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintVertical_bias="0.338" />
 
     <Button
         android:id="@+id/to_teleop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="To Teleop"
+        android:layout_width="350dp"
+        android:layout_height="115dp"
+        android:layout_marginTop="16dp"
+        android:text="Button"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/net_button"
-        android:layout_width="103dp"
-        android:layout_height="272dp"
-        android:text="Net"
-        app:cornerRadius="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/lollipop2"
-        android:layout_width="75dp"
-        android:layout_height="110dp"
-        android:layout_marginEnd="64dp"
-        android:backgroundTint="#2DD7AF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.549" />
+        app:layout_constraintVertical_bias="0.031" />
 
     <Button
-        android:id="@+id/lollipop1"
-        android:layout_width="75dp"
-        android:layout_height="110dp"
-        android:layout_marginEnd="64dp"
-        android:backgroundTint="#2DD7AF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/leaveCheckbox"
+        android:layout_width="350dp"
+        android:layout_height="115dp"
+        android:layout_marginTop="16dp"
+        android:text="Button"
+        android:visibility="invisible"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.843" />
+        app:layout_constraintVertical_bias="0.042" />
 
     <Button
-        android:id="@+id/lollipop3"
-        android:layout_width="75dp"
-        android:layout_height="110dp"
-        android:layout_marginEnd="64dp"
-        android:backgroundTint="#2DD7AF"
+        android:id="@+id/no_went_to_neutral"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="Button"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.238"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.267" />
-
-    <Button
-        android:id="@+id/reset_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="232dp"
-        android:backgroundTint="@color/red"
-        android:text="RESET"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/autoDisplay"
-        android:autofillHints=""
-        android:inputType="text"
-        android:hint=""
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        app:layout_constraintEnd_toStartOf="@+id/reset_button"
-        app:layout_constraintHorizontal_bias="0.76"
-        app:layout_constraintStart_toEndOf="@+id/back_to_pregame"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Blue Auto"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-
+        app:layout_constraintVertical_bias="0.736" />
 </androidx.constraintlayout.widget.ConstraintLayout>
