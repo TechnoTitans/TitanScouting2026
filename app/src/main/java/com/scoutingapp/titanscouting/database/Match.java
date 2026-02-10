@@ -31,13 +31,34 @@ public class Match {
     private int scored;
     @ColumnInfo(name = "wentToNeutral", defaultValue = "0")
     private int wentToNeutral;
-
-    @ColumnInfo(name = "defenseAbility", defaultValue = "0")
-    private int defenseAbility;
+    @ColumnInfo(name = "scoringLocations", defaultValue = "")
+    private String scoringLocations;
+    @ColumnInfo(name = "shotWhileMoving", defaultValue = "false")
+    private boolean shotWhileMoving;
+    @ColumnInfo(name = "pinRating", defaultValue = "0")
+    private int pinRating;
+    @ColumnInfo(name = "stealRating", defaultValue = "0")
+    private int stealRating;
+    @ColumnInfo(name = "blockRating", defaultValue = "0")
+    private int blockRating;
+    @ColumnInfo(name = "ramRating", defaultValue = "0")
+    private int ramRating;
+    @ColumnInfo(name = "antiPinRating", defaultValue = "0")
+    private int antiPinRating;
+    @ColumnInfo(name = "antiStealRating", defaultValue = "0")
+    private int antiStealRating;
+    @ColumnInfo(name = "antiBlockRating", defaultValue = "0")
+    private int antiBlockRating;
+    @ColumnInfo(name = "antiRamRating", defaultValue = "0")
+    private int antiRamRating;
+    @ColumnInfo(name = "endgameClimb", defaultValue = "")
+    private String endgameClimb;
     @ColumnInfo(name = "notes", defaultValue = "0")
     private String notes;
-    @ColumnInfo(name = "leave", defaultValue = "0")
-    private boolean leave;
+    @ColumnInfo(name = "trench", defaultValue = "false")
+    private boolean trench;
+    @ColumnInfo(name = "bump", defaultValue = "false")
+    private boolean bump;
 
 
     public int getMatchNum() {
@@ -87,23 +108,88 @@ public class Match {
     public int getScored() { return scored; }
     public void setWentToNeutral(int wentToNeutral) { this.wentToNeutral = wentToNeutral; }
     public int getWentToNeutral() { return wentToNeutral; }
-
-    public boolean getMechanicalReliability() {
-        return mechanicalReliability;
+    public void setScoringLocations(String scoringLocations) {
+        this.scoringLocations = scoringLocations;
     }
-    public void setMechanicalReliability(boolean mechanicalReliability) {
-        this.mechanicalReliability = mechanicalReliability;
+    public String getScoringLocations() {
+        return scoringLocations;
     }
-    public int getDefenseAbility() {
-        return defenseAbility;
+    public void setShotWhileMoving(boolean shotWhileMoving) {
+        this.shotWhileMoving = shotWhileMoving;
     }
-    public void setDefenseAbility(int defenseAbility) {
-        this.defenseAbility = defenseAbility;
+    public boolean isShotWhileMoving() {
+        return shotWhileMoving;
+    }
+    public void setPinRating(int pinRating) {
+        this.pinRating = pinRating;
+    }
+    public int getPinRating() {
+        return pinRating;
+    }
+    public void setStealRating(int stealRating) {
+        this.stealRating = stealRating;
+    }
+    public int getStealRating() {
+        return stealRating;
+    }
+    public void setBlockRating(int blockRating) {
+        this.blockRating = blockRating;
+    }
+    public int getBlockRating() {
+        return blockRating;
+    }
+    public void setRamRating(int ramRating) {
+        this.ramRating = ramRating;
+    }
+    public int getRamRating() {
+        return ramRating;
+    }
+    public void setAntiPinRating(int antiPinRating) {
+        this.antiPinRating = antiPinRating;
+    }
+    public int getAntiPinRating() {
+        return antiPinRating;
+    }
+    public void setAntiStealRating(int antiStealRating) {
+        this.antiStealRating = antiStealRating;
+    }
+    public int getAntiStealRating() {
+        return antiStealRating;
+    }
+    public void setAntiBlockRating(int antiBlockRating) {
+        this.antiBlockRating = antiBlockRating;
+    }
+    public int getAntiBlockRating() {
+        return antiBlockRating;
+    }
+    public void setAntiRamRating(int antiRamRating) {
+        this.antiRamRating = antiRamRating;
+    }
+    public int getAntiRamRating() {
+        return antiRamRating;
+    }
+    public void setEndgameClimb(String endgameClimb) {
+        this.endgameClimb = endgameClimb;
+    }
+    public String getEndgameClimb() {
+        return endgameClimb;
     }
     public String getNotes() {
         return notes;
     }
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+    public void setTrench(boolean trench) {
+        this.trench = trench;
+    }
+    public boolean getTrench() {
+        return this.trench;
+    }
+    public void setBump(boolean bump) {
+        this.bump = bump;
+    }
+    public boolean setBump() {
+        return this.bump;
     }
 }
