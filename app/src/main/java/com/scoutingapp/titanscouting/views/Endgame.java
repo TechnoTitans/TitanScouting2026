@@ -5,43 +5,30 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.MultiFormatWriter;
-import com.google.zxing.WriterException;
-import com.google.zxing.common.BitMatrix;
-import com.journeyapps.barcodescanner.BarcodeEncoder;
-import com.scoutingapp.titanscouting.Homepage;
 import com.scoutingapp.titanscouting.R;
 import com.scoutingapp.titanscouting.database.Match;
 import com.scoutingapp.titanscouting.database.MatchViewModel;
-import com.scoutingapp.titanscouting.views.logs.Logs;
 
-import java.util.Locale;
-
-public class Endgame2 extends AppCompatActivity {
+public class Endgame extends AppCompatActivity {
     Match match;
     MatchViewModel matchViewModel;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_endgame2); /* connects xml to the class file */
+        setContentView(R.layout.activity_endgame); /* connects xml to the class file */
         EditText e = findViewById(R.id.comments); /*assigns variable e to what is typed in the comments (id)*/
         RadioGroup r = findViewById(R.id.parkPosition); /*assigns variable r to which park position is chosen (id)*/
         RadioButton parkRadio = findViewById(R.id.parkRadio);
@@ -171,14 +158,14 @@ public class Endgame2 extends AppCompatActivity {
         View backButton = findViewById(R.id.back_to_teleop);
         View nextButton = findViewById(R.id.to_summary);
         backButton.setOnClickListener(v -> {
-            Intent i = new Intent(Endgame2.this, Teleop.class);
+            Intent i = new Intent(Endgame.this, Teleop.class);
             i.putExtra("matchNumber", match.getMatchNum());
             matchViewModel.addMatchInformation(match);
             startActivity(i);
             finish();
         });
         nextButton.setOnClickListener(v -> {
-            Intent i = new Intent(Endgame2.this, Summary.class);
+            Intent i = new Intent(Endgame.this, Summary.class);
             i.putExtra("matchNumber", match.getMatchNum());
             matchViewModel.addMatchInformation(match);
             startActivity(i);

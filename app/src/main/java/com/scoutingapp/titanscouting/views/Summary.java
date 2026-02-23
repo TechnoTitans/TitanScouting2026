@@ -149,7 +149,7 @@ public class Summary extends AppCompatActivity {
                     i.putExtra("transition", "true");
                 }
                 else{
-                    i = new Intent(Summary.this, Endgame2.class);
+                    i = new Intent(Summary.this, Endgame.class);
                 }
                 i.putExtra("matchNumber", match.getMatchNum());
                 startActivity(i);
