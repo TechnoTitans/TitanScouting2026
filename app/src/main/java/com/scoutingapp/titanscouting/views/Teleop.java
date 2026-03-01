@@ -30,7 +30,7 @@ public class Teleop extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_teleop_2);
+        setContentView(R.layout.activity_teleop_blue);
 
         matchViewModel = new ViewModelProvider(this).get(MatchViewModel.class);
         matchViewModel.getMatch(getIntent().getIntExtra("matchNumber", 0))
