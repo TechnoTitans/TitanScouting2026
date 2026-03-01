@@ -19,7 +19,7 @@ public class Teleop extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_teleop_2);
+        setContentView(R.layout.activity_teleop_blue);
 
         Button l4inc = findViewById(R.id.inc_l4_scored);
         Button l4dec = findViewById(R.id.dec_l4_scored);
