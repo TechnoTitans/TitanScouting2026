@@ -51,14 +51,19 @@ public class Match {
     private int antiBlockRating;
     @ColumnInfo(name = "antiRamRating", defaultValue = "0")
     private int antiRamRating;
-    @ColumnInfo(name = "endgameClimb", defaultValue = "")
-    private String endgameClimb;
+    @ColumnInfo(name = "endgameClimb", defaultValue = "0")
+    private int endgameClimb;
     @ColumnInfo(name = "notes", defaultValue = "0")
     private String notes;
     @ColumnInfo(name = "trench", defaultValue = "false")
     private boolean trench;
     @ColumnInfo(name = "bump", defaultValue = "false")
     private boolean bump;
+    @ColumnInfo(name = "penalties", defaultValue = "false")
+    private boolean penalties;
+    @ColumnInfo(name = "brokeDown", defaultValue = "false")
+    private boolean brokeDown;
+
 
 
     public int getMatchNum() {
@@ -168,10 +173,10 @@ public class Match {
     public int getAntiRamRating() {
         return antiRamRating;
     }
-    public void setEndgameClimb(String endgameClimb) {
+    public void setEndgameClimb(int endgameClimb) {
         this.endgameClimb = endgameClimb;
     }
-    public String getEndgameClimb() {
+    public int getEndgameClimb() {
         return endgameClimb;
     }
     public String getNotes() {
@@ -191,5 +196,17 @@ public class Match {
     }
     public boolean setBump() {
         return this.bump;
+    }
+    public void setPenalties(boolean penalties) {
+        this.penalties = penalties;
+    }
+    public boolean getPenalties() {
+        return this.penalties;
+    }
+    public void setBrokeDown(boolean brokeDown) {
+        this.brokeDown = brokeDown;
+    }
+    public boolean getBrokeDown() {
+        return this.brokeDown;
     }
 }
