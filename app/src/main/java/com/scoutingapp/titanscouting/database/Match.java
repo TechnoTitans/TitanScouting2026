@@ -192,4 +192,15 @@ public class Match {
     public boolean setBump() {
         return this.bump;
     }
+
+    // Inside the Match class
+    private String shotCoordinates; // field
+
+    public void setShotCoordinates(String shotCoordinates) {
+        this.shotCoordinates = shotCoordinates;
+    }
+
+    public String getShotCoordinates() {
+        return shotCoordinates;
+    }
 }
