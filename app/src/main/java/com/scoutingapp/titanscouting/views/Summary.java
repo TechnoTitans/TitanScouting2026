@@ -31,7 +31,7 @@ public class Summary extends AppCompatActivity {
     Match match;
 
     MatchViewModel matchViewModel;
-
+/*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Called when the activity is first created
@@ -157,5 +157,5 @@ public class Summary extends AppCompatActivity {
             });
         });
 
-    }
+    }*/
 }

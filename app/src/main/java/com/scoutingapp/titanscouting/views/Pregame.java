@@ -49,8 +49,6 @@ public class Pregame extends AppCompatActivity {
         if (isFromAuto) {
             matchViewModel.getMatch(matchNumber).observe(this, match -> {
                 if (match == null) {
-                    System.out.println("finished");
-                    System.out.println(matchNumber);
                     finish();
                     return;
                 }
@@ -163,14 +161,11 @@ public class Pregame extends AppCompatActivity {
 
     private void useAutofill() {
         if (isFinishing()) {
-            System.out.println(":(");
             return;
         }
         if (match.getPosition() != null && match.getMatchNum() != 0) {
             match.setTeamNumber(finder.getTeamNumberFromTable(match.getMatchNum(), match.getPosition()));
             teamNumberInput.setText(String.valueOf(match.getTeamNumber()));
-            System.out.println("heloo");
-            System.out.println(match.getMatchNum() + " + " + match.getPosition());
             match.setScouterName(finder.getScouterName(match.getMatchNum(), match.getPosition()));
             scouterNameInput.setText(match.getScouterName());
         }
@@ -181,7 +176,6 @@ public class Pregame extends AppCompatActivity {
             match.setPosition(position);
             updatePositionColors();
             useAutofill();
-            System.out.println("autofill run");
         });
     }
 

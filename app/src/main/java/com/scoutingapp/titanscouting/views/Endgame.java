@@ -57,9 +57,9 @@ public class Endgame extends AppCompatActivity {
             usedTrench.setOnClickListener(v -> {
                 match.setTrench(!match.getTrench());
             });
-            usedBump.setChecked(match.setBump());
+            usedBump.setChecked(match.getBump());
             usedBump.setOnClickListener(v -> {
-                match.setBump(!match.setBump());
+                match.setBump(!match.getBump());
             });
 
             setupRatingBar(R.id.pinning, match.getPinRating(), match::setPinRating);
@@ -97,7 +97,7 @@ public class Endgame extends AppCompatActivity {
             finish();
         });
         nextButton.setOnClickListener(v -> {
-            Intent i = new Intent(Endgame.this, Summary.class);
+            Intent i = new Intent(Endgame.this, QRScreen.class);
             i.putExtra("matchNumber", match.getMatchNum());
             matchViewModel.addMatchInformation(match);
             startActivity(i);
@@ -110,26 +110,15 @@ public class Endgame extends AppCompatActivity {
 
         final float[] previousRating = { initialValue };
 
-        ratingBar.setOnTouchListener((v, event) -> {
-            if (isFinishing()) return false;
-
-            if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                previousRating[0] = ratingBar.getRating();
+        ratingBar.setOnRatingBarChangeListener((bar, rating, fromUser) -> {
+            if (!fromUser) return;
+            if (previousRating[0] == rating) {
+                bar.setRating(0);
+                setter.accept(0);
+            } else {
+                setter.accept((int) rating);
             }
-
-            if (event.getAction() == MotionEvent.ACTION_UP) {
-                float currentRating = ratingBar.getRating();
-
-                if (previousRating[0] == currentRating) {
-                    ratingBar.setRating(0);
-                    setter.accept(0);
-                    return true;
-                }
-
-                setter.accept((int) currentRating);
-            }
-
-            return false;
+            previousRating[0] = bar.getRating();
         });
     }
 }

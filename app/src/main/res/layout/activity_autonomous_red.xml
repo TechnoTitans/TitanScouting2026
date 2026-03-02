@@ -12,7 +12,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:text="Button"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.59"
@@ -103,7 +103,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:text="Button"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.533"
@@ -125,7 +125,7 @@
         app:layout_constraintVertical_bias="0.97" />
 
     <Button
-        android:id="@+id/leaveCheckbox"
+        android:id="@+id/toPregame"
         android:layout_width="271dp"
         android:layout_height="91dp"
         android:layout_marginTop="16dp"
@@ -140,7 +140,7 @@
         android:layout_height="94dp"
         android:layout_marginTop="16dp"
         android:text="Button"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

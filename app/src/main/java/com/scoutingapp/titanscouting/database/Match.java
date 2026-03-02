@@ -31,10 +31,10 @@ public class Match {
     private int scored;
     @ColumnInfo(name = "wentToNeutral", defaultValue = "0")
     private int wentToNeutral;
-    @ColumnInfo(name = "scoringLocations", defaultValue = "")
-    private String scoringLocations;
     @ColumnInfo(name = "shotWhileMoving", defaultValue = "false")
     private boolean shotWhileMoving;
+    @ColumnInfo(name = "shotCoordinates", defaultValue = "")
+    private String shotCoordinates;
     @ColumnInfo(name = "pinRating", defaultValue = "0")
     private int pinRating;
     @ColumnInfo(name = "stealRating", defaultValue = "0")
@@ -113,17 +113,11 @@ public class Match {
     public int getScored() { return scored; }
     public void setWentToNeutral(int wentToNeutral) { this.wentToNeutral = wentToNeutral; }
     public int getWentToNeutral() { return wentToNeutral; }
-    public void setScoringLocations(String scoringLocations) {
-        this.scoringLocations = scoringLocations;
-    }
-    public String getScoringLocations() {
-        return scoringLocations;
+    public boolean getShotWhileMoving() {
+        return shotWhileMoving;
     }
     public void setShotWhileMoving(boolean shotWhileMoving) {
         this.shotWhileMoving = shotWhileMoving;
-    }
-    public boolean isShotWhileMoving() {
-        return shotWhileMoving;
     }
     public void setPinRating(int pinRating) {
         this.pinRating = pinRating;
@@ -194,12 +188,9 @@ public class Match {
     public void setBump(boolean bump) {
         this.bump = bump;
     }
-    public boolean setBump() {
+    public boolean getBump() {
         return this.bump;
     }
-
-    // Inside the Match class
-    private String shotCoordinates; // field
 
     public void setShotCoordinates(String shotCoordinates) {
         this.shotCoordinates = shotCoordinates;
@@ -207,6 +198,8 @@ public class Match {
 
     public String getShotCoordinates() {
         return shotCoordinates;
+    }
+
     public void setPenalties(boolean penalties) {
         this.penalties = penalties;
     }
