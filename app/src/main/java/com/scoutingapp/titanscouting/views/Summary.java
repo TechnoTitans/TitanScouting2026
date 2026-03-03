@@ -1,161 +1,185 @@
 package com.scoutingapp.titanscouting.views;
 
-import androidx.appcompat.app.AlertDialog;
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.GridLayout;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.InputType;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.scoutingapp.titanscouting.Homepage;
 import com.scoutingapp.titanscouting.R;
 import com.scoutingapp.titanscouting.database.Match;
 import com.scoutingapp.titanscouting.database.MatchViewModel;
-import com.scoutingapp.titanscouting.views.logs.Logs;
-import com.scoutingapp.titanscouting.Autofill;
 
 public class Summary extends AppCompatActivity {
 
-    LiveData<Match> liveDataMatch;
+    private Match match;
+    private MatchViewModel matchViewModel;
 
-    Match match;
-
-    MatchViewModel matchViewModel;
-/*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // Called when the activity is first created
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_summary); // Sets the layout for the activity
+        setContentView(R.layout.activity_summary);
 
-// Finds views by their ID
-        View submit = findViewById(R.id.submit);
-        View back = findViewById(R.id.back);
-        View delete = findViewById(R.id.delete);
-
-// Initializes match object and ViewModel
         matchViewModel = new ViewModelProvider(this).get(MatchViewModel.class);
+        int matchNum = getIntent().getIntExtra("matchNumber", 0);
 
-// Retrieves match data based on match number passed in the intent
-        liveDataMatch = matchViewModel.getMatch(getIntent().getIntExtra("matchNumber", 0));
-
-// Observes the match LiveData and updates the UI when data changes
-        liveDataMatch.observe(this, match -> {
-            if(match == null) {
+        matchViewModel.getMatch(matchNum).observe(this, match -> {
+            if (match == null) {
                 finish();
                 return;
             }
             this.match = match;
-            ((TextView) (findViewById(R.id.matchNumberSummary))).setText(String.valueOf(match.getMatchNum()));
-
-            ((TextView) (findViewById(R.id.teamNumberSummary))).setText(String.valueOf(match.getTeamNumber()));
-
-            ((TextView) (findViewById(R.id.teamPositionSummary))).setText(match.getPosition());
-
-            ((TextView) (findViewById(R.id.scouterNameSummary))).setText(match.getScouterName());
-
-            if (match.isNoShow()){
-                ((TextView) (findViewById(R.id.noShowSummary))).setText("True");
-            } else {
-                ((TextView) (findViewById(R.id.noShowSummary))).setText("False");
-            }
-
-
-            ((TextView) (findViewById(R.id.l1Summary))).setText(String.format("%d/%d", match.getL1Count(), match.getL1MissedCount()));
-
-            ((TextView) (findViewById(R.id.l2Summary))).setText(String.format("%d/%d", match.getL2Count(), match.getL2MissedCount()));
-
-            ((TextView) (findViewById(R.id.l3Summary))).setText(String.format("%d/%d", match.getL3Count(), match.getL3MissedCount()));
-
-            ((TextView) (findViewById(R.id.l4Summary))).setText(String.format("%d/%d", match.getL4Count(), match.getL4MissedCount()));
-
-            ((TextView) (findViewById(R.id.processorCountSummary))).setText(String.format("%d/%d", match.getProcessorCount(), match.getProcessorMissedCount()));
-
-            ((TextView) (findViewById(R.id.netCountSummary))).setText(String.format("%d/%d", match.getNetCount(), match.getNetMissedCount()));
-
-            ((TextView) (findViewById(R.id.endgamePosSummary))).setText(match.getEndgamePos());
-
-            ((TextView) (findViewById(R.id.mechanicalReliabilitySummary))).setText(String.valueOf(match.getMechanicalReliability()));
-
-
-            ((TextView) (findViewById(R.id.notesSummary))).setText(match.getNotes());
-
-            // Sets click listener for submit button to navigate to QR
-            submit.setOnClickListener(v -> {
-                if(!Autofill.matchSubmitted[match.getMatchNum()]) {
-                    SharedPreferences sharedPref = getSharedPreferences("ScoutingPrefs", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPref.edit();
-                    editor.putInt("matchNumber", match.getMatchNum() + 1);
-                    editor.putString("position", match.getPosition());
-                    System.out.println(match.getPosition());
-                    editor.apply();
-                }
-
-                Intent i = new Intent(Summary.this, QRScreen.class);
-                i.putExtra("matchNumber", match.getMatchNum());
-                startActivity(i);
-                finish();
-            });
-
-            delete.setOnClickListener(v -> {
-                AlertDialog.Builder builder = new AlertDialog.Builder(Summary.this);
-                builder.setMessage("Are you sure you want to delete? ONLY CONTINUE IF YOU KNOW WHAT YOU'RE DOING!");
-                builder.setTitle("Confirm Deletion");
-
-                EditText passwordInput = new EditText(Summary.this);
-                passwordInput.setHint("Enter password");
-                passwordInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                builder.setView(passwordInput);
-
-                builder.setCancelable(false)
-                        .setPositiveButton("Yes", (dialog, which) -> {
-                            String enteredPassword = passwordInput.getText().toString();
-                            String correctPassword = "l"; // .-.
-
-                            if (enteredPassword.equals(correctPassword)) {
-                                Toast.makeText(Summary.this, "Match deleted!", Toast.LENGTH_SHORT).show();
-                                matchViewModel.deleteMatch(match.getMatchNum());
-
-                                Intent intent = new Intent(Summary.this, Logs.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(intent);
-                                new Handler(Looper.getMainLooper()).postDelayed(() -> finish(), 300);
-
-                                dialog.dismiss();
-                            } else {
-                                Toast.makeText(Summary.this, "Incorrect password!", Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .setNegativeButton("No", (dialog, which) -> dialog.cancel())
-                        .show();
-                System.out.println("ran");
-            });
-
-            // Sets click listener for back button to navigate to Endgame2 with match number
-            back.setOnClickListener(v -> {
-                Intent i;
-                if(match.isNoShow()) {
-                    i = new Intent(Summary.this, Pregame.class);
-                    i.putExtra("transition", "true");
-                }
-                else{
-                    i = new Intent(Summary.this, Endgame.class);
-                }
-                i.putExtra("matchNumber", match.getMatchNum());
-                startActivity(i);
-                finish();
-            });
+            populateSummary(match);
         });
 
-    }*/
+        Button backButton = findViewById(R.id.summary_back_button);
+        backButton.setOnClickListener(v -> {
+            Intent i = new Intent(Summary.this, Pregame.class);
+            i.putExtra("matchNumber", match.getMatchNum());
+            i.putExtra("transition", "true");
+            startActivity(i);
+            finish();
+        });
+    }
+
+    private void populateSummary(Match match) {
+        boolean isRed = match.getPosition() != null && match.getPosition().startsWith("R");
+        int accentColor = isRed ? Color.parseColor("#FF3838") : Color.parseColor("#3890FF");
+
+        // Header
+        setText(R.id.summary_match_number, "MATCH #" + match.getMatchNum());
+        setText(R.id.summary_team_number, "Team: " + match.getTeamNumber());
+        setText(R.id.summary_scouter_name, "Scout: " + match.getScouterName());
+        setText(R.id.summary_position, positionLabel(match.getPosition()));
+        ((TextView) findViewById(R.id.summary_position)).setTextColor(accentColor);
+        findViewById(R.id.header_divider).setBackgroundColor(accentColor);
+
+        // Pregame
+        setYesNo(R.id.val_no_show, match.isNoShow());
+
+        // Autonomous
+        setYesNo(R.id.val_depot,          match.getDepot() == 2);
+        setYesNo(R.id.val_climb_auto,     match.getClimb() == 2);
+        setYesNo(R.id.val_collected_fuel, match.getCollectedFuel() == 2);
+        setYesNo(R.id.val_scored,         match.getScored() == 2);
+        setYesNo(R.id.val_went_neutral,   match.getWentToNeutral() == 2);
+
+        // Teleop
+        setYesNo(R.id.val_shot_while_moving, match.getShotWhileMoving());
+        buildShotGrid(match.getShotCoordinates());
+
+        // Endgame status
+        setYesNo(R.id.val_penalties,  match.getPenalties());
+        setYesNo(R.id.val_broke_down, match.getBrokeDown());
+        setYesNo(R.id.val_trench,     match.getTrench());
+        setYesNo(R.id.val_bump,       match.getBump());
+
+        // Ratings
+        setRating(R.id.val_climb_end,  match.getEndgameClimb());
+        setRating(R.id.val_pinning,    match.getPinRating());
+        setRating(R.id.val_stealing,   match.getStealRating());
+        setRating(R.id.val_blocking,   match.getBlockRating());
+        setRating(R.id.val_ramming,    match.getRamRating());
+        setRating(R.id.val_anti_pin,   match.getAntiPinRating());
+        setRating(R.id.val_anti_steal, match.getAntiStealRating());
+        setRating(R.id.val_anti_block, match.getAntiBlockRating());
+        setRating(R.id.val_anti_ram,   match.getAntiRamRating());
+
+        // Notes
+        String notes = match.getNotes();
+        TextView notesView = findViewById(R.id.val_notes);
+        if (notes != null && !notes.isEmpty()) {
+            notesView.setText(notes);
+            notesView.setTextColor(Color.parseColor("#BBBBBB"));
+        } else {
+            notesView.setText("—");
+            notesView.setTextColor(Color.parseColor("#555555"));
+        }
+    }
+
+    private void setText(int id, String text) {
+        TextView tv = findViewById(id);
+        if (tv != null) tv.setText(text);
+    }
+
+    private void setYesNo(int id, boolean value) {
+        TextView tv = findViewById(id);
+        if (tv == null) return;
+        tv.setText(value ? "YES" : "NO");
+        tv.setTextColor(Color.parseColor(value ? "#00FF90" : "#FF4060"));
+        tv.setBackgroundColor(Color.parseColor(value ? "#0D2B1E" : "#2B0D12"));
+    }
+
+    private void setRating(int id, int value) {
+        TextView tv = findViewById(id);
+        if (tv == null) return;
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 5; i++) sb.append(i < value ? "●" : "○");
+        sb.append("  ").append(value).append("/5");
+        tv.setText(sb.toString());
+        tv.setTextColor(value > 0 ? Color.parseColor("#FF6B00") : Color.parseColor("#555555"));
+    }
+
+    private void buildShotGrid(String coordString) {
+        GridLayout grid = findViewById(R.id.shot_grid);
+        if (grid == null) return;
+        grid.removeAllViews();
+        grid.setRowCount(8);
+        grid.setColumnCount(8);
+
+        boolean[][] shots = new boolean[8][8];
+        if (coordString != null && !coordString.isEmpty()) {
+            for (String shot : coordString.split(";")) {
+                String[] parts = shot.split(",");
+                if (parts.length == 2) {
+                    try {
+                        int r = Integer.parseInt(parts[0].trim());
+                        int c = Integer.parseInt(parts[1].trim());
+                        if (r >= 0 && r < 8 && c >= 0 && c < 8) shots[r][c] = true;
+                    } catch (NumberFormatException ignored) {}
+                }
+            }
+        }
+
+        int cellSize = (int) (getResources().getDisplayMetrics().density * 22);
+        int gap      = (int) (getResources().getDisplayMetrics().density * 2);
+
+        for (int r = 0; r < 8; r++) {
+            for (int c = 0; c < 8; c++) {
+                View cell = new View(this);
+                GridLayout.LayoutParams params = new GridLayout.LayoutParams(
+                        GridLayout.spec(r), GridLayout.spec(c));
+                params.width  = cellSize;
+                params.height = cellSize;
+                params.setMargins(gap, gap, gap, gap);
+                cell.setLayoutParams(params);
+                cell.setBackgroundColor(shots[r][c]
+                        ? Color.argb(200, 255, 107, 0)
+                        : Color.parseColor("#1A1A1A"));
+                grid.addView(cell);
+            }
+        }
+
+        int total = 0;
+        for (boolean[] row : shots) for (boolean b : row) if (b) total++;
+        setText(R.id.val_shot_count, total + " shot" + (total != 1 ? "s" : "") + " logged");
+    }
+
+    private String positionLabel(String pos) {
+        if (pos == null) return "—";
+        switch (pos) {
+            case "R1": return "Red 1";
+            case "R2": return "Red 2";
+            case "R3": return "Red 3";
+            case "B1": return "Blue 1";
+            case "B2": return "Blue 2";
+            case "B3": return "Blue 3";
+            default:   return pos;
+        }
+    }
 }
