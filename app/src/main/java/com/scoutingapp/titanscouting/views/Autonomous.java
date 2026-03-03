@@ -17,6 +17,7 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.scoutingapp.titanscouting.R;
 import com.scoutingapp.titanscouting.database.Match;
 import com.scoutingapp.titanscouting.database.MatchViewModel;
+import android.widget.ImageButton;
 
 import java.util.Objects;
 
@@ -33,18 +34,18 @@ public class Autonomous extends AppCompatActivity {
                         R.layout.activity_autonomous_blue : R.layout.activity_autonomous_red
         );
 
-        Button toPregame = findViewById(R.id.toPregame);
-        Button toTeleop = findViewById(R.id.to_teleop);
-        Button yesDepot = findViewById(R.id.yes_depot);
-        Button noDepot = findViewById(R.id.no_depot);
-        Button yesClimb = findViewById(R.id.yes_climb);
-        Button noClimb = findViewById(R.id.no_climb);
-        Button yesCollectedFuel = findViewById(R.id.yes_collected_fuel);
-        Button noCollectedFuel = findViewById(R.id.no_collected_fuel);
-        Button yesScored = findViewById(R.id.yes_scored);
-        Button noScored = findViewById(R.id.no_scored);
-        Button yesWentToNeutral = findViewById(R.id.yes_went_to_neutral);
-        Button noWentToNeutral = findViewById(R.id.no_went_to_neutral);
+        ImageButton toPregame = findViewById(R.id.to_pregame);
+        ImageButton toTeleop = findViewById(R.id.to_teleop);
+        ImageButton yesDepot = findViewById(R.id.yes_depot);
+        ImageButton noDepot = findViewById(R.id.no_depot);
+        ImageButton yesClimb = findViewById(R.id.yes_climb);
+        ImageButton noClimb = findViewById(R.id.no_climb);
+        ImageButton yesCollectedFuel = findViewById(R.id.yes_collected_fuel);
+        ImageButton noCollectedFuel = findViewById(R.id.no_collected_fuel);
+        ImageButton yesScored = findViewById(R.id.yes_scored);
+        ImageButton noScored = findViewById(R.id.no_scored);
+        ImageButton yesWentToNeutral = findViewById(R.id.yes_went_to_neutral);
+        ImageButton noWentToNeutral = findViewById(R.id.no_went_to_neutral);
 
 
         // 0 for not pressed, 1 for no depot, 2 for yes depot
