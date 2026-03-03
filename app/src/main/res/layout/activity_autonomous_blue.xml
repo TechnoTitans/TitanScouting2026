@@ -7,7 +7,7 @@
     android:background="@drawable/auton_blue"
     tools:context=".views.Autonomous">
 
-    <Button
+    <ImageButton
         android:id="@+id/yes_scored"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.695" />
 
-    <Button
+    <ImageButton
         android:id="@+id/yes_went_to_neutral"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.736" />
 
-    <Button
+    <ImageButton
         android:id="@+id/no_scored"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -46,7 +46,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.695" />
 
-    <Button
+    <ImageButton
         android:id="@+id/no_climb"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -59,7 +59,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.659" />
 
-    <Button
+    <ImageButton
         android:id="@+id/yes_climb"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -72,7 +72,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.659" />
 
-    <Button
+    <ImageButton
         android:id="@+id/no_depot"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -85,7 +85,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.904" />
 
-    <Button
+    <ImageButton
         android:id="@+id/yes_depot"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -98,7 +98,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.903" />
 
-    <Button
+    <ImageButton
         android:id="@+id/no_collected_fuel"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -111,7 +111,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.338" />
 
-    <Button
+    <ImageButton
         android:id="@+id/yes_collected_fuel"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -124,7 +124,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.338" />
 
-    <Button
+    <ImageButton
         android:id="@+id/to_teleop"
         android:layout_width="350dp"
         android:layout_height="115dp"
@@ -136,8 +136,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.031" />
 
-    <Button
-        android:id="@+id/toPregame"
+    <ImageButton
+        android:id="@+id/to_pregame"
         android:layout_width="350dp"
         android:layout_height="115dp"
         android:layout_marginTop="16dp"
@@ -148,7 +148,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.042" />
 
-    <Button
+    <ImageButton
         android:id="@+id/no_went_to_neutral"
         android:layout_width="50dp"
         android:layout_height="50dp"
