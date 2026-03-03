@@ -138,6 +138,7 @@ public class Pregame extends AppCompatActivity {
             if (!matchNumberInput.getText().toString().isEmpty()
                     && !scouterNameInput.getText().toString().isEmpty()
                     && match.getPosition() != null
+                    && !Objects.equals(match.getPosition(), "")
                     && match.getTeamNumber() != 0) {
 
                 matchViewModel.addMatchInformation(match);

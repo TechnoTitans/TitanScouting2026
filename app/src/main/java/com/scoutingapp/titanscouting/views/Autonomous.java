@@ -124,30 +124,28 @@ public class Autonomous extends AppCompatActivity {
         int matchNum = getIntent().getIntExtra("matchNumber", 0);
 
         matchViewModel.getMatch(matchNum).observe(this, match -> {
-            if(match == null) {
+            if (match == null) {
                 finish();
                 return;
             }
             this.match = match;
+        });
 
-
-            toPregame.setOnClickListener(v -> {
+        toPregame.setOnClickListener(v -> {
                 matchViewModel.addMatchInformation(match);
                 Intent intent = new Intent(Autonomous.this, Pregame.class);
                 intent.putExtra("transition", "true");
                 intent.putExtra("matchNumber", match.getMatchNum());
                 startActivity(intent);
                 finish();
-            });
+        });
 
-            toTeleop.setOnClickListener(v -> {
-                matchViewModel.addMatchInformation(match);
-                Intent intent = new Intent(Autonomous.this, Teleop.class);
-                intent.putExtra("matchNumber", match.getMatchNum());
-                startActivity(intent);
-                finish();
-            });
+        toTeleop.setOnClickListener(v -> {
+            matchViewModel.addMatchInformation(match);
+            Intent intent = new Intent(Autonomous.this, Teleop.class);
+            intent.putExtra("matchNumber", match.getMatchNum());
+            startActivity(intent);
+            finish();
         });
     }
-
 }

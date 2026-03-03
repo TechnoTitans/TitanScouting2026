@@ -1,92 +1,89 @@
-//package com.scoutingapp.titanscouting.views;
-//
-//import androidx.appcompat.app.AppCompatActivity;
-//import androidx.lifecycle.ViewModelProvider;
-//
-//import android.content.Intent;
-//import android.os.Bundle;
-//import android.widget.Button;
 package com.scoutingapp.titanscouting.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.ImageButton;
 
 import com.scoutingapp.titanscouting.R;
 import com.scoutingapp.titanscouting.database.Match;
 import com.scoutingapp.titanscouting.database.MatchViewModel;
 
+
 public class Teleop extends AppCompatActivity {
 
     private Match match;
     private MatchViewModel matchViewModel;
 
-    // 8x8 grid to store shot positions
     private final int[][] shotGrid = new int[8][8];
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_teleop_blue);
-
         matchViewModel = new ViewModelProvider(this).get(MatchViewModel.class);
         matchViewModel.getMatch(getIntent().getIntExtra("matchNumber", 0))
-                .observe(this, match -> {
-                    if (match == null) {
+                .observe(this, m -> {
+                    if (m == null) {
                         finish();
-                        System.out.println(":(");
                         return;
                     }
-                    this.match = match;
-
-                    setupGridButtons();
-                    setupNavigationButtons();
+                    this.match = m;
+                    if (match.getPosition().charAt(0) == 'R') {
+                        setContentView(R.layout.activity_teleop_red);
+                    } else {
+                        setContentView(R.layout.activity_teleop_blue);
+                    }
+                    createGrid();
+                    loadShotData(match.getShotCoordinates());
+                    setupButtons();
                 });
-
-        ImageButton yesSWM = findViewById(R.id.yesSWM);
-        ImageButton noSWM = findViewById(R.id.noSWM);
-
-        yesSWM.setOnClickListener(v -> {
-            match.setShotWhileMoving(true);
-            yesSWM.setImageAlpha(255);
-            noSWM.setImageAlpha(130);;
-        });
-
-        noSWM.setOnClickListener(v -> {
-            match.setShotWhileMoving(false);
-            yesSWM.setImageAlpha(130);
-            noSWM.setImageAlpha(255);;
-        });
     }
 
-    private void setupGridButtons() {
-        Button[][] gridButtons = new Button[8][8];
+    private void createGrid() {
+        GridLayout grid = findViewById(R.id.shotGrid);
+        grid.removeAllViews(); // safety
 
-        for (int row = 0; row < 8; row++) {
-            for (int col = 0; col < 8; col++) {
-                // Buttons must be named button_0_0, button_0_1, ..., button_7_7 in XML
-                int resID = getResources().getIdentifier(
-                        "grid_" + row + "_" + col, "id", getPackageName());
-                gridButtons[row][col] = findViewById(resID);
+        for (int r = 0; r < 8; r++) {
+            for (int c = 0; c < 8; c++) {
 
-                int finalRow = row;
-                int finalCol = col;
+                View cell = new View(this);
 
-                gridButtons[row][col].setOnClickListener(v -> {
-                    // Toggle shot: 0 = no shot, 1 = shot
-                    shotGrid[finalRow][finalCol] = shotGrid[finalRow][finalCol] == 0 ? 1 : 0;
-                    gridButtons[finalRow][finalCol].setAlpha(shotGrid[finalRow][finalCol] == 1 ? 0.4f : 0.0f);
+                GridLayout.LayoutParams params = new GridLayout.LayoutParams();
+                params.width = 0;
+                params.height = 0;
+                params.rowSpec = GridLayout.spec(r, 1f);
+                params.columnSpec = GridLayout.spec(c, 1f);
+                cell.setLayoutParams(params);
+
+                cell.setBackgroundColor(Color.TRANSPARENT);
+
+                int finalR = r;
+                int finalC = c;
+
+                cell.setOnClickListener(v -> {
+                    shotGrid[finalR][finalC] =
+                            shotGrid[finalR][finalC] == 0 ? 1 : 0;
+
+                    if (shotGrid[finalR][finalC] == 1) {
+                        v.setBackgroundColor(Color.argb(128, 255, 152, 0));
+                    } else {
+                        v.setBackgroundColor(Color.TRANSPARENT);
+                    }
                 });
+
+                grid.addView(cell);
             }
         }
     }
 
-
-    private void setupNavigationButtons() {
+    private void setupButtons() {
         Button backToAuto = findViewById(R.id.to_auto);
         Button toEndgame = findViewById(R.id.to_endgame);
 
@@ -106,6 +103,21 @@ public class Teleop extends AppCompatActivity {
             startActivity(i);
             finish();
         });
+
+        ImageButton yesSWM = findViewById(R.id.yesSWM);
+        ImageButton noSWM = findViewById(R.id.noSWM);
+
+        yesSWM.setOnClickListener(v -> {
+            match.setShotWhileMoving(true);
+            yesSWM.setImageAlpha(255);
+            noSWM.setImageAlpha(130);;
+        });
+
+        noSWM.setOnClickListener(v -> {
+            match.setShotWhileMoving(false);
+            yesSWM.setImageAlpha(130);
+            noSWM.setImageAlpha(255);;
+        });
     }
 
     // Convert 2D grid into a string to save in database
@@ -119,6 +131,30 @@ public class Teleop extends AppCompatActivity {
             }
         }
         return sb.toString();
+    }
+    private void loadShotData(String data) {
+        if (data == null || data.isEmpty()) return;
+        String[] shots = data.split(";");
+        for (String shot : shots) {
+            String[] parts = shot.split(",");
+            if (parts.length == 2) {
+                try {
+                    int row = Integer.parseInt(parts[0]);
+                    int col = Integer.parseInt(parts[1]);
+                    if (row >= 0 && row < 8 && col >= 0 && col < 8) {
+                        shotGrid[row][col] = 1;
+                        // Update the corresponding cell's background
+                        GridLayout grid = findViewById(R.id.shotGrid);
+                        int index = row * 8 + col;
+                        View cell = grid.getChildAt(index);
+                        if (cell != null) {
+                            cell.setBackgroundColor(Color.argb(128, 255, 152, 0));
+                        }
+                    }
+                } catch (NumberFormatException e) {
+                }
+            }
+        }
     }
 
     // Save the shot data to the match object
