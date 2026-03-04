@@ -34,8 +34,8 @@ public class Autonomous extends AppCompatActivity {
                         R.layout.activity_autonomous_blue : R.layout.activity_autonomous_red
         );
 
-        ImageButton toPregame = findViewById(R.id.to_pregame);
-        ImageButton toTeleop = findViewById(R.id.to_teleop);
+        Button toPregame = findViewById(R.id.to_pregame);
+        Button toTeleop = findViewById(R.id.to_teleop);
         ImageButton yesDepot = findViewById(R.id.yes_depot);
         ImageButton noDepot = findViewById(R.id.no_depot);
         ImageButton yesClimb = findViewById(R.id.yes_climb);
@@ -51,55 +51,55 @@ public class Autonomous extends AppCompatActivity {
         // 0 for not pressed, 1 for no depot, 2 for yes depot
         yesDepot.setOnClickListener(v->{
             match.setDepot(2);
-            yesDepot.setAlpha(1);
+            yesDepot.setImageAlpha(1);
             noDepot.setAlpha(0.5f);
         });
         noDepot.setOnClickListener(
                 v->{
                     match.setDepot(1);
-                    noDepot.setAlpha(1);
+                    noDepot.setImageAlpha(1);
                     yesDepot.setAlpha(0.5f);
                 }
         );
         yesClimb.setOnClickListener(
                 v->{
                     match.setClimb(2);
-                    yesClimb.setAlpha(1);
+                    yesClimb.setImageAlpha(1);
                     noClimb.setAlpha(0.5f);
                 }
         );
         noClimb.setOnClickListener(
                 v->{
                     match.setClimb(1);
-                    noClimb.setAlpha(1);
+                    noClimb.setImageAlpha(1);
                     yesClimb.setAlpha(0.5f);
                 }
         );
         yesCollectedFuel.setOnClickListener(
                 v->{
                     match.setCollectedFuel(2);
-                    yesCollectedFuel.setAlpha(1);
+                    yesCollectedFuel.setImageAlpha(1);
                     noCollectedFuel.setAlpha(0.5f);
                 }
         );
         noCollectedFuel.setOnClickListener(
                 v->{
                     match.setCollectedFuel(1);
-                    noCollectedFuel.setAlpha(1);
+                    noCollectedFuel.setImageAlpha(1);
                     yesCollectedFuel.setAlpha(0.5f);
                 }
         );
         yesScored.setOnClickListener(
                 v->{
                     match.setScored(2);
-                    yesScored.setAlpha(1);
+                    yesScored.setImageAlpha(1);
                     noScored.setAlpha(0.5f);
                 }
         );
         noScored.setOnClickListener(
                 v->{
                     match.setScored(1);
-                    noScored.setAlpha(1);
+                    noScored.setImageAlpha(1);
                     yesScored.setAlpha(0.5f);
 
                 }
@@ -107,14 +107,14 @@ public class Autonomous extends AppCompatActivity {
         yesWentToNeutral.setOnClickListener(
                 v->{
                     match.setWentToNeutral(2);
-                    yesWentToNeutral.setAlpha(1);
+                    yesWentToNeutral.setImageAlpha(1);
                     noWentToNeutral.setAlpha(0.5f);
                 }
         );
         noWentToNeutral.setOnClickListener(
                 v->{
                     match.setWentToNeutral(1);
-                    noWentToNeutral.setAlpha(1);
+                    noWentToNeutral.setImageAlpha(1);
                     yesWentToNeutral.setAlpha(0.5f);
                 }
         );
