@@ -51,71 +51,71 @@ public class Autonomous extends AppCompatActivity {
         // 0 for not pressed, 1 for no depot, 2 for yes depot
         yesDepot.setOnClickListener(v->{
             match.setDepot(2);
-            yesDepot.setImageAlpha(1);
-            noDepot.setAlpha(0.5f);
+            yesDepot.setImageAlpha(255);
+            noDepot.setImageAlpha(130);
         });
         noDepot.setOnClickListener(
                 v->{
                     match.setDepot(1);
-                    noDepot.setImageAlpha(1);
-                    yesDepot.setAlpha(0.5f);
+                    noDepot.setImageAlpha(255);
+                    yesDepot.setImageAlpha(130);
                 }
         );
         yesClimb.setOnClickListener(
                 v->{
                     match.setClimb(2);
-                    yesClimb.setImageAlpha(1);
-                    noClimb.setAlpha(0.5f);
+                    yesClimb.setImageAlpha(255);
+                    noClimb.setImageAlpha(130);
                 }
         );
         noClimb.setOnClickListener(
                 v->{
                     match.setClimb(1);
-                    noClimb.setImageAlpha(1);
-                    yesClimb.setAlpha(0.5f);
+                    noClimb.setImageAlpha(255);
+                    yesClimb.setImageAlpha(130);
                 }
         );
         yesCollectedFuel.setOnClickListener(
                 v->{
                     match.setCollectedFuel(2);
-                    yesCollectedFuel.setImageAlpha(1);
-                    noCollectedFuel.setAlpha(0.5f);
+                    yesCollectedFuel.setImageAlpha(255);
+                    noCollectedFuel.setImageAlpha(130);
                 }
         );
         noCollectedFuel.setOnClickListener(
                 v->{
                     match.setCollectedFuel(1);
-                    noCollectedFuel.setImageAlpha(1);
-                    yesCollectedFuel.setAlpha(0.5f);
+                    noCollectedFuel.setImageAlpha(255);
+                    yesCollectedFuel.setImageAlpha(130);
                 }
         );
         yesScored.setOnClickListener(
                 v->{
                     match.setScored(2);
-                    yesScored.setImageAlpha(1);
-                    noScored.setAlpha(0.5f);
+                    yesScored.setImageAlpha(255);
+                    noScored.setImageAlpha(130);
                 }
         );
         noScored.setOnClickListener(
                 v->{
                     match.setScored(1);
-                    noScored.setImageAlpha(1);
-                    yesScored.setAlpha(0.5f);
+                    noScored.setImageAlpha(255);
+                    yesScored.setImageAlpha(130);
 
                 }
         );
         yesWentToNeutral.setOnClickListener(
                 v->{
                     match.setWentToNeutral(2);
-                    yesWentToNeutral.setImageAlpha(1);
-                    noWentToNeutral.setAlpha(0.5f);
+                    yesWentToNeutral.setImageAlpha(255);
+                    noWentToNeutral.setImageAlpha(130);
                 }
         );
         noWentToNeutral.setOnClickListener(
                 v->{
                     match.setWentToNeutral(1);
-                    noWentToNeutral.setImageAlpha(1);
-                    yesWentToNeutral.setAlpha(0.5f);
+                    noWentToNeutral.setImageAlpha(255);
+                    yesWentToNeutral.setImageAlpha(130);
                 }
         );
 
