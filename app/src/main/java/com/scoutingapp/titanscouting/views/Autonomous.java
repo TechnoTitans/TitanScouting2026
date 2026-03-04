@@ -34,8 +34,8 @@ public class Autonomous extends AppCompatActivity {
                         R.layout.activity_autonomous_blue : R.layout.activity_autonomous_red
         );
 
-        ImageButton toPregame = findViewById(R.id.to_pregame);
-        ImageButton toTeleop = findViewById(R.id.to_teleop);
+        Button toPregame = findViewById(R.id.to_pregame);
+        Button toTeleop = findViewById(R.id.to_teleop);
         ImageButton yesDepot = findViewById(R.id.yes_depot);
         ImageButton noDepot = findViewById(R.id.no_depot);
         ImageButton yesClimb = findViewById(R.id.yes_climb);

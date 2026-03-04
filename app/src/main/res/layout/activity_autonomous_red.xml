@@ -9,10 +9,12 @@
 
     <ImageButton
         android:id="@+id/no_scored"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:text="Button"
-        android:visibility="visible"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="fitCenter"
+        android:visibility="invisible"
+        android:src="@drawable/x_button"
+        android:contentDescription="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.59"
@@ -22,10 +24,12 @@
 
     <ImageButton
         android:id="@+id/yes_went_to_neutral"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:text="Button"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="fitCenter"
         android:visibility="invisible"
+        android:src="@drawable/check_button"
+        android:contentDescription="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.739"
@@ -35,10 +39,12 @@
 
     <ImageButton
         android:id="@+id/no_went_to_neutral"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:text="Button"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="fitCenter"
         android:visibility="invisible"
+        android:src="@drawable/x_button"
+        android:contentDescription="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.796"
@@ -48,10 +54,12 @@
 
     <ImageButton
         android:id="@+id/yes_depot"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:text="Button"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="fitCenter"
         android:visibility="invisible"
+        android:src="@drawable/check_button"
+        android:contentDescription="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.348"
@@ -61,10 +69,12 @@
 
     <ImageButton
         android:id="@+id/no_depot"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:text="Button"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="fitCenter"
         android:visibility="invisible"
+        android:src="@drawable/x_button"
+        android:contentDescription="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.405"
@@ -74,10 +84,12 @@
 
     <ImageButton
         android:id="@+id/yes_climb"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:text="Button"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="fitCenter"
         android:visibility="invisible"
+        android:src="@drawable/check_button"
+        android:contentDescription="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.376"
@@ -87,10 +99,12 @@
 
     <ImageButton
         android:id="@+id/no_climb"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:text="Button"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="fitCenter"
         android:visibility="invisible"
+        android:src="@drawable/x_button"
+        android:contentDescription="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.434"
@@ -100,10 +114,12 @@
 
     <ImageButton
         android:id="@+id/yes_scored"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:text="Button"
-        android:visibility="visible"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="fitCenter"
+        android:visibility="invisible"
+        android:src="@drawable/check_button"
+        android:contentDescription="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.533"
@@ -113,10 +129,12 @@
 
     <ImageButton
         android:id="@+id/yes_collected_fuel"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:text="Button"
-        android:visibility="invisible"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="fitCenter"
+        android:visibility="visible"
+        android:src="@drawable/check_button"
+        android:contentDescription="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.309"
@@ -124,32 +142,34 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.97" />
 
-    <ImageButton
+    <Button
         android:id="@+id/to_pregame"
-        android:layout_width="271dp"
-        android:layout_height="91dp"
+        android:layout_width="447dp"
+        android:layout_height="156dp"
+        android:layout_marginStart="1dp"
         android:layout_marginTop="16dp"
-        android:text="Button"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
+    <Button
         android:id="@+id/to_teleop"
-        android:layout_width="271dp"
-        android:layout_height="94dp"
+        android:layout_width="461dp"
+        android:layout_height="160dp"
         android:layout_marginTop="16dp"
-        android:text="Button"
-        android:visibility="visible"
+        android:layout_marginEnd="1dp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/no_collected_fuel"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:text="Button"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="fitCenter"
         android:visibility="invisible"
+        android:src="@drawable/x_button"
+        android:contentDescription="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.368"
