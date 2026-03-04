@@ -1,312 +1,259 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0A0A0A"
-    android:padding="16dp">
+    tools:context=".views.Summary"
+    android:background="#FFFFFF">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
+        android:text="Back"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- HEADER -->
-        <TextView
-            android:id="@+id/summary_match_number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="MATCH #—"
-            android:textColor="#FFFFFF"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:fontFamily="monospace"
-            android:layout_marginBottom="4dp"/>
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="To QR"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/summaryHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="67dp"
+        android:layout_marginTop="28dp"
+        android:text="Summary"
+        android:textColor="@color/black"
+        android:textSize="50sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/informationScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/white"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@+id/summaryHeader"
+        app:layout_constraintBottom_toTopOf="@+id/delete"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="4dp">
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/summary_position"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="—"
-                android:textColor="#AAAAAA"
-                android:textSize="13sp"
-                android:fontFamily="monospace"
-                android:background="#1A1A1A"
-                android:paddingStart="8dp" android:paddingEnd="8dp"
-                android:paddingTop="3dp" android:paddingBottom="3dp"
-                android:layout_marginEnd="10dp"/>
+            <!-- Row: Match Number / Team Number / Position -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="150dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Match #" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/matchNumberSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Team #" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/teamNumberSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Position" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/teamPositionSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/summary_team_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Team: —"
-                android:textColor="#AAAAAA"
-                android:textSize="13sp"
-                android:fontFamily="monospace"
-                android:layout_marginEnd="10dp"
-                android:gravity="center_vertical"/>
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#DDDDDD"/>
 
-            <TextView
-                android:id="@+id/summary_scouter_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Scout: —"
-                android:textColor="#AAAAAA"
-                android:textSize="13sp"
-                android:fontFamily="monospace"
-                android:gravity="center_vertical"/>
-        </LinearLayout>
+            <!-- Row: Scouter Name / No Show -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="150dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Scouter" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/scouterNameSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="No Show" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/noShowSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical"/>
+            </LinearLayout>
 
-        <View
-            android:id="@+id/header_divider"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#444444"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="20dp"/>
+            <View android:layout_width="match_parent" android:layout_height="2dp" android:background="#AAAAAA"/>
+            <!-- AUTONOMOUS HEADER -->
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="— Autonomous —" android:textAlignment="center" android:textColor="@color/black" android:textSize="28sp" android:textStyle="italic" android:paddingTop="8dp" android:paddingBottom="4dp"/>
+            <View android:layout_width="match_parent" android:layout_height="2dp" android:background="#AAAAAA"/>
 
-        <!-- PREGAME -->
-        <TextView style="@style/SectionHeader" android:text="── PREGAME" android:textColor="#888888" android:background="#111111"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:fontFamily="monospace" android:textSize="10sp" android:letterSpacing="0.2"
-            android:paddingStart="12dp" android:paddingTop="7dp" android:paddingBottom="7dp" android:layout_marginBottom="2dp"/>
+            <!-- Row: Depot / Climb / Collected Fuel -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="150dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Depot" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/depotSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Climb" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/climbAutoSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Collected Fuel" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/collectedFuelSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+            </LinearLayout>
 
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:orientation="vertical" android:background="#0F0F0F"
-            android:paddingStart="12dp" android:paddingEnd="12dp" android:paddingBottom="8dp"
-            android:layout_marginBottom="16dp">
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#DDDDDD"/>
 
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingTop="8dp" android:paddingBottom="8dp" android:gravity="center_vertical">
-                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="NO SHOW" android:textColor="#666666" android:textSize="11sp" android:fontFamily="monospace"/>
-                <TextView android:id="@+id/val_no_show" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="—" android:textColor="#AAAAAA" android:textSize="11sp" android:fontFamily="monospace" android:paddingStart="8dp" android:paddingEnd="8dp" android:paddingTop="2dp" android:paddingBottom="2dp"/>
+            <!-- Row: Scored / Went to Neutral -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="150dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Scored" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/scoredSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Went to Neutral" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/wentToNeutralSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical"/>
+            </LinearLayout>
+
+            <View android:layout_width="match_parent" android:layout_height="2dp" android:background="#AAAAAA"/>
+            <!-- TELEOP HEADER -->
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="— Teleop —" android:textAlignment="center" android:textColor="@color/black" android:textSize="28sp" android:textStyle="italic" android:paddingTop="8dp" android:paddingBottom="4dp"/>
+            <View android:layout_width="match_parent" android:layout_height="2dp" android:background="#AAAAAA"/>
+
+            <!-- Row: Shot While Moving -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="150dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Shot While Moving" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/shotWhileMovingSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical"/>
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical"/>
+            </LinearLayout>
+
+            <View android:layout_width="match_parent" android:layout_height="2dp" android:background="#AAAAAA"/>
+            <!-- ENDGAME HEADER -->
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="— Endgame —" android:textAlignment="center" android:textColor="@color/black" android:textSize="28sp" android:textStyle="italic" android:paddingTop="8dp" android:paddingBottom="4dp"/>
+            <View android:layout_width="match_parent" android:layout_height="2dp" android:background="#AAAAAA"/>
+
+            <!-- Row: Penalties / Broke Down / Trench -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="150dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Penalties" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/penaltiesSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Broke Down" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/brokeDownSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Trench" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/trenchSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#DDDDDD"/>
+
+            <!-- Row: Bump / Endgame Climb -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="150dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Bump" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/bumpSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Endgame Climb" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/endgameClimbSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical"/>
+            </LinearLayout>
+
+            <View android:layout_width="match_parent" android:layout_height="2dp" android:background="#AAAAAA"/>
+            <!-- RATINGS HEADER -->
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="— Ratings —" android:textAlignment="center" android:textColor="@color/black" android:textSize="28sp" android:textStyle="italic" android:paddingTop="8dp" android:paddingBottom="4dp"/>
+            <View android:layout_width="match_parent" android:layout_height="2dp" android:background="#AAAAAA"/>
+
+            <!-- Row: Pin / Steal / Block -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="150dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Pinning" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/pinRatingSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Stealing" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/stealRatingSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Blocking" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/blockRatingSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#DDDDDD"/>
+
+            <!-- Row: Ram / Anti-Pin / Anti-Steal -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="150dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Ramming" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/ramRatingSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Anti-Pin" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/antiPinRatingSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Anti-Steal" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/antiStealRatingSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#DDDDDD"/>
+
+            <!-- Row: Anti-Block / Anti-Ram -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="150dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Anti-Block" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/antiBlockRatingSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Anti-Ram" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/antiRamRatingSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical"/>
+            </LinearLayout>
+
+            <View android:layout_width="match_parent" android:layout_height="2dp" android:background="#AAAAAA"/>
+
+            <!-- Notes -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="250dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Notes" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/notesSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="2" android:text="" android:textAlignment="center" android:textColor="@color/black" android:textSize="25sp"/>
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
+    </ScrollView>
 
-        <!-- AUTONOMOUS -->
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="── AUTONOMOUS" android:textColor="#B060FF" android:textSize="10sp"
-            android:fontFamily="monospace" android:letterSpacing="0.2" android:background="#150D1F"
-            android:paddingStart="12dp" android:paddingTop="7dp" android:paddingBottom="7dp" android:layout_marginBottom="2dp"/>
+    <Button
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="Delete"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:orientation="vertical" android:background="#0F0F0F"
-            android:paddingStart="12dp" android:paddingEnd="12dp" android:paddingBottom="8dp"
-            android:layout_marginBottom="16dp">
-
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingTop="8dp" android:paddingBottom="8dp" android:gravity="center_vertical">
-                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="DEPOT" android:textColor="#666666" android:textSize="11sp" android:fontFamily="monospace"/>
-                <TextView android:id="@+id/val_depot" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="—" android:textColor="#AAAAAA" android:textSize="11sp" android:fontFamily="monospace" android:paddingStart="8dp" android:paddingEnd="8dp" android:paddingTop="2dp" android:paddingBottom="2dp"/>
-            </LinearLayout>
-            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#1A1A1A"/>
-
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingTop="8dp" android:paddingBottom="8dp" android:gravity="center_vertical">
-                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="CLIMB" android:textColor="#666666" android:textSize="11sp" android:fontFamily="monospace"/>
-                <TextView android:id="@+id/val_climb_auto" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="—" android:textColor="#AAAAAA" android:textSize="11sp" android:fontFamily="monospace" android:paddingStart="8dp" android:paddingEnd="8dp" android:paddingTop="2dp" android:paddingBottom="2dp"/>
-            </LinearLayout>
-            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#1A1A1A"/>
-
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingTop="8dp" android:paddingBottom="8dp" android:gravity="center_vertical">
-                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="COLLECTED FUEL" android:textColor="#666666" android:textSize="11sp" android:fontFamily="monospace"/>
-                <TextView android:id="@+id/val_collected_fuel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="—" android:textColor="#AAAAAA" android:textSize="11sp" android:fontFamily="monospace" android:paddingStart="8dp" android:paddingEnd="8dp" android:paddingTop="2dp" android:paddingBottom="2dp"/>
-            </LinearLayout>
-            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#1A1A1A"/>
-
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingTop="8dp" android:paddingBottom="8dp" android:gravity="center_vertical">
-                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="SCORED" android:textColor="#666666" android:textSize="11sp" android:fontFamily="monospace"/>
-                <TextView android:id="@+id/val_scored" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="—" android:textColor="#AAAAAA" android:textSize="11sp" android:fontFamily="monospace" android:paddingStart="8dp" android:paddingEnd="8dp" android:paddingTop="2dp" android:paddingBottom="2dp"/>
-            </LinearLayout>
-            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#1A1A1A"/>
-
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingTop="8dp" android:paddingBottom="8dp" android:gravity="center_vertical">
-                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="WENT TO NEUTRAL" android:textColor="#666666" android:textSize="11sp" android:fontFamily="monospace"/>
-                <TextView android:id="@+id/val_went_neutral" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="—" android:textColor="#AAAAAA" android:textSize="11sp" android:fontFamily="monospace" android:paddingStart="8dp" android:paddingEnd="8dp" android:paddingTop="2dp" android:paddingBottom="2dp"/>
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <!-- TELEOP -->
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="── TELEOP" android:textColor="#FF6B00" android:textSize="10sp"
-            android:fontFamily="monospace" android:letterSpacing="0.2" android:background="#1F1200"
-            android:paddingStart="12dp" android:paddingTop="7dp" android:paddingBottom="7dp" android:layout_marginBottom="2dp"/>
-
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:orientation="vertical" android:background="#0F0F0F"
-            android:paddingStart="12dp" android:paddingEnd="12dp" android:paddingBottom="12dp"
-            android:layout_marginBottom="16dp">
-
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingTop="8dp" android:paddingBottom="8dp" android:gravity="center_vertical">
-                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="SHOT WHILE MOVING" android:textColor="#666666" android:textSize="11sp" android:fontFamily="monospace"/>
-                <TextView android:id="@+id/val_shot_while_moving" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="—" android:textColor="#AAAAAA" android:textSize="11sp" android:fontFamily="monospace" android:paddingStart="8dp" android:paddingEnd="8dp" android:paddingTop="2dp" android:paddingBottom="2dp"/>
-            </LinearLayout>
-            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#1A1A1A" android:layout_marginBottom="10dp"/>
-
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="SHOT HEATMAP" android:textColor="#666666" android:textSize="10sp"
-                android:fontFamily="monospace" android:letterSpacing="0.1" android:layout_marginBottom="8dp"/>
-
-            <GridLayout
-                android:id="@+id/shot_grid"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:rowCount="8"
-                android:columnCount="8"
-                android:layout_marginBottom="6dp"/>
-
-            <TextView
-                android:id="@+id/val_shot_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0 shots logged"
-                android:textColor="#555555"
-                android:textSize="11sp"
-                android:fontFamily="monospace"/>
-
-        </LinearLayout>
-
-        <!-- ENDGAME STATUS -->
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="── ENDGAME — STATUS" android:textColor="#00D4AA" android:textSize="10sp"
-            android:fontFamily="monospace" android:letterSpacing="0.2" android:background="#001F1A"
-            android:paddingStart="12dp" android:paddingTop="7dp" android:paddingBottom="7dp" android:layout_marginBottom="2dp"/>
-
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:orientation="vertical" android:background="#0F0F0F"
-            android:paddingStart="12dp" android:paddingEnd="12dp" android:paddingBottom="8dp"
-            android:layout_marginBottom="16dp">
-
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingTop="8dp" android:paddingBottom="8dp" android:gravity="center_vertical">
-                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="PENALTIES" android:textColor="#666666" android:textSize="11sp" android:fontFamily="monospace"/>
-                <TextView android:id="@+id/val_penalties" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="—" android:textColor="#AAAAAA" android:textSize="11sp" android:fontFamily="monospace" android:paddingStart="8dp" android:paddingEnd="8dp" android:paddingTop="2dp" android:paddingBottom="2dp"/>
-            </LinearLayout>
-            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#1A1A1A"/>
-
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingTop="8dp" android:paddingBottom="8dp" android:gravity="center_vertical">
-                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="BROKE DOWN" android:textColor="#666666" android:textSize="11sp" android:fontFamily="monospace"/>
-                <TextView android:id="@+id/val_broke_down" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="—" android:textColor="#AAAAAA" android:textSize="11sp" android:fontFamily="monospace" android:paddingStart="8dp" android:paddingEnd="8dp" android:paddingTop="2dp" android:paddingBottom="2dp"/>
-            </LinearLayout>
-            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#1A1A1A"/>
-
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingTop="8dp" android:paddingBottom="8dp" android:gravity="center_vertical">
-                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="USED TRENCH" android:textColor="#666666" android:textSize="11sp" android:fontFamily="monospace"/>
-                <TextView android:id="@+id/val_trench" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="—" android:textColor="#AAAAAA" android:textSize="11sp" android:fontFamily="monospace" android:paddingStart="8dp" android:paddingEnd="8dp" android:paddingTop="2dp" android:paddingBottom="2dp"/>
-            </LinearLayout>
-            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#1A1A1A"/>
-
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingTop="8dp" android:paddingBottom="8dp" android:gravity="center_vertical">
-                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="USED BUMP" android:textColor="#666666" android:textSize="11sp" android:fontFamily="monospace"/>
-                <TextView android:id="@+id/val_bump" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="—" android:textColor="#AAAAAA" android:textSize="11sp" android:fontFamily="monospace" android:paddingStart="8dp" android:paddingEnd="8dp" android:paddingTop="2dp" android:paddingBottom="2dp"/>
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <!-- ENDGAME RATINGS -->
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="── ENDGAME — RATINGS" android:textColor="#FFD700" android:textSize="10sp"
-            android:fontFamily="monospace" android:letterSpacing="0.2" android:background="#1F1A00"
-            android:paddingStart="12dp" android:paddingTop="7dp" android:paddingBottom="7dp" android:layout_marginBottom="2dp"/>
-
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:orientation="vertical" android:background="#0F0F0F"
-            android:paddingStart="12dp" android:paddingEnd="12dp" android:paddingBottom="8dp"
-            android:layout_marginBottom="16dp">
-
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingTop="8dp" android:paddingBottom="8dp" android:gravity="center_vertical">
-                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="CLIMB" android:textColor="#666666" android:textSize="11sp" android:fontFamily="monospace"/>
-                <TextView android:id="@+id/val_climb_end" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="○○○○○  0/5" android:textColor="#555555" android:textSize="12sp" android:fontFamily="monospace"/>
-            </LinearLayout>
-            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#1A1A1A"/>
-
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingTop="8dp" android:paddingBottom="8dp" android:gravity="center_vertical">
-                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="PINNING" android:textColor="#666666" android:textSize="11sp" android:fontFamily="monospace"/>
-                <TextView android:id="@+id/val_pinning" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="○○○○○  0/5" android:textColor="#555555" android:textSize="12sp" android:fontFamily="monospace"/>
-            </LinearLayout>
-            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#1A1A1A"/>
-
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingTop="8dp" android:paddingBottom="8dp" android:gravity="center_vertical">
-                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="STEALING" android:textColor="#666666" android:textSize="11sp" android:fontFamily="monospace"/>
-                <TextView android:id="@+id/val_stealing" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="○○○○○  0/5" android:textColor="#555555" android:textSize="12sp" android:fontFamily="monospace"/>
-            </LinearLayout>
-            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#1A1A1A"/>
-
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingTop="8dp" android:paddingBottom="8dp" android:gravity="center_vertical">
-                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="BLOCKING" android:textColor="#666666" android:textSize="11sp" android:fontFamily="monospace"/>
-                <TextView android:id="@+id/val_blocking" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="○○○○○  0/5" android:textColor="#555555" android:textSize="12sp" android:fontFamily="monospace"/>
-            </LinearLayout>
-            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#1A1A1A"/>
-
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingTop="8dp" android:paddingBottom="8dp" android:gravity="center_vertical">
-                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="RAMMING" android:textColor="#666666" android:textSize="11sp" android:fontFamily="monospace"/>
-                <TextView android:id="@+id/val_ramming" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="○○○○○  0/5" android:textColor="#555555" android:textSize="12sp" android:fontFamily="monospace"/>
-            </LinearLayout>
-            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#1A1A1A"/>
-
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingTop="8dp" android:paddingBottom="8dp" android:gravity="center_vertical">
-                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="ANTI-PINNING" android:textColor="#666666" android:textSize="11sp" android:fontFamily="monospace"/>
-                <TextView android:id="@+id/val_anti_pin" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="○○○○○  0/5" android:textColor="#555555" android:textSize="12sp" android:fontFamily="monospace"/>
-            </LinearLayout>
-            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#1A1A1A"/>
-
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingTop="8dp" android:paddingBottom="8dp" android:gravity="center_vertical">
-                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="ANTI-STEALING" android:textColor="#666666" android:textSize="11sp" android:fontFamily="monospace"/>
-                <TextView android:id="@+id/val_anti_steal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="○○○○○  0/5" android:textColor="#555555" android:textSize="12sp" android:fontFamily="monospace"/>
-            </LinearLayout>
-            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#1A1A1A"/>
-
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingTop="8dp" android:paddingBottom="8dp" android:gravity="center_vertical">
-                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="ANTI-BLOCKING" android:textColor="#666666" android:textSize="11sp" android:fontFamily="monospace"/>
-                <TextView android:id="@+id/val_anti_block" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="○○○○○  0/5" android:textColor="#555555" android:textSize="12sp" android:fontFamily="monospace"/>
-            </LinearLayout>
-            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#1A1A1A"/>
-
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingTop="8dp" android:paddingBottom="8dp" android:gravity="center_vertical">
-                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="ANTI-RAMMING" android:textColor="#666666" android:textSize="11sp" android:fontFamily="monospace"/>
-                <TextView android:id="@+id/val_anti_ram" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="○○○○○  0/5" android:textColor="#555555" android:textSize="12sp" android:fontFamily="monospace"/>
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <!-- NOTES -->
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="── SCOUT NOTES" android:textColor="#AAAAAA" android:textSize="10sp"
-            android:fontFamily="monospace" android:letterSpacing="0.2" android:background="#111111"
-            android:paddingStart="12dp" android:paddingTop="7dp" android:paddingBottom="7dp" android:layout_marginBottom="2dp"/>
-
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:orientation="vertical" android:background="#0F0F0F"
-            android:padding="12dp" android:layout_marginBottom="24dp">
-
-            <TextView
-                android:id="@+id/val_notes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="—"
-                android:textColor="#BBBBBB"
-                android:textSize="12sp"
-                android:fontFamily="monospace"
-                android:lineSpacingMultiplier="1.6"/>
-
-        </LinearLayout>
-
-        <!-- BACK BUTTON -->
-        <Button
-            android:id="@+id/summary_back_button"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:text="← BACK TO PREGAME"
-            android:textColor="#FFFFFF"
-            android:textSize="12sp"
-            android:fontFamily="monospace"
-            android:letterSpacing="0.1"
-            android:backgroundTint="#1A1A1A"
-            android:layout_marginBottom="32dp"/>
-
-    </LinearLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
