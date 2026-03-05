@@ -18,6 +18,8 @@ import com.scoutingapp.titanscouting.R;
 import com.scoutingapp.titanscouting.database.Match;
 import com.scoutingapp.titanscouting.database.MatchViewModel;
 import android.widget.ImageButton;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import java.util.Objects;
 
@@ -25,6 +27,9 @@ public class Autonomous extends AppCompatActivity {
 
     Match match;
     MatchViewModel matchViewModel;
+
+    private ArrayList<String> pathSteps = new ArrayList<>();
+    private TextView pathListText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,18 +52,25 @@ public class Autonomous extends AppCompatActivity {
         ImageButton yesWentToNeutral = findViewById(R.id.yes_went_to_neutral);
         ImageButton noWentToNeutral = findViewById(R.id.no_went_to_neutral);
 
+        pathListText = findViewById(R.id.path_list_text);
+        refreshPathDisplay();
+
 
         // 0 for not pressed, 1 for no depot, 2 for yes depot
         yesDepot.setOnClickListener(v->{
             match.setDepot(2);
             yesDepot.setImageAlpha(255);
             noDepot.setImageAlpha(130);
+
+            addPathStep("Depot");
         });
         noDepot.setOnClickListener(
                 v->{
                     match.setDepot(1);
                     noDepot.setImageAlpha(255);
                     yesDepot.setImageAlpha(130);
+
+                    removeLastPathStep("Depot");
                 }
         );
         yesClimb.setOnClickListener(
@@ -66,6 +78,7 @@ public class Autonomous extends AppCompatActivity {
                     match.setClimb(2);
                     yesClimb.setImageAlpha(255);
                     noClimb.setImageAlpha(130);
+                    addPathStep("Climb");
                 }
         );
         noClimb.setOnClickListener(
@@ -73,6 +86,7 @@ public class Autonomous extends AppCompatActivity {
                     match.setClimb(1);
                     noClimb.setImageAlpha(255);
                     yesClimb.setImageAlpha(130);
+                    removeLastPathStep("Climb");
                 }
         );
         yesCollectedFuel.setOnClickListener(
@@ -80,6 +94,7 @@ public class Autonomous extends AppCompatActivity {
                     match.setCollectedFuel(2);
                     yesCollectedFuel.setImageAlpha(255);
                     noCollectedFuel.setImageAlpha(130);
+                    addPathStep("Collected fuel");
                 }
         );
         noCollectedFuel.setOnClickListener(
@@ -87,6 +102,7 @@ public class Autonomous extends AppCompatActivity {
                     match.setCollectedFuel(1);
                     noCollectedFuel.setImageAlpha(255);
                     yesCollectedFuel.setImageAlpha(130);
+                    removeLastPathStep("Collected fuel");
                 }
         );
         yesScored.setOnClickListener(
@@ -94,6 +110,7 @@ public class Autonomous extends AppCompatActivity {
                     match.setScored(2);
                     yesScored.setImageAlpha(255);
                     noScored.setImageAlpha(130);
+                    addPathStep("Scored");
                 }
         );
         noScored.setOnClickListener(
@@ -101,6 +118,7 @@ public class Autonomous extends AppCompatActivity {
                     match.setScored(1);
                     noScored.setImageAlpha(255);
                     yesScored.setImageAlpha(130);
+                    removeLastPathStep("Scored");
 
                 }
         );
@@ -109,6 +127,7 @@ public class Autonomous extends AppCompatActivity {
                     match.setWentToNeutral(2);
                     yesWentToNeutral.setImageAlpha(255);
                     noWentToNeutral.setImageAlpha(130);
+                    addPathStep("Went to neutral");
                 }
         );
         noWentToNeutral.setOnClickListener(
@@ -116,6 +135,7 @@ public class Autonomous extends AppCompatActivity {
                     match.setWentToNeutral(1);
                     noWentToNeutral.setImageAlpha(255);
                     yesWentToNeutral.setImageAlpha(130);
+                    removeLastPathStep("Went to neutral");
                 }
         );
 
@@ -148,5 +168,36 @@ public class Autonomous extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
+    }
+
+    private void addPathStep(String step) {
+        pathSteps.add(step);
+        refreshPathDisplay();
+    }
+
+    private void removeLastPathStep(String step) {
+        for (int i = pathSteps.size() - 1; i >= 0; i--) {
+            if (pathSteps.get(i).equals(step)) {
+                pathSteps.remove(i);
+                break;
+            }
+        }
+        refreshPathDisplay();
+    }
+
+    private void refreshPathDisplay() {
+        if (pathListText == null) return;
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("Path:\n");
+
+        for (int i = 0; i < pathSteps.size(); i++) {
+            sb.append(i + 1)
+                    .append(". ")
+                    .append(pathSteps.get(i))
+                    .append("\n");
+        }
+
+        pathListText.setText(sb.toString());
     }
 }
