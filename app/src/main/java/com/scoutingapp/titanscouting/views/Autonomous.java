@@ -150,7 +150,10 @@ public class Autonomous extends AppCompatActivity {
                 return;
             }
             this.match = match;
+            loadPathFromCode(match.getAutoPath());
         });
+
+//
 
         toPregame.setOnClickListener(v -> {
                 matchViewModel.addMatchInformation(match);
@@ -172,6 +175,7 @@ public class Autonomous extends AppCompatActivity {
 
     private void addPathStep(String step) {
         pathSteps.add(step);
+        savePathCodeToMatch();
         refreshPathDisplay();
     }
 
@@ -182,6 +186,7 @@ public class Autonomous extends AppCompatActivity {
                 break;
             }
         }
+        savePathCodeToMatch();
         refreshPathDisplay();
     }
 
@@ -199,5 +204,56 @@ public class Autonomous extends AppCompatActivity {
         }
 
         pathListText.setText(sb.toString());
+    }
+
+    private String buildAutonPathCode() {
+        StringBuilder sb = new StringBuilder();
+
+        for (String step : pathSteps) {
+            if ("Depot".equals(step)) {
+                sb.append("D");
+            } else if ("Climb".equals(step)) {
+                sb.append("C");
+            } else if ("Collected fuel".equals(step)) {
+                sb.append("F");
+            } else if ("Scored".equals(step)) {
+                sb.append("S");
+            } else if ("Went to neutral".equals(step)) {
+                sb.append("N");
+            }
+        }
+        return sb.toString();
+    }
+
+    private void loadPathFromCode(String code) {
+        pathSteps.clear();
+
+        if (code == null || code.isEmpty()) {
+            refreshPathDisplay();
+            return;
+        }
+
+        for (int i = 0; i < code.length(); i++) {
+            char c = code.charAt(i);
+
+            if (c == 'D') {
+                pathSteps.add("Depot");
+            } else if (c == 'C') {
+                pathSteps.add("Climb");
+            }else if (c == 'F') {
+                pathSteps.add("Collected fuel");
+            }else if (c == 'S') {
+                pathSteps.add("Scored");
+            }else if (c == 'N') {
+                pathSteps.add("Went to neutral");
+            }
+        }
+
+        refreshPathDisplay();
+    }
+
+    private void savePathCodeToMatch() {
+        if (match == null) return;
+        match.setAutoPath(buildAutonPathCode());
     }
 }
