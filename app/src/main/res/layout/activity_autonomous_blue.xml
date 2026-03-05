@@ -9,8 +9,8 @@
 
     <ImageButton
         android:id="@+id/yes_scored"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:contentDescription="@null"
         android:scaleType="fitCenter"
         android:src="@drawable/check_button"
@@ -25,8 +25,8 @@
 
     <ImageButton
         android:id="@+id/yes_went_to_neutral"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:scaleType="fitCenter"
         android:visibility="visible"
         android:src="@drawable/check_button"
@@ -41,8 +41,8 @@
 
     <ImageButton
         android:id="@+id/no_scored"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:scaleType="fitCenter"
         android:visibility="visible"
         android:src="@drawable/x_button"
@@ -57,8 +57,8 @@
 
     <ImageButton
         android:id="@+id/no_climb"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:scaleType="fitCenter"
         android:visibility="visible"
         android:src="@drawable/x_button"
@@ -73,8 +73,8 @@
 
     <ImageButton
         android:id="@+id/yes_climb"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:scaleType="fitCenter"
         android:visibility="visible"
         android:src="@drawable/check_button"
@@ -89,8 +89,8 @@
 
     <ImageButton
         android:id="@+id/no_depot"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:scaleType="fitCenter"
         android:visibility="visible"
         android:src="@drawable/x_button"
@@ -105,8 +105,8 @@
 
     <ImageButton
         android:id="@+id/yes_depot"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:scaleType="fitCenter"
         android:visibility="visible"
         android:src="@drawable/check_button"
@@ -121,8 +121,8 @@
 
     <ImageButton
         android:id="@+id/no_collected_fuel"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:scaleType="fitCenter"
         android:visibility="visible"
         android:src="@drawable/x_button"
@@ -137,8 +137,8 @@
 
     <ImageButton
         android:id="@+id/yes_collected_fuel"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:scaleType="fitCenter"
         android:visibility="visible"
         android:src="@drawable/check_button"
@@ -153,8 +153,8 @@
 
     <Button
         android:id="@+id/to_teleop"
-        android:layout_width="463dp"
-        android:layout_height="136dp"
+        android:layout_width="290dp"
+        android:layout_height="102dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="1dp"
         android:alpha="0"
@@ -164,8 +164,8 @@
 
     <Button
         android:id="@+id/to_pregame"
-        android:layout_width="448dp"
-        android:layout_height="126dp"
+        android:layout_width="284dp"
+        android:layout_height="99dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="28dp"
         android:alpha="0"
@@ -175,8 +175,8 @@
 
     <ImageButton
         android:id="@+id/no_went_to_neutral"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:scaleType="fitCenter"
         android:visibility="visible"
         android:src="@drawable/x_button"
