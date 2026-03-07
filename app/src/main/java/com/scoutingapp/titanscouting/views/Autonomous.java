@@ -63,13 +63,13 @@ public class Autonomous extends AppCompatActivity {
                     yesDepot.setAlpha(0.5f);
                 }
         );
-        yesClimb.setOnClickListener(
-                v->{
-                    match.setClimb(2);
-                    yesClimb.setAlpha(1);
-                    noClimb.setAlpha(0.5f);
-                }
-        );
+        yesClimb.setOnClickListener(v -> {
+            match.setClimb(2);
+            yesClimb.setAlpha(1);
+            noClimb.setAlpha(0.5f);
+
+            showClimbPopup();
+        });
         noClimb.setOnClickListener(
                 v->{
                     match.setClimb(1);
@@ -223,6 +223,38 @@ public class Autonomous extends AppCompatActivity {
                 finish();
             });
         });
+    }
+
+    private void showClimbPopup() {
+        String[] options = {"Left", "Center", "Right"};
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Select Climb Location");
+
+        builder.setItems(options, (dialog, which) -> {
+            String climbLetter = "";
+
+            if (which == 0) {
+                climbLetter = "L";
+            } else if (which == 1) {
+                climbLetter = "C";
+            } else if (which == 2) {
+                climbLetter = "R";
+            }
+
+            if (match != null) {
+                String currentPath = match.getAutoPath();
+                if (currentPath == null) {
+                    currentPath = "";
+                }
+                String newPath = currentPath + climbLetter;
+                match.setAutoPath(newPath);
+            }
+        });
+
+        builder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
+
+        builder.show();
     }
 
     private void safeAppendToAutoPath(String addition, EditText autoText) {
