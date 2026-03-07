@@ -43,6 +43,16 @@ public class QRScreen extends AppCompatActivity {
                     match.getMatchNum(),
                     match.getPosition(),
                     match.getScouterName()));
+            String endgameClimb = "";
+            if(match.getEndgameClimbSide() == 0) {
+                endgameClimb = "L";
+            }
+            else if(match.getEndgameClimbSide() == 1) {
+                endgameClimb = "M";
+            }
+            else if(match.getEndgameClimbSide() == 2) {
+                endgameClimb = "R";
+            }
             qrString = String.join("\n",
                     "GACMP\n",
                     String.valueOf(match.getTeamNumber()),
@@ -64,7 +74,7 @@ public class QRScreen extends AppCompatActivity {
                     String.valueOf(match.getAntiStealRating()),
                     String.valueOf(match.getAntiBlockRating()),
                     String.valueOf(match.getAntiRamRating()),
-                    String.valueOf(match.getEndgameClimb()),
+                    (match.getEndgameClimb() + endgameClimb),
                     String.valueOf(match.getTrench()),
                     String.valueOf(match.getBump()),
                     String.valueOf(match.getPenalties()),

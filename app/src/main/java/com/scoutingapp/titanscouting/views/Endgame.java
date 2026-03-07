@@ -71,6 +71,7 @@ public class Endgame extends AppCompatActivity {
             setupRatingBar(R.id.antiBlocking, match.getAntiBlockRating(), match::setAntiBlockRating);
             setupRatingBar(R.id.antiRamming, match.getAntiRamRating(), match::setAntiRamRating);
             setupRatingBar(R.id.climb, match.getEndgameClimb(), match::setEndgameClimb);
+            setupRatingBar(R.id.climbLocation, match.getEndgameClimbSide(), match::setEndgameClimbSide);
 
             e.setText(match.getNotes());
             ((EditText) (findViewById(R.id.comments))).addTextChangedListener(new TextWatcher() {
@@ -97,7 +98,7 @@ public class Endgame extends AppCompatActivity {
             finish();
         });
         nextButton.setOnClickListener(v -> {
-            Intent i = new Intent(Endgame.this, QRScreen.class);
+            Intent i = new Intent(Endgame.this, Summary.class);
             i.putExtra("matchNumber", match.getMatchNum());
             matchViewModel.addMatchInformation(match);
             startActivity(i);

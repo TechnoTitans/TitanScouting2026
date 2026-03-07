@@ -53,6 +53,8 @@ public class Match {
     private int antiRamRating;
     @ColumnInfo(name = "endgameClimb", defaultValue = "0")
     private int endgameClimb;
+    @ColumnInfo(name = "endgameClimbSide", defaultValue = "")
+    private int endgameClimbSide;
     @ColumnInfo(name = "notes", defaultValue = "0")
     private String notes;
     @ColumnInfo(name = "trench", defaultValue = "false")
@@ -172,6 +174,12 @@ public class Match {
     }
     public int getEndgameClimb() {
         return endgameClimb;
+    }
+    public void setEndgameClimbSide(int endgameClimbSide) {
+        this.endgameClimbSide = endgameClimbSide;
+    }
+    public int getEndgameClimbSide() {
+        return endgameClimbSide;
     }
     public String getNotes() {
         return notes;

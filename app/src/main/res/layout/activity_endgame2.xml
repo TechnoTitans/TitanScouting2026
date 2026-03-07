@@ -9,8 +9,8 @@
 
     <CheckBox
         android:id="@+id/penalties"
-        android:layout_width="123dp"
-        android:layout_height="46dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -54,64 +54,99 @@
         android:id="@+id/pinning"
         android:layout_width="138dp"
         android:layout_height="19dp"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="149dp" />
+        app:layout_constraintLeft_toLeftOf="@id/back_to_teleop"
+        app:layout_constraintRight_toLeftOf="@id/to_summary"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintTop_toTopOf="@id/brokeDown"
+        app:layout_constraintBottom_toBottomOf="@id/brokeDown"
+        app:layout_constraintVertical_bias="0.65"/>
 
     <RatingBar
         android:id="@+id/stealing"
         android:layout_width="136dp"
         android:layout_height="18dp"
-        tools:layout_editor_absoluteX="165dp"
-        tools:layout_editor_absoluteY="179dp" />
+        app:layout_constraintLeft_toLeftOf="@id/pinning"
+        app:layout_constraintRight_toRightOf="@id/pinning"
+        app:layout_constraintTop_toTopOf="@id/brokeDown"
+        app:layout_constraintBottom_toBottomOf="@id/trench"
+        app:layout_constraintVertical_bias="0.56"/>
 
     <RatingBar
         android:id="@+id/blocking"
         android:layout_width="138dp"
         android:layout_height="14dp"
-        tools:layout_editor_absoluteX="162dp"
-        tools:layout_editor_absoluteY="212dp" />
+        app:layout_constraintLeft_toLeftOf="@id/pinning"
+        app:layout_constraintRight_toRightOf="@id/stealing"
+        app:layout_constraintTop_toTopOf="@id/trench"
+        app:layout_constraintBottom_toBottomOf="@id/trench"
+        app:layout_constraintVertical_bias="0.8"/>
 
     <RatingBar
         android:id="@+id/ramming"
         android:layout_width="135dp"
         android:layout_height="16dp"
-        tools:layout_editor_absoluteX="162dp"
-        tools:layout_editor_absoluteY="243dp" />
+        app:layout_constraintLeft_toLeftOf="@id/pinning"
+        app:layout_constraintRight_toRightOf="@id/pinning"
+        app:layout_constraintTop_toBottomOf="@id/trench"
+        app:layout_constraintBottom_toBottomOf="@id/bump"
+        app:layout_constraintVertical_bias="0.2"/>
 
     <RatingBar
         android:id="@+id/antiPinning"
         android:layout_width="135dp"
         android:layout_height="16dp"
-        tools:layout_editor_absoluteX="551dp"
-        tools:layout_editor_absoluteY="149dp" />
+        app:layout_constraintRight_toRightOf="@id/to_summary"
+        app:layout_constraintLeft_toLeftOf="@id/to_summary"
+        app:layout_constraintHorizontal_bias="0.475"
+        app:layout_constraintTop_toTopOf="@id/pinning"
+        app:layout_constraintBottom_toBottomOf="@id/pinning" />
 
     <RatingBar
         android:id="@+id/antiStealing"
         android:layout_width="135dp"
         android:layout_height="16dp"
-        tools:layout_editor_absoluteX="551dp"
-        tools:layout_editor_absoluteY="181dp" />
+        app:layout_constraintLeft_toLeftOf="@id/antiPinning"
+        app:layout_constraintRight_toRightOf="@id/antiPinning"
+        app:layout_constraintTop_toTopOf="@id/stealing"
+        app:layout_constraintBottom_toBottomOf="@id/stealing" />
 
     <RatingBar
         android:id="@+id/antiRamming"
         android:layout_width="135dp"
         android:layout_height="16dp"
-        tools:layout_editor_absoluteX="551dp"
-        tools:layout_editor_absoluteY="243dp" />
+        app:layout_constraintLeft_toLeftOf="@id/antiPinning"
+        app:layout_constraintRight_toRightOf="@id/antiPinning"
+        app:layout_constraintTop_toTopOf="@id/ramming"
+        app:layout_constraintBottom_toBottomOf="@id/ramming" />
 
     <RatingBar
         android:id="@+id/antiBlocking"
         android:layout_width="135dp"
         android:layout_height="16dp"
-        tools:layout_editor_absoluteX="551dp"
-        tools:layout_editor_absoluteY="210dp" />
+        app:layout_constraintLeft_toLeftOf="@id/antiPinning"
+        app:layout_constraintRight_toRightOf="@id/antiPinning"
+        app:layout_constraintTop_toTopOf="@id/blocking"
+        app:layout_constraintBottom_toBottomOf="@id/blocking" />
 
     <RatingBar
         android:id="@+id/climb"
         android:layout_width="134dp"
         android:layout_height="17dp"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="305dp" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="@id/pinning"
+        app:layout_constraintTop_toTopOf="@id/ramming"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.36"/>
+
+    <RatingBar
+        android:id="@+id/climbLocation"
+        android:layout_width="134dp"
+        android:layout_height="17dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="@id/pinning"
+        app:layout_constraintTop_toBottomOf="@id/climb"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.44"/>
 
     <EditText
         android:id="@+id/comments"
