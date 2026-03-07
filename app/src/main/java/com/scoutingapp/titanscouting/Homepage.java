@@ -34,9 +34,15 @@ public class Homepage extends AppCompatActivity {
         // buttonNext swaps layout to schedule.xml (just shows screenshot)
         buttonNext.setOnClickListener(v -> {
             setContentView(R.layout.schedule);
+
+            // back button inside schedule.xml
+            Button backButton = findViewById(R.id.backButton);
+            backButton.setOnClickListener(view -> {
+                // Return to the main layout
+                recreate();
+            });
         });
     }
 
-    // Optional: back button in schedule.xml to return to main layout
 
 }
