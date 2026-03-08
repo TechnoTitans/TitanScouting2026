@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/teleop_blue"
+    tools:context=".views.Teleop"
+
+    >
+
+    <!-- ===== GRID POSITION GUIDELINES ===== -->
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gridLeft"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.535"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gridTop"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.22"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"/>
+
+
+
+    <!-- ===== TOP NAV BUTTONS ===== -->
+
+    <Button
+        android:id="@+id/to_auto"
+        android:layout_width="280dp"
+        android:layout_height="110dp"
+        app:cornerRadius="0dp"
+        android:backgroundTint="#00000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/to_endgame"
+        android:layout_width="280dp"
+        android:layout_height="110dp"
+        app:cornerRadius="0dp"
+        android:backgroundTint="#00000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/to_auto"/>
+
+    <!-- ===== 8x8 SHOT GRID ===== -->
+
+    <GridLayout
+        android:id="@+id/shotGrid"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alignmentMode="alignBounds"
+        android:background="@android:color/transparent"
+        android:columnCount="8"
+        android:rowCount="8"
+        android:useDefaultMargins="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/gridLeft"
+        app:layout_constraintTop_toTopOf="@+id/gridTop"
+        app:layout_constraintVertical_bias="0.0">
+    </GridLayout>
+
+    <ImageButton
+        android:id="@+id/noSWM"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/x_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintVertical_bias="0.78"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <ImageButton
+        android:id="@+id/yesSWM"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/check_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.30"
+        app:layout_constraintTop_toTopOf="@id/noSWM"
+        app:layout_constraintBottom_toBottomOf="@id/noSWM" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

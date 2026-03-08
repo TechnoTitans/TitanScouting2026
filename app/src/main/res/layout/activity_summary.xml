@@ -30,7 +30,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <TextView
         android:id="@+id/summaryHeader"
         android:layout_width="wrap_content"
@@ -46,512 +45,202 @@
     <ScrollView
         android:id="@+id/informationScrollView"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_marginTop="60dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="8dp"
         android:background="@color/white"
         android:fillViewport="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/summaryHeader">
+        app:layout_constraintTop_toBottomOf="@+id/summaryHeader"
+        app:layout_constraintBottom_toTopOf="@+id/delete"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_weight="1">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/matchNum"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Match Number"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="35sp"
-                        tools:ignore="NestedWeights" />
-
-                    <TextView
-                        android:id="@+id/matchNumberSummary"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="0"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="35sp"
-                        tools:ignore="NestedWeights" />
+            <!-- Row: Match Number / Team Number / Position -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="150dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Match #" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/matchNumberSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
                 </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/teamNumber"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Team Number"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="35sp"
-                        tools:ignore="NestedWeights" />
-
-                    <TextView
-                        android:id="@id/teamNumberSummary"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="0"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="35sp"
-                        tools:ignore="NestedWeights" />
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Team #" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/teamNumberSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
                 </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/position"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Position"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="35sp"
-                        tools:ignore="NestedWeights" />
-
-                    <TextView
-                        android:id="@+id/teamPositionSummary"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="R1"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="35sp"
-                        tools:ignore="NestedWeights" />
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Position" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/teamPositionSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
                 </LinearLayout>
-
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_weight="1">
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#DDDDDD"/>
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/scouterName"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Scouter Name"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="35sp"
-                        tools:ignore="NestedWeights" />
-
-                    <TextView
-                        android:id="@+id/scouterNameSummary"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Max"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="35sp"
-                        tools:ignore="NestedWeights" />
+            <!-- Row: Scouter Name / No Show -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="150dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Scouter" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/scouterNameSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
                 </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/noShow"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="noShow"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="35sp"
-                        tools:ignore="NestedWeights" />
-
-                    <TextView
-                        android:id="@+id/noShowSummary"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="False"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="35sp"
-                        tools:ignore="NestedWeights" />
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="No Show" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/noShowSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
                 </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="L1 Count"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="35sp"
-                        tools:ignore="NestedWeights" />
-
-                    <TextView
-                        android:id="@+id/l1Summary"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="False"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="35sp"
-                        tools:ignore="NestedWeights" />
-                </LinearLayout>
-
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_weight="1">
+            <View android:layout_width="match_parent" android:layout_height="2dp" android:background="#AAAAAA"/>
+            <!-- AUTONOMOUS HEADER -->
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="— Autonomous —" android:textAlignment="center" android:textColor="@color/black" android:textSize="28sp" android:textStyle="italic" android:paddingTop="8dp" android:paddingBottom="4dp"/>
+            <View android:layout_width="match_parent" android:layout_height="2dp" android:background="#AAAAAA"/>
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="L2 Count"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="35sp"
-                        tools:ignore="NestedWeights" />
-
-                    <TextView
-                        android:id="@+id/l2Summary"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="0"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="35sp"
-                        tools:ignore="NestedWeights" />
+            <!-- Row: Depot / Climb / Collected Fuel -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="150dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Depot" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/depotSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
                 </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="L3 Count"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="35sp"
-                        tools:ignore="NestedWeights" />
-
-                    <TextView
-                        android:id="@+id/l3Summary"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="0"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="35sp"
-                        tools:ignore="NestedWeights" />
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Climb" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/climbAutoSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
                 </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="L4 Count"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="35sp"
-                        tools:ignore="NestedWeights" />
-
-                    <TextView
-                        android:id="@+id/l4Summary"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="0"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="35sp"
-                        tools:ignore="NestedWeights" />
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Collected Fuel" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/collectedFuelSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
                 </LinearLayout>
-
             </LinearLayout>
 
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#DDDDDD"/>
 
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_weight="1">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Processor Count"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="35sp"
-                        tools:ignore="NestedWeights" />
-
-                    <TextView
-                        android:id="@+id/processorCountSummary"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="0"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="35sp"
-                        tools:ignore="NestedWeights" />
+            <!-- Row: Scored / Went to Neutral -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="150dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Scored" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/scoredSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
                 </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Net Count"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="35sp"
-                        tools:ignore="NestedWeights" />
-
-                    <TextView
-                        android:id="@+id/netCountSummary"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="0"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="35sp"
-                        tools:ignore="NestedWeights" />
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Went to Neutral" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/wentToNeutralSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
                 </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Endgame Position"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="35sp"
-                        tools:ignore="NestedWeights" />
-
-                    <TextView
-                        android:id="@+id/endgamePosSummary"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="0"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="35sp"
-                        tools:ignore="NestedWeights" />
-                </LinearLayout>
-
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_weight="1">
+            <View android:layout_width="match_parent" android:layout_height="2dp" android:background="#AAAAAA"/>
+            <!-- TELEOP HEADER -->
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="— Teleop —" android:textAlignment="center" android:textColor="@color/black" android:textSize="28sp" android:textStyle="italic" android:paddingTop="8dp" android:paddingBottom="4dp"/>
+            <View android:layout_width="match_parent" android:layout_height="2dp" android:background="#AAAAAA"/>
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Broke Down"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="35sp"
-                        tools:ignore="NestedWeights" />
-
-                    <TextView
-                        android:id="@+id/mechanicalReliabilitySummary"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="False"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="35sp"
-                        tools:ignore="NestedWeights" />
+            <!-- Row: Shot While Moving -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="150dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Shot While Moving" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/shotWhileMovingSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
                 </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Notes"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="35sp"
-                        tools:ignore="NestedWeights" />
-
-                    <TextView
-                        android:id="@+id/notesSummary"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text=""
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="35sp"
-                        tools:ignore="NestedWeights" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-                </LinearLayout>
-
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical"/>
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_weight="1">
+            <View android:layout_width="match_parent" android:layout_height="2dp" android:background="#AAAAAA"/>
+            <!-- ENDGAME HEADER -->
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="— Endgame —" android:textAlignment="center" android:textColor="@color/black" android:textSize="28sp" android:textStyle="italic" android:paddingTop="8dp" android:paddingBottom="4dp"/>
+            <View android:layout_width="match_parent" android:layout_height="2dp" android:background="#AAAAAA"/>
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
+            <!-- Row: Penalties / Broke Down / Trench -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="150dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Penalties" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/penaltiesSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
                 </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text=""
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="35sp"
-                        tools:ignore="NestedWeights" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text=""
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="35sp"
-                        tools:ignore="NestedWeights" />
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Broke Down" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/brokeDownSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
                 </LinearLayout>
-
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Trench" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/trenchSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
             </LinearLayout>
 
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#DDDDDD"/>
 
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_weight="1">
-
-
+            <!-- Row: Bump / Endgame Climb -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="150dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Bump" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/bumpSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Endgame Climb" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/endgameClimbSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical"/>
             </LinearLayout>
 
+            <View android:layout_width="match_parent" android:layout_height="2dp" android:background="#AAAAAA"/>
+            <!-- RATINGS HEADER -->
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="— Ratings —" android:textAlignment="center" android:textColor="@color/black" android:textSize="28sp" android:textStyle="italic" android:paddingTop="8dp" android:paddingBottom="4dp"/>
+            <View android:layout_width="match_parent" android:layout_height="2dp" android:background="#AAAAAA"/>
+
+            <!-- Row: Pin / Steal / Block -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="150dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Pinning" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/pinRatingSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Stealing" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/stealRatingSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Blocking" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/blockRatingSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#DDDDDD"/>
+
+            <!-- Row: Ram / Anti-Pin / Anti-Steal -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="150dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Ramming" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/ramRatingSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Anti-Pin" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/antiPinRatingSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Anti-Steal" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/antiStealRatingSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#DDDDDD"/>
+
+            <!-- Row: Anti-Block / Anti-Ram -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="150dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Anti-Block" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/antiBlockRatingSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Anti-Ram" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/antiRamRatingSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="—" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical"/>
+            </LinearLayout>
+
+            <View android:layout_width="match_parent" android:layout_height="2dp" android:background="#AAAAAA"/>
+
+            <!-- Notes -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="250dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="Notes" android:textAlignment="center" android:textColor="@color/black" android:textSize="30sp"/>
+                    <TextView android:id="@+id/notesSummary" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="2" android:text="" android:textAlignment="center" android:textColor="@color/black" android:textSize="25sp"/>
+                </LinearLayout>
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
@@ -566,6 +255,5 @@
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,123 +22,56 @@ import com.scoutingapp.titanscouting.R;
 import com.scoutingapp.titanscouting.database.Match;
 import com.scoutingapp.titanscouting.database.MatchViewModel;
 
+import java.util.function.Consumer;
+
 public class Endgame extends AppCompatActivity {
     Match match;
     MatchViewModel matchViewModel;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_endgame); /* connects xml to the class file */
+        setContentView(R.layout.activity_endgame2); /* connects xml to the class file */
         EditText e = findViewById(R.id.comments); /*assigns variable e to what is typed in the comments (id)*/
-        RadioGroup r = findViewById(R.id.parkPosition); /*assigns variable r to which park position is chosen (id)*/
-        RadioButton parkRadio = findViewById(R.id.parkRadio);
-        RadioButton deepCageRadio = findViewById(R.id.deepCageRadio);
-        RadioButton attemptedDeepRadio = findViewById(R.id.attemptedDeepRadio);
-        RadioButton shallowCageRadio = findViewById(R.id.shallowCageRadio);
-        RadioButton attemptedShallowRadio = findViewById(R.id.attemptedShallowRadio);
-        RadioButton noneRadio = findViewById(R.id.noneRadio);
-        CheckBox groundCoral = findViewById(R.id.groundCoralCheckbox);
-        CheckBox groundAlgae = findViewById(R.id.groundAlgaeCheckbox);
+        CheckBox penalties = findViewById(R.id.penalties);
+        CheckBox brokeDown = findViewById(R.id.brokeDown);
+        CheckBox usedTrench = findViewById(R.id.trench);
+        CheckBox usedBump = findViewById(R.id.bump);
         matchViewModel = new ViewModelProvider(this).get(MatchViewModel.class);
-        ImageView dockx = findViewById(R.id.dockx);
-
-        Drawable drawable = dockx.getDrawable().mutate();
-
-        final int RED = Color.parseColor("#e05a47");
-        final int BLUE = Color.parseColor("#3F51B5");
 
         final boolean[] isRed = {true};
-
-        parkIcon.setOnClickListener(v -> {
-            drawable.setTint(isRed[0] ? BLUE : RED);
-            isRed[0] = !isRed[0];
-        });
         matchViewModel.getMatch(getIntent().getIntExtra("matchNumber", 0)).observe(this, match -> {
             if(match == null) {
                 finish();
                 return;
             }
             this.match = match;
-            if (match.getEndgamePos()!=null) {
-                switch (match.getEndgamePos()) {
-                    case "Park":
-                        r.check(R.id.parkRadio);
-                        break;
-                    case "Deep Cage":
-                        r.check(R.id.deepCageRadio);
-                        break;
-                    case "Attempted Deep Cage":
-                        r.check(R.id.attemptedDeepRadio);
-                        break;
-                    case "Shallow Cage":
-                        r.check(R.id.shallowCageRadio);
-                        break;
-                    case "Attempted Shallow Cage":
-                        r.check(R.id.attemptedShallowRadio);
-                        break;
-                    case "None":
-                        r.check(R.id.noneRadio);
-                        break;
-                    default:
-                        r.check(R.id.noneRadio);
-                }
-            }
-            // r.setSelection(stagePositions.indexOf(match.getEndgamePos()));
-            r.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(RadioGroup group, int checkedId) {
-                    RadioButton b = findViewById(checkedId);
-                    match.setEndgamePos(b.getText().toString()); /* set match game to a string */
-                }
+            penalties.setChecked(match.getPenalties());
+            penalties.setOnClickListener(v -> {
+                match.setPenalties(!match.getPenalties());
             });
-            groundCoral.setChecked(match.isGroundCoral());
-            groundAlgae.setChecked(match.isGroundAlgae());
-            groundCoral.setOnClickListener(v -> {
-                match.setGroundCoral(!match.isGroundCoral());
+            brokeDown.setChecked(match.getBrokeDown());
+            brokeDown.setOnClickListener(v -> {
+                match.setBrokeDown(!match.getBrokeDown());
             });
-            groundAlgae.setOnClickListener(v -> {
-                match.setGroundAlgae(!match.isGroundAlgae());
+            usedTrench.setChecked(match.getTrench());
+            usedTrench.setOnClickListener(v -> {
+                match.setTrench(!match.getTrench());
+            });
+            usedBump.setChecked(match.getBump());
+            usedBump.setOnClickListener(v -> {
+                match.setBump(!match.getBump());
             });
 
-            final float[] previousDefenseRating = {0};
-
-            ((RatingBar) (findViewById(R.id.defenseAbilityBar))).setRating(match.getDefenseAbility());
-
-            findViewById(R.id.defenseAbilityBar).setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    if(isFinishing()) return false;
-                    RatingBar ratingBar = (RatingBar) v;
-                    if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                        previousDefenseRating[0] = ratingBar.getRating();
-                        System.out.println(previousDefenseRating[0]);
-                    }
-                    if (event.getAction() == MotionEvent.ACTION_UP) {
-                        if (previousDefenseRating[0] == ratingBar.getRating()) {
-                            ratingBar.setRating(0);
-                            match.setDefenseAbility(0);
-                            System.out.println("Set to 0");
-                            return true;
-                        }
-                        match.setDefenseAbility((int)ratingBar.getRating());
-                    }
-                    return false;
-                }
-            });
-
-// Mechanical Reliability Bar
-            CheckBox mechReliability = findViewById(R.id.mechanicalReliabilityBar);
-            mechReliability.setChecked(match.getMechanicalReliability());
-
-            mechReliability.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                if (isChecked) {
-                    // CheckBox is checked
-                    match.setMechanicalReliability(true);
-                } else {
-                    // CheckBox is unchecked
-                    match.setMechanicalReliability(false);
-                }
-            });
+            setupRatingBar(R.id.pinning, match.getPinRating(), match::setPinRating);
+            setupRatingBar(R.id.stealing, match.getStealRating(), match::setStealRating);
+            setupRatingBar(R.id.blocking, match.getBlockRating(), match::setBlockRating);
+            setupRatingBar(R.id.ramming, match.getRamRating(), match::setRamRating);
+            setupRatingBar(R.id.antiPinning, match.getAntiPinRating(), match::setAntiPinRating);
+            setupRatingBar(R.id.antiStealing, match.getAntiStealRating(), match::setAntiStealRating);
+            setupRatingBar(R.id.antiBlocking, match.getAntiBlockRating(), match::setAntiBlockRating);
+            setupRatingBar(R.id.antiRamming, match.getAntiRamRating(), match::setAntiRamRating);
+            setupRatingBar(R.id.climb, match.getEndgameClimb(), match::setEndgameClimb);
+            setupRatingBar(R.id.climbLocation, match.getEndgameClimbSide(), match::setEndgameClimbSide);
 
             e.setText(match.getNotes());
             ((EditText) (findViewById(R.id.comments))).addTextChangedListener(new TextWatcher() {
@@ -170,6 +103,23 @@ public class Endgame extends AppCompatActivity {
             matchViewModel.addMatchInformation(match);
             startActivity(i);
             finish();
+        });
+    }
+    private void setupRatingBar(int ratingBarId, int initialValue, Consumer<Integer> setter) {
+        RatingBar ratingBar = findViewById(ratingBarId);
+        ratingBar.setRating(initialValue);
+
+        final float[] previousRating = { initialValue };
+
+        ratingBar.setOnRatingBarChangeListener((bar, rating, fromUser) -> {
+            if (!fromUser) return;
+            if (previousRating[0] == rating) {
+                bar.setRating(0);
+                setter.accept(0);
+            } else {
+                setter.accept((int) rating);
+            }
+            previousRating[0] = bar.getRating();
         });
     }
 }

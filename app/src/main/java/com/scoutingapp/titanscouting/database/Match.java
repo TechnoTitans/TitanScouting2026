@@ -21,20 +21,10 @@ public class Match {
     private boolean noShow;
     @ColumnInfo(name="autoPath", defaultValue = "0")
     private String autoPath;
-    @ColumnInfo(name = "depot", defaultValue = "0")
-    private int depot;
-    @ColumnInfo(name = "climb", defaultValue = "0")
-    private int climb;
-    @ColumnInfo(name = "collectedFuel", defaultValue = "0")
-    private int collectedFuel;
-    @ColumnInfo(name = "scored", defaultValue = "0")
-    private int scored;
-    @ColumnInfo(name = "wentToNeutral", defaultValue = "0")
-    private int wentToNeutral;
-    @ColumnInfo(name = "scoringLocations", defaultValue = "")
-    private String scoringLocations;
     @ColumnInfo(name = "shotWhileMoving", defaultValue = "false")
     private boolean shotWhileMoving;
+    @ColumnInfo(name = "shotCoordinates", defaultValue = "")
+    private String shotCoordinates;
     @ColumnInfo(name = "pinRating", defaultValue = "0")
     private int pinRating;
     @ColumnInfo(name = "stealRating", defaultValue = "0")
@@ -51,14 +41,21 @@ public class Match {
     private int antiBlockRating;
     @ColumnInfo(name = "antiRamRating", defaultValue = "0")
     private int antiRamRating;
-    @ColumnInfo(name = "endgameClimb", defaultValue = "")
-    private String endgameClimb;
+    @ColumnInfo(name = "endgameClimb", defaultValue = "0")
+    private int endgameClimb;
+    @ColumnInfo(name = "endgameClimbSide", defaultValue = "")
+    private int endgameClimbSide;
     @ColumnInfo(name = "notes", defaultValue = "0")
     private String notes;
     @ColumnInfo(name = "trench", defaultValue = "false")
     private boolean trench;
     @ColumnInfo(name = "bump", defaultValue = "false")
     private boolean bump;
+    @ColumnInfo(name = "penalties", defaultValue = "false")
+    private boolean penalties;
+    @ColumnInfo(name = "brokeDown", defaultValue = "false")
+    private boolean brokeDown;
+
 
 
     public int getMatchNum() {
@@ -98,27 +95,11 @@ public class Match {
     }
     public String getAutoPath() { return autoPath; }
     public void setAutoPath(String autoPath) { this.autoPath = autoPath; }
-    public void setDepot(int depot) { this.depot = depot; }
-    public int getDepot() { return depot; }
-    public void setClimb(int climb) { this.climb = climb; }
-    public int getClimb() { return climb; }
-    public void setCollectedFuel(int collectedFuel) { this.collectedFuel = collectedFuel; }
-    public int getCollectedFuel() { return collectedFuel; }
-    public void setScored(int scored) { this.scored = scored; }
-    public int getScored() { return scored; }
-    public void setWentToNeutral(int wentToNeutral) { this.wentToNeutral = wentToNeutral; }
-    public int getWentToNeutral() { return wentToNeutral; }
-    public void setScoringLocations(String scoringLocations) {
-        this.scoringLocations = scoringLocations;
-    }
-    public String getScoringLocations() {
-        return scoringLocations;
+    public boolean getShotWhileMoving() {
+        return shotWhileMoving;
     }
     public void setShotWhileMoving(boolean shotWhileMoving) {
         this.shotWhileMoving = shotWhileMoving;
-    }
-    public boolean isShotWhileMoving() {
-        return shotWhileMoving;
     }
     public void setPinRating(int pinRating) {
         this.pinRating = pinRating;
@@ -168,11 +149,17 @@ public class Match {
     public int getAntiRamRating() {
         return antiRamRating;
     }
-    public void setEndgameClimb(String endgameClimb) {
+    public void setEndgameClimb(int endgameClimb) {
         this.endgameClimb = endgameClimb;
     }
-    public String getEndgameClimb() {
+    public int getEndgameClimb() {
         return endgameClimb;
+    }
+    public void setEndgameClimbSide(int endgameClimbSide) {
+        this.endgameClimbSide = endgameClimbSide;
+    }
+    public int getEndgameClimbSide() {
+        return endgameClimbSide;
     }
     public String getNotes() {
         return notes;
@@ -189,7 +176,28 @@ public class Match {
     public void setBump(boolean bump) {
         this.bump = bump;
     }
-    public boolean setBump() {
+    public boolean getBump() {
         return this.bump;
+    }
+
+    public void setShotCoordinates(String shotCoordinates) {
+        this.shotCoordinates = shotCoordinates;
+    }
+
+    public String getShotCoordinates() {
+        return shotCoordinates;
+    }
+
+    public void setPenalties(boolean penalties) {
+        this.penalties = penalties;
+    }
+    public boolean getPenalties() {
+        return this.penalties;
+    }
+    public void setBrokeDown(boolean brokeDown) {
+        this.brokeDown = brokeDown;
+    }
+    public boolean getBrokeDown() {
+        return this.brokeDown;
     }
 }

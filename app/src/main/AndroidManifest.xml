@@ -27,7 +27,7 @@
             android:exported="false"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".views.Endgame2"
+            android:name=".views.Endgame"
             android:exported="false"
             android:screenOrientation="landscape" />
         <activity

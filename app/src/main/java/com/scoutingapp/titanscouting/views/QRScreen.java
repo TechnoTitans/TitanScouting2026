@@ -43,30 +43,38 @@ public class QRScreen extends AppCompatActivity {
                     match.getMatchNum(),
                     match.getPosition(),
                     match.getScouterName()));
+            String endgameClimb = "M";
+            if(match.getEndgameClimbSide() == 0) {
+                endgameClimb = "L";
+            }
+            else if(match.getEndgameClimbSide() == 1) {
+                endgameClimb = "M";
+            }
+            else if(match.getEndgameClimbSide() == 2) {
+                endgameClimb = "R";
+            }
             qrString = String.join("\n",
                     "GACMP\n",
                     String.valueOf(match.getTeamNumber()),
                     String.valueOf(match.getMatchNum()),
                     match.getScouterName(),
                     String.valueOf(match.getPosition()),
-                    String.valueOf(match.getLeave()),
-                    String.valueOf(match.getAutoCubeL1()),
-                    String.valueOf(match.getAutoCubeL2()),
-                    String.valueOf(match.getAutoCubeL3()),
-                    String.valueOf(match.getAutoConeL1()),
-                    String.valueOf(match.getAutoConeL2()),
-                    String.valueOf(match.getAutoConeL3()),
-                    String.valueOf(match.getTeleCubeL1()),
-                    String.valueOf(match.getTeleCubeL2()),
-                    String.valueOf(match.getTeleCubeL3()),
-                    String.valueOf(match.getTeleConeL1()),
-                    String.valueOf(match.getTeleConeL2()),
-                    String.valueOf(match.getTeleConeL3()),
-                    String.valueOf(match.getParked()),
-                    String.valueOf(match.getDocked()),
-                    String.valueOf(match.getEngaged()),
-                    String.valueOf(match.getComments()),
-                    String.valueOf(match.getDefenseAbility()),
+                    String.valueOf(match.getAutoPath()),
+                    String.valueOf(match.getShotWhileMoving()),
+                    String.valueOf(match.getShotCoordinates()),
+                    String.valueOf(match.getPinRating()),
+                    String.valueOf(match.getStealRating()),
+                    String.valueOf(match.getBlockRating()),
+                    String.valueOf(match.getRamRating()),
+                    String.valueOf(match.getAntiPinRating()),
+                    String.valueOf(match.getAntiStealRating()),
+                    String.valueOf(match.getAntiBlockRating()),
+                    String.valueOf(match.getAntiRamRating()),
+                    (match.getEndgameClimb() + endgameClimb),
+                    String.valueOf(match.getTrench()),
+                    String.valueOf(match.getBump()),
+                    String.valueOf(match.getPenalties()),
+                    String.valueOf(match.getBrokeDown()),
                     match.getNotes()
             );
             Log.d("match_num", String.valueOf(match.getMatchNum()));

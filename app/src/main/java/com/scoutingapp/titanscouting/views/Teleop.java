@@ -4,231 +4,164 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.GridLayout;
+import android.widget.ImageButton;
 
 import com.scoutingapp.titanscouting.R;
 import com.scoutingapp.titanscouting.database.Match;
 import com.scoutingapp.titanscouting.database.MatchViewModel;
 
+
 public class Teleop extends AppCompatActivity {
 
-    Match match;
-    MatchViewModel matchViewModel;
+    private Match match;
+    private MatchViewModel matchViewModel;
+
+    private final int[][] shotGrid = new int[8][8];
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_teleop_2);
+        matchViewModel = new ViewModelProvider(this).get(MatchViewModel.class);
+        matchViewModel.getMatch(getIntent().getIntExtra("matchNumber", 0))
+                .observe(this, m -> {
+                    if (m == null) {
+                        finish();
+                        return;
+                    }
+                    this.match = m;
+                    if (match.getPosition().charAt(0) == 'R') {
+                        setContentView(R.layout.activity_teleop_red);
+                    } else {
+                        setContentView(R.layout.activity_teleop_blue);
+                    }
+                    createGrid();
+                    loadShotData(match.getShotCoordinates());
+                    setupButtons();
+                });
+    }
 
-        Button l4inc = findViewById(R.id.inc_l4_scored);
-        Button l4dec = findViewById(R.id.dec_l4_scored);
-        TextView l4 = findViewById(R.id.l4_score);
-        Button l3inc = findViewById(R.id.inc_l3_scored);
-        Button l3dec = findViewById(R.id.dec_l3_scored);
-        TextView l3 = findViewById(R.id.l3_score);
-        Button l2inc = findViewById(R.id.inc_l2_scored);
-        Button l2dec = findViewById(R.id.dec_l2_scored);
-        TextView l2 = findViewById(R.id.l2_score);
-        Button l1inc = findViewById(R.id.inc_l1_scored);
-        Button l1dec = findViewById(R.id.dec_l1_scored);
-        TextView l1 = findViewById(R.id.l1_score);
-        Button netInc = findViewById(R.id.inc_net);
-        Button netDec = findViewById(R.id.dec_net);
-        TextView net = findViewById(R.id.net_score);
-        Button procInc = findViewById(R.id.inc_proc);
-        Button procDec = findViewById(R.id.dec_proc);
-        TextView proc = findViewById(R.id.proc_score);
+    private void createGrid() {
+        GridLayout grid = findViewById(R.id.shotGrid);
+        grid.removeAllViews(); // safety
 
-        Button l4incMissed = findViewById(R.id.inc_l4_missed);
-        Button l4decMissed = findViewById(R.id.dec_l4_missed);
-        TextView l4Missed = findViewById(R.id.l4_missed_score);
-        Button l3incMissed = findViewById(R.id.inc_l3_missed);
-        Button l3decMissed = findViewById(R.id.dec_l3_missed);
-        TextView l3Missed = findViewById(R.id.l3_missed_score);
-        Button l2incMissed = findViewById(R.id.inc_l2_missed);
-        Button l2decMissed = findViewById(R.id.dec_l2_missed);
-        TextView l2Missed = findViewById(R.id.l2_missed_score);
-        Button l1incMissed = findViewById(R.id.inc_l1_missed);
-        Button l1decMissed = findViewById(R.id.dec_l1_missed);
-        TextView l1Missed = findViewById(R.id.l1_missed_score);
-        Button netIncMissed = findViewById(R.id.inc_net_missed);
-        Button netDecMissed = findViewById(R.id.dec_net_missed);
-        TextView netMissed = findViewById(R.id.net_missed_score);
-        Button procIncMissed = findViewById(R.id.inc_proc_missed);
-        Button procDecMissed = findViewById(R.id.dec_proc_missed);
-        TextView procMissed = findViewById(R.id.proc_missed_score);
+        for (int r = 0; r < 8; r++) {
+            for (int c = 0; c < 8; c++) {
 
-        Button backToAuto = findViewById(R.id.back_to_auto);
+                View cell = new View(this);
+
+                GridLayout.LayoutParams params = new GridLayout.LayoutParams();
+                params.width = 0;
+                params.height = 0;
+                params.rowSpec = GridLayout.spec(r, 1f);
+                params.columnSpec = GridLayout.spec(c, 1f);
+                cell.setLayoutParams(params);
+
+                cell.setBackgroundColor(Color.TRANSPARENT);
+
+                int finalR = r;
+                int finalC = c;
+
+                cell.setOnClickListener(v -> {
+                    shotGrid[finalR][finalC] =
+                            shotGrid[finalR][finalC] == 0 ? 1 : 0;
+
+                    if (shotGrid[finalR][finalC] == 1) {
+                        v.setBackgroundColor(Color.argb(128, 255, 152, 0));
+                    } else {
+                        v.setBackgroundColor(Color.TRANSPARENT);
+                    }
+                });
+
+                grid.addView(cell);
+            }
+        }
+    }
+
+    private void setupButtons() {
+        Button backToAuto = findViewById(R.id.to_auto);
         Button toEndgame = findViewById(R.id.to_endgame);
 
-        matchViewModel = new ViewModelProvider(this).get(MatchViewModel.class);
-        matchViewModel.getMatch(getIntent().getIntExtra("matchNumber", 0)).observe(this, match -> {
-            if(match == null) {
-                finish();
-                return;
-            }
-            this.match = match;
-
-            //(TextView) ;
-
-            l4.setText(String.valueOf(match.getL4Count()));
-            l3.setText(String.valueOf(match.getL3Count()));
-            l2.setText(String.valueOf(match.getL2Count()));
-            l1.setText(String.valueOf(match.getL1Count()));
-            net.setText(String.valueOf(match.getNetCount()));
-            proc.setText(String.valueOf(match.getProcessorCount()));
-
-            l4Missed.setText(String.valueOf(match.getL4MissedCount()));
-            l3Missed.setText(String.valueOf(match.getL3MissedCount()));
-            l2Missed.setText(String.valueOf(match.getL2MissedCount()));
-            l1Missed.setText(String.valueOf(match.getL1MissedCount()));
-            netMissed.setText(String.valueOf(match.getNetMissedCount()));
-            procMissed.setText(String.valueOf(match.getProcessorMissedCount()));
-
-            l4inc.setOnClickListener(v -> {
-                match.setL4Count(match.getL4Count() + 1);
-                l4.setText(String.valueOf(match.getL4Count()));
-                matchViewModel.addMatchInformation(match);
-            });
-            l4dec.setOnClickListener(v -> {
-                match.setL4Count(match.getL4Count() == 0 ? 0 : match.getL4Count() - 1);
-                l4.setText(String.valueOf(match.getL4Count()));
-                matchViewModel.addMatchInformation(match);
-            });
-            l3inc.setOnClickListener(v -> {
-                match.setL3Count(match.getL3Count() + 1);
-                l3.setText(String.valueOf(match.getL3Count()));
-                matchViewModel.addMatchInformation(match);
-            });
-            l3dec.setOnClickListener(v -> {
-                match.setL3Count(match.getL3Count() == 0 ? 0 : match.getL3Count() - 1);
-                l3.setText(String.valueOf(match.getL3Count()));
-                matchViewModel.addMatchInformation(match);
-            });
-            l2inc.setOnClickListener(v -> {
-                match.setL2Count(match.getL2Count() + 1);
-                l2.setText(String.valueOf(match.getL2Count()));
-                matchViewModel.addMatchInformation(match);
-            });
-            l2dec.setOnClickListener(v -> {
-                match.setL2Count(match.getL2Count() == 0 ? 0 : match.getL2Count() - 1);
-                l2.setText(String.valueOf(match.getL2Count()));
-                matchViewModel.addMatchInformation(match);
-            });
-            l1inc.setOnClickListener(v -> {
-                match.setL1Count(match.getL1Count() + 1);
-                l1.setText(String.valueOf(match.getL1Count()));
-                matchViewModel.addMatchInformation(match);
-            });
-            l1dec.setOnClickListener(v -> {
-                match.setL1Count(match.getL1Count() == 0 ? 0 : match.getL1Count() - 1);
-                l1.setText(String.valueOf(match.getL1Count()));
-                matchViewModel.addMatchInformation(match);
-            });
-            procInc.setOnClickListener(v -> {
-                match.setProcessorCount(match.getProcessorCount() + 1);
-                proc.setText(String.valueOf(match.getProcessorCount()));
-                matchViewModel.addMatchInformation(match);
-            });
-            procDec.setOnClickListener(v -> {
-                match.setProcessorCount(match.getProcessorCount() == 0 ? 0 : match.getProcessorCount() - 1);
-                proc.setText(String.valueOf(match.getProcessorCount()));
-                matchViewModel.addMatchInformation(match);
-            });
-            netInc.setOnClickListener(v -> {
-                match.setNetCount(match.getNetCount() + 1);
-                net.setText(String.valueOf(match.getNetCount()));
-                matchViewModel.addMatchInformation(match);
-            });
-            netDec.setOnClickListener(v -> {
-                match.setNetCount(match.getNetCount() == 0 ? 0 : match.getNetCount() - 1);
-                net.setText(String.valueOf(match.getNetCount()));
-                matchViewModel.addMatchInformation(match);
-            });
-
-
-            l4incMissed.setOnClickListener(v -> {
-                match.setL4MissedCount(match.getL4MissedCount() + 1);
-                l4Missed.setText(String.valueOf(match.getL4MissedCount()));
-                matchViewModel.addMatchInformation(match);
-            });
-            l4decMissed.setOnClickListener(v -> {
-                match.setL4MissedCount(match.getL4MissedCount() == 0 ? 0 : match.getL4MissedCount() - 1);
-                l4Missed.setText(String.valueOf(match.getL4MissedCount()));
-                matchViewModel.addMatchInformation(match);
-            });
-            l3incMissed.setOnClickListener(v -> {
-                match.setL3MissedCount(match.getL3MissedCount() + 1);
-                l3Missed.setText(String.valueOf(match.getL3MissedCount()));
-                matchViewModel.addMatchInformation(match);
-            });
-            l3decMissed.setOnClickListener(v -> {
-                match.setL3MissedCount(match.getL3MissedCount() == 0 ? 0 : match.getL3MissedCount() - 1);
-                l3Missed.setText(String.valueOf(match.getL3MissedCount()));
-                matchViewModel.addMatchInformation(match);
-            });
-            l2incMissed.setOnClickListener(v -> {
-                match.setL2MissedCount(match.getL2MissedCount() + 1);
-                l2Missed.setText(String.valueOf(match.getL2MissedCount()));
-                matchViewModel.addMatchInformation(match);
-            });
-            l2decMissed.setOnClickListener(v -> {
-                match.setL2MissedCount(match.getL2MissedCount() == 0 ? 0 : match.getL2MissedCount() - 1);
-                l2Missed.setText(String.valueOf(match.getL2MissedCount()));
-                matchViewModel.addMatchInformation(match);
-            });
-            l1incMissed.setOnClickListener(v -> {
-                match.setL1MissedCount(match.getL1MissedCount() + 1);
-                l1Missed.setText(String.valueOf(match.getL1MissedCount()));
-                matchViewModel.addMatchInformation(match);
-            });
-            l1decMissed.setOnClickListener(v -> {
-                match.setL1MissedCount(match.getL1MissedCount() == 0 ? 0 : match.getL1MissedCount() - 1);
-                l1Missed.setText(String.valueOf(match.getL1MissedCount()));
-                matchViewModel.addMatchInformation(match);
-            });
-            procIncMissed.setOnClickListener(v -> {
-                match.setProcessorMissedCount(match.getProcessorMissedCount() + 1);
-                procMissed.setText(String.valueOf(match.getProcessorMissedCount()));
-                matchViewModel.addMatchInformation(match);
-            });
-            procDecMissed.setOnClickListener(v -> {
-                match.setProcessorMissedCount(match.getProcessorMissedCount() == 0 ? 0 : match.getProcessorMissedCount() - 1);
-                procMissed.setText(String.valueOf(match.getProcessorMissedCount()));
-                matchViewModel.addMatchInformation(match);
-            });
-            netIncMissed.setOnClickListener(v -> {
-                match.setNetMissedCount(match.getNetMissedCount() + 1);
-                netMissed.setText(String.valueOf(match.getNetMissedCount()));
-                matchViewModel.addMatchInformation(match);
-            });
-            netDecMissed.setOnClickListener(v -> {
-                match.setNetMissedCount(match.getNetMissedCount() == 0 ? 0 : match.getNetMissedCount() - 1);
-                netMissed.setText(String.valueOf(match.getNetMissedCount()));
-                matchViewModel.addMatchInformation(match);
-            });
-
-
-            backToAuto.setOnClickListener(v -> {
-                Intent i = new Intent(Teleop.this, Autonomous.class);
-                i.putExtra("matchNumber", match.getMatchNum());
-                i.putExtra("color", match.getPosition().substring(0, 1));
-                matchViewModel.addMatchInformation(match);
-                startActivity(i);
-                finish();
-            });
-
-            toEndgame.setOnClickListener(v -> {
-                Intent i = new Intent(Teleop.this, Endgame.class);
-                i.putExtra("matchNumber", match.getMatchNum());
-                matchViewModel.addMatchInformation(match);
-                startActivity(i);
-                finish();
-            });
-
-
+        backToAuto.setOnClickListener(v -> {
+            saveShotData();
+            Intent i = new Intent(Teleop.this, Autonomous.class);
+            i.putExtra("matchNumber", match.getMatchNum());
+            i.putExtra("color", match.getPosition().substring(0, 1));
+            startActivity(i);
+            finish();
         });
 
+        toEndgame.setOnClickListener(v -> {
+            saveShotData();
+            Intent i = new Intent(Teleop.this, Endgame.class);
+            i.putExtra("matchNumber", match.getMatchNum());
+            startActivity(i);
+            finish();
+        });
+
+        ImageButton yesSWM = findViewById(R.id.yesSWM);
+        ImageButton noSWM = findViewById(R.id.noSWM);
+
+        yesSWM.setOnClickListener(v -> {
+            match.setShotWhileMoving(true);
+            yesSWM.setImageAlpha(255);
+            noSWM.setImageAlpha(130);;
+        });
+
+        noSWM.setOnClickListener(v -> {
+            match.setShotWhileMoving(false);
+            yesSWM.setImageAlpha(130);
+            noSWM.setImageAlpha(255);;
+        });
+    }
+
+    // Convert 2D grid into a string to save in database
+    private String gridToString() {
+        StringBuilder sb = new StringBuilder();
+        for (int row = 0; row < 8; row++) {
+            for (int col = 0; col < 8; col++) {
+                if (shotGrid[row][col] == 1) {
+                    sb.append(row).append(",").append(col).append(";");
+                }
+            }
+        }
+        return sb.toString();
+    }
+    private void loadShotData(String data) {
+        if (data == null || data.isEmpty()) return;
+        String[] shots = data.split(";");
+        for (String shot : shots) {
+            String[] parts = shot.split(",");
+            if (parts.length == 2) {
+                try {
+                    int row = Integer.parseInt(parts[0]);
+                    int col = Integer.parseInt(parts[1]);
+                    if (row >= 0 && row < 8 && col >= 0 && col < 8) {
+                        shotGrid[row][col] = 1;
+                        // Update the corresponding cell's background
+                        GridLayout grid = findViewById(R.id.shotGrid);
+                        int index = row * 8 + col;
+                        View cell = grid.getChildAt(index);
+                        if (cell != null) {
+                            cell.setBackgroundColor(Color.argb(128, 255, 152, 0));
+                        }
+                    }
+                } catch (NumberFormatException e) {
+                }
+            }
+        }
+    }
+
+    // Save the shot data to the match object
+    private void saveShotData() {
+        if (match != null) {
+            match.setShotCoordinates(gridToString());
+            matchViewModel.addMatchInformation(match);
+        }
     }
 }

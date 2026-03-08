@@ -17,6 +17,9 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.scoutingapp.titanscouting.R;
 import com.scoutingapp.titanscouting.database.Match;
 import com.scoutingapp.titanscouting.database.MatchViewModel;
+import android.widget.ImageButton;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import java.util.Objects;
 
@@ -24,6 +27,9 @@ public class Autonomous extends AppCompatActivity {
 
     Match match;
     MatchViewModel matchViewModel;
+
+    private ArrayList<String> pathSteps = new ArrayList<>();
+    private TextView pathListText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,34 +39,36 @@ public class Autonomous extends AppCompatActivity {
                         R.layout.activity_autonomous_blue : R.layout.activity_autonomous_red
         );
 
-        // Setup UI Elements
-//        EditText autoText = findViewById(R.id.autoDisplay);
-        Button leave = findViewById(R.id.leaveCheckbox);
-//        Button toPregame = findViewById(R.id.back_to_pregame);
+        Button toPregame = findViewById(R.id.to_pregame);
         Button toTeleop = findViewById(R.id.to_teleop);
-        Button yesDepot = findViewById(R.id.yes_depot);
-        Button noDepot = findViewById(R.id.no_depot);
-        Button yesClimb = findViewById(R.id.yes_climb);
-        Button noClimb = findViewById(R.id.no_climb);
-        Button yesCollectedFuel = findViewById(R.id.yes_collected_fuel);
-        Button noCollectedFuel = findViewById(R.id.no_collected_fuel);
-        Button yesScored = findViewById(R.id.yes_scored);
-        Button noScored = findViewById(R.id.no_scored);
-        Button yesWentToNeutral = findViewById(R.id.yes_went_to_neutral);
-        Button noWentToNeutral = findViewById(R.id.no_went_to_neutral);
+        ImageButton yesDepot = findViewById(R.id.yes_depot);
+        ImageButton noDepot = findViewById(R.id.no_depot);
+        ImageButton yesClimb = findViewById(R.id.yes_climb);
+        ImageButton noClimb = findViewById(R.id.no_climb);
+        ImageButton yesCollectedFuel = findViewById(R.id.yes_collected_fuel);
+        ImageButton noCollectedFuel = findViewById(R.id.no_collected_fuel);
+        ImageButton yesScored = findViewById(R.id.yes_scored);
+        ImageButton noScored = findViewById(R.id.no_scored);
+        ImageButton yesWentToNeutral = findViewById(R.id.yes_went_to_neutral);
+        ImageButton noWentToNeutral = findViewById(R.id.no_went_to_neutral);
+
+        pathListText = findViewById(R.id.path_list_text);
+        refreshPathDisplay();
 
 
         // 0 for not pressed, 1 for no depot, 2 for yes depot
         yesDepot.setOnClickListener(v->{
-            match.setDepot(2);
-            yesDepot.setAlpha(1);
-            noDepot.setAlpha(0.5f);
+            yesDepot.setImageAlpha(255);
+            noDepot.setImageAlpha(130);
+
+            addPathStep("Depot");
         });
         noDepot.setOnClickListener(
                 v->{
-                    match.setDepot(1);
-                    noDepot.setAlpha(1);
-                    yesDepot.setAlpha(0.5f);
+                    noDepot.setImageAlpha(255);
+                    yesDepot.setImageAlpha(130);
+
+                    removeLastPathStep("Depot");
                 }
         );
         yesClimb.setOnClickListener(v -> {
@@ -72,157 +80,104 @@ public class Autonomous extends AppCompatActivity {
         });
         noClimb.setOnClickListener(
                 v->{
-                    match.setClimb(1);
-                    noClimb.setAlpha(1);
-                    yesClimb.setAlpha(0.5f);
+                    noClimb.setImageAlpha(255);
+                    yesClimb.setImageAlpha(130);
+                    removeLastPathStep("Climb");
                 }
         );
         yesCollectedFuel.setOnClickListener(
                 v->{
-                    match.setCollectedFuel(2);
-                    yesCollectedFuel.setAlpha(1);
-                    noCollectedFuel.setAlpha(0.5f);
+                    yesCollectedFuel.setImageAlpha(255);
+                    noCollectedFuel.setImageAlpha(130);
+                    addPathStep("Collected fuel");
                 }
         );
         noCollectedFuel.setOnClickListener(
                 v->{
-                    match.setCollectedFuel(1);
-                    noCollectedFuel.setAlpha(1);
-                    yesCollectedFuel.setAlpha(0.5f);
+                    noCollectedFuel.setImageAlpha(255);
+                    yesCollectedFuel.setImageAlpha(130);
+                    removeLastPathStep("Collected fuel");
                 }
         );
         yesScored.setOnClickListener(
                 v->{
-                    match.setScored(2);
-                    yesScored.setAlpha(1);
-                    noScored.setAlpha(0.5f);
+                    yesScored.setImageAlpha(255);
+                    noScored.setImageAlpha(130);
+                    addPathStep("Scored");
                 }
         );
         noScored.setOnClickListener(
                 v->{
-                    match.setScored(1);
-                    noScored.setAlpha(1);
-                    yesScored.setAlpha(0.5f);
+                    noScored.setImageAlpha(255);
+                    yesScored.setImageAlpha(130);
+                    removeLastPathStep("Scored");
 
                 }
         );
         yesWentToNeutral.setOnClickListener(
                 v->{
-                    match.setWentToNeutral(2);
-                    yesWentToNeutral.setAlpha(1);
-                    noWentToNeutral.setAlpha(0.5f);
+                    yesWentToNeutral.setImageAlpha(255);
+                    noWentToNeutral.setImageAlpha(130);
+                    addPathStep("Went to neutral");
                 }
         );
         noWentToNeutral.setOnClickListener(
                 v->{
-                    match.setWentToNeutral(1);
-                    noWentToNeutral.setAlpha(1);
-                    yesWentToNeutral.setAlpha(0.5f);
+                    noWentToNeutral.setImageAlpha(255);
+                    yesWentToNeutral.setImageAlpha(130);
+                    removeLastPathStep("Went to neutral");
                 }
         );
 
 
-        // Branch buttons A–L
-//        int[] branchIds = {
-//                R.id.branch_a, R.id.branch_b, R.id.branch_c, R.id.branch_d,
-//                R.id.branch_e, R.id.branch_f, R.id.branch_g, R.id.branch_h,
-//                R.id.branch_i, R.id.branch_j, R.id.branch_k, R.id.branch_l
-//        };
-//        String[] branches = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"};
-//
-//        // Other action buttons
-//        Button net = findViewById(R.id.net_button);
-//        Button processor = findViewById(R.id.processor_button);
-//        Button cs1 = findViewById(R.id.cs1_button);
-//        Button cs2 = findViewById(R.id.cs2_button);
-//        Button lollipopNet = findViewById(R.id.lollipop1);
-//        Button lollipopMiddle = findViewById(R.id.lollipop2);
-//        Button lollipopProcessor = findViewById(R.id.lollipop3);
 
         matchViewModel = new ViewModelProvider(this).get(MatchViewModel.class);
         int matchNum = getIntent().getIntExtra("matchNumber", 0);
 
         matchViewModel.getMatch(matchNum).observe(this, match -> {
-            if(match == null) {
+            if (match == null) {
                 finish();
                 return;
             }
             this.match = match;
+            loadPathFromCode(match.getAutoPath());
+        });
 
-//            autoText.setText(match.getAutoPath());
-
-//            if (match.getAutoPath() != null && match.getAutoPath().startsWith("LEAVE")) {
-//                leave.setChecked(true);
-//            } else {
-//                leave.setChecked(false);
-//            }
-
-//            autoText.addTextChangedListener(new TextWatcher() {
-//                @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-//                @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                    match.setAutoPath(s.toString().trim());
-//                }
-//                @Override public void afterTextChanged(Editable s) {}
-//            });
-
-//            resetButton.setOnClickListener(v -> {
-//                match.setAutoPath("");
-//                leave.setChecked(false);
-//                autoText.setText("");
-//            });
-
-//            leave.setOnClickListener(v -> {
-//                String current = match.getAutoPath() == null ? "" : match.getAutoPath();
-//                if (leave.isChecked()) {
-//                    if (!current.startsWith("LEAVE ")) {
-//                        match.setAutoPath("LEAVE " + current);
-//                        autoText.setText(match.getAutoPath());
-//                    }
-//                } else {
-//                    if (current.startsWith("LEAVE")) {
-//                        match.setAutoPath(current.substring(5));
-//                        autoText.setText(match.getAutoPath());
-//                    }
-//                    if (current.startsWith("LEAVE ")) {
-//                        match.setAutoPath(current.substring(6));
-//                        autoText.setText(match.getAutoPath());
-//                    }
-//                }
-//            });
-
-//            for (int i = 0; i < branchIds.length; i++) {
-//                String branch = branches[i];
-//                Button btn = findViewById(branchIds[i]);
-//                btn.setOnClickListener(v -> branchPopup(btn, branch, result -> {
-//                    safeAppendToAutoPath(result, autoText);
-//                }));
-//            }
 //
-//            net.setOnClickListener(v -> safeAppendToAutoPath("N", autoText));
-//            processor.setOnClickListener(v -> safeAppendToAutoPath("P", autoText));
-//            cs1.setOnClickListener(v -> safeAppendToAutoPath("CS1", autoText));
-//            cs2.setOnClickListener(v -> safeAppendToAutoPath("CS2", autoText));
-//            lollipopNet.setOnClickListener(v -> safeAppendToAutoPath("Q1", autoText));
-//            lollipopMiddle.setOnClickListener(v -> safeAppendToAutoPath("Q2", autoText));
-//            lollipopProcessor.setOnClickListener(v -> safeAppendToAutoPath("Q3", autoText));
 
-//            toPregame.setOnClickListener(v -> {
-//                matchViewModel.addMatchInformation(match);
-//                Intent intent = new Intent(Autonomous.this, Pregame.class);
-//                intent.putExtra("transition", "true");
-//                intent.putExtra("matchNumber", match.getMatchNum());
-//                startActivity(intent);
-//                finish();
-//            });
-
-            toTeleop.setOnClickListener(v -> {
+        toPregame.setOnClickListener(v -> {
                 matchViewModel.addMatchInformation(match);
-                Intent intent = new Intent(Autonomous.this, Teleop.class);
+                Intent intent = new Intent(Autonomous.this, Pregame.class);
+                intent.putExtra("transition", "true");
                 intent.putExtra("matchNumber", match.getMatchNum());
                 startActivity(intent);
                 finish();
-            });
         });
+
+        toTeleop.setOnClickListener(v -> {
+            matchViewModel.addMatchInformation(match);
+            Intent intent = new Intent(Autonomous.this, Teleop.class);
+            intent.putExtra("matchNumber", match.getMatchNum());
+            startActivity(intent);
+            finish();
+        });
+    }
+
+    private void addPathStep(String step) {
+        pathSteps.add(step);
+        savePathCodeToMatch();
+        refreshPathDisplay();
+    }
+
+    private void removeLastPathStep(String step) {
+        for (int i = pathSteps.size() - 1; i >= 0; i--) {
+            if (pathSteps.get(i).equals(step)) {
+                pathSteps.remove(i);
+                break;
+            }
+        }
+        savePathCodeToMatch();
+        refreshPathDisplay();
     }
 
     private void showClimbPopup() {
@@ -263,46 +218,70 @@ public class Autonomous extends AppCompatActivity {
             String newPath = base + addition;
             match.setAutoPath(newPath);
             autoText.setText(newPath);
-        }
-    }
+    private void refreshPathDisplay() {
+        if (pathListText == null) return;
 
-    public void branchPopup(Button a, String branch, ResultCallback callback) {
-        String[] levels = {"L4", "L3", "L2", "L1"};
-        final int[] selectedPosition = {-1};
-        final boolean[] isChecked = {false};
+        StringBuilder sb = new StringBuilder();
+        sb.append("Path:\n");
 
-        View customLayout = LayoutInflater.from(this).inflate(R.layout.branch_popup_layout, null);
-        RadioGroup radioGroup = customLayout.findViewById(R.id.radio_group);
-        CheckBox checkBox = customLayout.findViewById(R.id.checkbox);
-
-        for (String level : levels) {
-            RadioButton radioButton = new RadioButton(this);
-            radioButton.setText(level);
-            radioButton.setId(View.generateViewId());
-            radioGroup.addView(radioButton);
-            radioButton.setOnClickListener(v -> selectedPosition[0] = radioGroup.indexOfChild(v));
+        for (int i = 0; i < pathSteps.size(); i++) {
+            sb.append(i + 1)
+                    .append(". ")
+                    .append(pathSteps.get(i))
+                    .append("\n");
         }
 
-        checkBox.setOnCheckedChangeListener((buttonView, isCheckedValue) -> isChecked[0] = isCheckedValue);
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this)
-                .setTitle("Select Level")
-                .setView(customLayout)
-                .setPositiveButton("Confirm", (dialog, id) -> {
-                    if (selectedPosition[0] != -1) {
-                        String selectedLevel = levels[selectedPosition[0]];
-                        String suffix = isChecked[0] ? "M" : "S";
-                        callback.onResult(branch + (4 - selectedPosition[0]) + suffix);
-                    } else {
-                        Toast.makeText(this, "No level selected", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .setNegativeButton("Cancel", (dialog, id) -> dialog.dismiss());
-
-        builder.create().show();
+        pathListText.setText(sb.toString());
     }
 
-    public interface ResultCallback {
-        void onResult(String result);
+    private String buildAutonPathCode() {
+        StringBuilder sb = new StringBuilder();
+
+        for (String step : pathSteps) {
+            if ("Depot".equals(step)) {
+                sb.append("D");
+            } else if ("Climb".equals(step)) {
+                sb.append("C");
+            } else if ("Collected fuel".equals(step)) {
+                sb.append("F");
+            } else if ("Scored".equals(step)) {
+                sb.append("S");
+            } else if ("Went to neutral".equals(step)) {
+                sb.append("N");
+            }
+        }
+        return sb.toString();
+    }
+
+    private void loadPathFromCode(String code) {
+        pathSteps.clear();
+
+        if (code == null || code.isEmpty()) {
+            refreshPathDisplay();
+            return;
+        }
+
+        for (int i = 0; i < code.length(); i++) {
+            char c = code.charAt(i);
+
+            if (c == 'D') {
+                pathSteps.add("Depot");
+            } else if (c == 'C') {
+                pathSteps.add("Climb");
+            }else if (c == 'F') {
+                pathSteps.add("Collected fuel");
+            }else if (c == 'S') {
+                pathSteps.add("Scored");
+            }else if (c == 'N') {
+                pathSteps.add("Went to neutral");
+            }
+        }
+
+        refreshPathDisplay();
+    }
+
+    private void savePathCodeToMatch() {
+        if (match == null) return;
+        match.setAutoPath(buildAutonPathCode());
     }
 }
