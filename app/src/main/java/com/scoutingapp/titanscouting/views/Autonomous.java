@@ -1,25 +1,18 @@
 package com.scoutingapp.titanscouting.views;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.*;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.google.android.gms.common.api.ResultCallback;
 import com.scoutingapp.titanscouting.R;
 import com.scoutingapp.titanscouting.database.Match;
 import com.scoutingapp.titanscouting.database.MatchViewModel;
 import android.widget.ImageButton;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import java.util.Objects;
 
@@ -28,7 +21,7 @@ public class Autonomous extends AppCompatActivity {
     Match match;
     MatchViewModel matchViewModel;
 
-    private ArrayList<String> pathSteps = new ArrayList<>();
+    private final ArrayList<String> pathSteps = new ArrayList<>();
     private TextView pathListText;
 
     @Override
@@ -72,9 +65,8 @@ public class Autonomous extends AppCompatActivity {
                 }
         );
         yesClimb.setOnClickListener(v -> {
-            match.setClimb(2);
-            yesClimb.setAlpha(1);
-            noClimb.setAlpha(0.5f);
+            yesClimb.setImageAlpha(255);
+            noClimb.setImageAlpha(130);
 
             showClimbPopup();
         });
@@ -143,8 +135,6 @@ public class Autonomous extends AppCompatActivity {
             loadPathFromCode(match.getAutoPath());
         });
 
-//
-
         toPregame.setOnClickListener(v -> {
                 matchViewModel.addMatchInformation(match);
                 Intent intent = new Intent(Autonomous.this, Pregame.class);
@@ -168,14 +158,15 @@ public class Autonomous extends AppCompatActivity {
         savePathCodeToMatch();
         refreshPathDisplay();
     }
-
     private void removeLastPathStep(String step) {
-        for (int i = pathSteps.size() - 1; i >= 0; i--) {
-            if (pathSteps.get(i).equals(step)) {
-                pathSteps.remove(i);
-                break;
-            }
+        if (pathSteps.isEmpty()) return;
+
+        String lastStep = pathSteps.get(pathSteps.size() - 1);
+
+        if (lastStep.equals(step)) {
+            pathSteps.remove(pathSteps.size() - 1);
         }
+
         savePathCodeToMatch();
         refreshPathDisplay();
     }
@@ -187,24 +178,17 @@ public class Autonomous extends AppCompatActivity {
         builder.setTitle("Select Climb Location");
 
         builder.setItems(options, (dialog, which) -> {
-            String climbLetter = "";
+            String climbStep = "";
 
             if (which == 0) {
-                climbLetter = "L";
+                climbStep = "Climb Left";
             } else if (which == 1) {
-                climbLetter = "C";
+                climbStep = "Climb Center";
             } else if (which == 2) {
-                climbLetter = "R";
+                climbStep = "Climb Right";
             }
 
-            if (match != null) {
-                String currentPath = match.getAutoPath();
-                if (currentPath == null) {
-                    currentPath = "";
-                }
-                String newPath = currentPath + climbLetter;
-                match.setAutoPath(newPath);
-            }
+            addPathStep(climbStep);
         });
 
         builder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
@@ -212,12 +196,6 @@ public class Autonomous extends AppCompatActivity {
         builder.show();
     }
 
-    private void safeAppendToAutoPath(String addition, EditText autoText) {
-        if (match != null) {
-            String base = match.getAutoPath() == null ? "" : match.getAutoPath();
-            String newPath = base + addition;
-            match.setAutoPath(newPath);
-            autoText.setText(newPath);
     private void refreshPathDisplay() {
         if (pathListText == null) return;
 
@@ -240,8 +218,12 @@ public class Autonomous extends AppCompatActivity {
         for (String step : pathSteps) {
             if ("Depot".equals(step)) {
                 sb.append("D");
-            } else if ("Climb".equals(step)) {
+            } else if ("Climb Left".equals(step)) {
+                sb.append("L");
+            } else if ("Climb Center".equals(step)) {
                 sb.append("C");
+            } else if ("Climb Right".equals(step)) {
+                sb.append("R");
             } else if ("Collected fuel".equals(step)) {
                 sb.append("F");
             } else if ("Scored".equals(step)) {
@@ -267,12 +249,16 @@ public class Autonomous extends AppCompatActivity {
             if (c == 'D') {
                 pathSteps.add("Depot");
             } else if (c == 'C') {
-                pathSteps.add("Climb");
-            }else if (c == 'F') {
+                pathSteps.add("Climb Center");
+            } else if (c == 'L') {
+                pathSteps.add("Climb Left");
+            } else if (c == 'R') {
+                pathSteps.add("Climb Right");
+            } else if (c == 'F') {
                 pathSteps.add("Collected fuel");
-            }else if (c == 'S') {
+            } else if (c == 'S') {
                 pathSteps.add("Scored");
-            }else if (c == 'N') {
+            } else if (c == 'N') {
                 pathSteps.add("Went to neutral");
             }
         }
