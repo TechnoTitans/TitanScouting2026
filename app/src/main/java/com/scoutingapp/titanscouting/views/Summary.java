@@ -67,12 +67,6 @@ public class Summary extends AppCompatActivity {
         setText(R.id.scouterNameSummary,  match.getScouterName() != null ? match.getScouterName() : "—");
         setText(R.id.noShowSummary,       match.isNoShow() ? "Yes" : "No");
 
-        // Autonomous
-        setText(R.id.depotSummary,         yesNo(match.getDepot()));
-        setText(R.id.climbAutoSummary,     yesNo(match.getClimb()));
-        setText(R.id.collectedFuelSummary, yesNo(match.getCollectedFuel()));
-        setText(R.id.scoredSummary,        yesNo(match.getScored()));
-        setText(R.id.wentToNeutralSummary, yesNo(match.getWentToNeutral()));
 
         // Teleop
         setText(R.id.shotWhileMovingSummary, match.getShotWhileMoving() ? "Yes" : "No");

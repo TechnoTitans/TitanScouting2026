@@ -43,7 +43,7 @@ public class QRScreen extends AppCompatActivity {
                     match.getMatchNum(),
                     match.getPosition(),
                     match.getScouterName()));
-            String endgameClimb = "";
+            String endgameClimb = "M";
             if(match.getEndgameClimbSide() == 0) {
                 endgameClimb = "L";
             }
@@ -60,10 +60,6 @@ public class QRScreen extends AppCompatActivity {
                     match.getScouterName(),
                     String.valueOf(match.getPosition()),
                     String.valueOf(match.getAutoPath()),
-                    String.valueOf(match.getClimb()),
-                    String.valueOf(match.getCollectedFuel()),
-                    String.valueOf(match.getScored()),
-                    String.valueOf(match.getWentToNeutral()),
                     String.valueOf(match.getShotWhileMoving()),
                     String.valueOf(match.getShotCoordinates()),
                     String.valueOf(match.getPinRating()),

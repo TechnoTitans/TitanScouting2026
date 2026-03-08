@@ -58,7 +58,6 @@ public class Autonomous extends AppCompatActivity {
 
         // 0 for not pressed, 1 for no depot, 2 for yes depot
         yesDepot.setOnClickListener(v->{
-            match.setDepot(2);
             yesDepot.setImageAlpha(255);
             noDepot.setImageAlpha(130);
 
@@ -66,7 +65,6 @@ public class Autonomous extends AppCompatActivity {
         });
         noDepot.setOnClickListener(
                 v->{
-                    match.setDepot(1);
                     noDepot.setImageAlpha(255);
                     yesDepot.setImageAlpha(130);
 
@@ -75,7 +73,6 @@ public class Autonomous extends AppCompatActivity {
         );
         yesClimb.setOnClickListener(
                 v->{
-                    match.setClimb(2);
                     yesClimb.setImageAlpha(255);
                     noClimb.setImageAlpha(130);
                     addPathStep("Climb");
@@ -83,7 +80,6 @@ public class Autonomous extends AppCompatActivity {
         );
         noClimb.setOnClickListener(
                 v->{
-                    match.setClimb(1);
                     noClimb.setImageAlpha(255);
                     yesClimb.setImageAlpha(130);
                     removeLastPathStep("Climb");
@@ -91,7 +87,6 @@ public class Autonomous extends AppCompatActivity {
         );
         yesCollectedFuel.setOnClickListener(
                 v->{
-                    match.setCollectedFuel(2);
                     yesCollectedFuel.setImageAlpha(255);
                     noCollectedFuel.setImageAlpha(130);
                     addPathStep("Collected fuel");
@@ -99,7 +94,6 @@ public class Autonomous extends AppCompatActivity {
         );
         noCollectedFuel.setOnClickListener(
                 v->{
-                    match.setCollectedFuel(1);
                     noCollectedFuel.setImageAlpha(255);
                     yesCollectedFuel.setImageAlpha(130);
                     removeLastPathStep("Collected fuel");
@@ -107,7 +101,6 @@ public class Autonomous extends AppCompatActivity {
         );
         yesScored.setOnClickListener(
                 v->{
-                    match.setScored(2);
                     yesScored.setImageAlpha(255);
                     noScored.setImageAlpha(130);
                     addPathStep("Scored");
@@ -115,7 +108,6 @@ public class Autonomous extends AppCompatActivity {
         );
         noScored.setOnClickListener(
                 v->{
-                    match.setScored(1);
                     noScored.setImageAlpha(255);
                     yesScored.setImageAlpha(130);
                     removeLastPathStep("Scored");
@@ -124,7 +116,6 @@ public class Autonomous extends AppCompatActivity {
         );
         yesWentToNeutral.setOnClickListener(
                 v->{
-                    match.setWentToNeutral(2);
                     yesWentToNeutral.setImageAlpha(255);
                     noWentToNeutral.setImageAlpha(130);
                     addPathStep("Went to neutral");
@@ -132,7 +123,6 @@ public class Autonomous extends AppCompatActivity {
         );
         noWentToNeutral.setOnClickListener(
                 v->{
-                    match.setWentToNeutral(1);
                     noWentToNeutral.setImageAlpha(255);
                     yesWentToNeutral.setImageAlpha(130);
                     removeLastPathStep("Went to neutral");
