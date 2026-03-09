@@ -163,7 +163,14 @@ public class Autonomous extends AppCompatActivity {
 
         String lastStep = pathSteps.get(pathSteps.size() - 1);
 
-        if (lastStep.equals(step)) {
+        if (step.equals("Climb")) {
+            if (lastStep.equals("Climb Left") ||
+                    lastStep.equals("Climb Center") ||
+                    lastStep.equals("Climb Right")) {
+
+                pathSteps.remove(pathSteps.size() - 1);
+            }
+        } else if (lastStep.equals(step)) {
             pathSteps.remove(pathSteps.size() - 1);
         }
 
