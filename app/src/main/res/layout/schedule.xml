@@ -6,6 +6,7 @@
 
     <ImageView
         android:id="@+id/imageView4"
+        android:contentDescription="Gwinnett 2026 Scouting Schedule"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/Gwinnett_2026"
