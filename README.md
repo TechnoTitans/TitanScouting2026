@@ -1,62 +1,55 @@
-# 2025 Scouting App Instructions
-*not formatted well yet
+# 2026 Scouting App Instructions
 
 ## Purpose:
-This app was made to gather data on individual robots' play and acheivements during matches in FRC (FIRST Robotics Tournament). The data is then used to make informed decisions for our team's strategy during matches and when forming alliances with other teams.
+This app was made to gather data on individual robots' play and acheivements during matches in FRC's (FIRST Robotics Tournament) 2026 game: Rebuilt presented By Haas. The data is then used to make informed decisions for our team's strategy during matches and when forming alliances with other teams.
 
-## FRC 2025 Game (Reefscape) Rules Manual:
-https://firstfrc.blob.core.windows.net/frc2025/Manual/2025GameManual.pdf
+## FRC 2026 Game (Rebuilt) Rules Manual:
+(https://firstfrc.blob.core.windows.net/frc2026/Manual/2026GameManual.pdf)
 
 # Usage
+
 ## Starting Page:
-To begin scouting a match, first click the start button.
+You will see two buttons. To begin scouting a match, first click the **START** button. Clicking **LOGS** will take you to the Logs Page (see below).
 
 ## Pregame Information Page
-Type in the match number, and choose the position are scouting on using the buttons. The position should be the same for every match you scout. The team number should automatically pop up, but if you are sure there is a mistake, change it.
+Type in the match number, and choose the position you are scouting on using the buttons. The position should be the same for every match you scout. The team number should automatically pop up, but if you are sure there is a mistake, manually change it. If the robot does not show up, select the **No Show** checkbox. 
 
 ## Autonomous Period Page
-This is the place where the autonomous path is recorded. When the game starts, the robots follow a pre-programmed path, scoring coral on the reef, harvesting algae from the reef, and/or collecting additional coral to score. First, click on the starting position of the robot. 
-1. On the right-hand side of this page, 3 circles represent the starting position of the robot. Select the appropriate checkbox based on which position your robot is positioned at (you will not be able to select multiple). 
-  a. Source: Any place a robot starts that is towards the source, including a robot that lines up with the barge on the source side
-  b. Middle: Any place a robot starts that is directly in front of the barge, whether it is lined up or not
-  c. Processor: Any place a robot starts that is towards the processor, including a robot that lines up with the barge on the processor side
-3. There is a checkbox labeled "LEAVE" at the top left of the page. If the robot has attained the LEAVE points, it should be checked.
-4. Then, click the position the robot approaches to score, whether it scores or not. If the robot scores, click the button depicting that the shot was made. Then, click the button of the the level that the robot scored on. If the robot does not score, click the button depicting that the shot was not made. We will be measuring the accuracy of auto later, so keep that in mind as you record the auto path.
-5. If you are to scouting the blue alliance, the elements listed above will be reflected horizontally. This is so the screen matches what the blue half of the field looks like.
-6. The other aspects of this page involve tracking the game pieces scored/missed by the robot being scouted. For coral scored in the reef, note what level it was scored in. For algae scored in the barge or net. If you happen to make a mistake and accidentally click the plus even though nothing was scored, you can click the minus button to remove the faulty entry.
-7. The autonomous page should be used only during the autonomous period (first 15 seconds of the game). 
-8. After the autonomous period is over and all entries that apply have been completed, go to the Teleop page by clicking the button labeled "To Teleop" at the top right.
+This is the page where the autonomous path is recorded. When the game starts, the robots follow a pre-programmed path, moving to the neutral zone, collecting fuel, and/or scoring fuel.
+1. You will see the field and the field elements. You will see a series of questions relating to the robot's actions during autonomous. 
+2. These are true or false questions. If the check mark is pressed, the action will appear in the righ-hand side under the column titled "Path:" To remove an action, click the X mark.
+3. If the robot does not complete any of the actions, it is not necessary to mark the X. If the action was not performed, do not select anything.
+4. The autonomous page should be used only during the autonomous period (first 15 seconds of the game). 
+5. After the autonomous period is over and all entries that apply have been completed, go to the Teleop page by clicking the button labeled **Next** at the top right.
 
 ## Teleoperated Period Page
-This page has several design elements representing each level of the reef. The turquoise plus represents points scored or missed on each corresponding level, and the minus buttons indicate any bad entry. The blue net and processor plus buttons toggle all successful attempts by the robot, and the minus buttons are for correction.
+This page has two sections. 
+1. One true or false question asking if the robot shot while moving in the teleoperated period.
+2. You are presented with a grid of the playing field of one alliance. Mark every location where the robot shot balls (with the intention of either scoring or ferrying). It's ok of the shots did not go in.
+3. If the robot did not shoot for the entirety of the teleoperated period, leave this page blank.
+4. 5. After the teleop period is over and all entries that apply have been completed, go to the endgame page by clicking the button labeled **Next** at the top right.
 
 ## Endgame Page
-Click the buttons that match the actions the robot you are scouting made.
-Ending Position: Where the robot is located on the stage at the end of the match.
-Park: The robot is fully parked under the barge zone. 
-Deep Cage: The robot was able to fully get off the ground and hang on the deep cage chain
-Attempted Deep Cage: The robot attempted to climb onto the chain, but couldn't (either due to it falling off the chain, the robot not being able to get off the ground fully, or the robot not having enough time to climb even though they were trying)
-Shallow Cage: The robot could fully get off the ground and hang on the shallow cage chain.
-Attempted Shallow Cage: The robot attempted to climb onto the chain, but couldn't (either due to it falling off the chain, the robot not being able to get off the ground fully, or the robot not having enough time to climb even though they were trying)
-None: If the robot does nothing or is not able to park in time.
-Net: The robots can score the algae in the net. If the robot attempted to score in the net, mention it in the comments.
-Shots from the Processor: The human player can now score the algae into the net. If the human player attempted to score in the net, mention it in the comments. 
-Rating Guides (For Driver Quality, Defense Ability, Mechanical Reliability):
-Penalties: The number of penalties the robot caused. Use the judges' calls and your knowledge of the rules to determine whether there was a penalty on the robot.
-Drops Pieces: The robot often drops coral or algae, whether during pickup at the source, collisions, or any other time. If this is applicable, click the checkbox and specify in the comments page.
-Comments: Type anything important the app did not let you log here (notable details about the robot/team/strategy). Try your best to keep comments very concise (there is a cap of 50 characters).
+1. On the left-hand side, you will see 5 stars with 4 different sections recording the quality of the defense the bot played. If the bot did not play defense, leave this section blank. 
+2. Below that, you will find the climb ratings. One, two, and three starts indicate a climb to the first, second, and third levels respectively. In the second row, one, two, and three stars represent climb to the left, center, and right respectively. If the robot did not climb, leave this section blank.
+3. In the center, there will be four true or false questions. Answer them appropriately.
+4. On the right-hand side, you will see 5 stars with 4 different sections recording the quality of the bot's defense-countering abilities. If the bot did not encouter defense, leave this section blank. 
+5. Comments: Type anything important the app did not let you log here (notable details about the robot/team/strategy). Try your best to keep comments very concise (there is a cap of 50 characters).
 
 ## Summary Page
 This page allows you to confirm any information entered. After reviewing and correcting information, you can click, "Submit."
 This brings you to the QR screen.
 
-## Logs Page
-Past match data can be viewed and accessed here. When you send your data to be scanned, click the match number of the match you scout to open a summary similar to the Summary page earlier. The most recent matches will be at the top, and the older matches will be further down the page.
-[insert match review activity screen]
-Once you get to this page, click the QR button to open a QR code. 	
-The box here will have the QR code of the match you just scouted. Show this to the scanner, who will scan and transfer this data to the database.
-Or you can find this QR code by quitting everything and clicking on the Logs button on the homepage.
+## QR Page
+The box here will have the QR code of the match you just scouted. Use your phone or another camera-enabled device to visit 
+(www.datavis-webapp.vercel.app)
+Scan the QR Code with the camera (you will need to allow camera permissions), scroll down, and click upload. 
+
 Congratulations! You just scouted a match.
+
+## Logs Page
+Past match data can be viewed and accessed here. When you send your data to be scanned, click the match number of the match you scout to open a summary similar to the Summary page earlier. The most recent matches will be at the top, and the older matches will be further down the page. You can find the QR code for a previously scouted match here as well. 
+
 
 
 ## A Message to Scouters
