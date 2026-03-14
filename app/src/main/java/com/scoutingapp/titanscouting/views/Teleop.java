@@ -23,6 +23,8 @@ public class Teleop extends AppCompatActivity {
 
     private final int[][] shotGrid = new int[8][8];
 
+    private static final int GRID_SIZE = 8;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,38 +125,75 @@ public class Teleop extends AppCompatActivity {
     // Convert 2D grid into a string to save in database
     private String gridToString() {
         StringBuilder sb = new StringBuilder();
-        for (int row = 0; row < 8; row++) {
-            for (int col = 0; col < 8; col++) {
+        for (int row = 0; row < GRID_SIZE; row++) {
+            for (int col = 0; col < GRID_SIZE; col++) {
                 if (shotGrid[row][col] == 1) {
-                    sb.append(row).append(",").append(col).append(";");
+                    int storedRow;
+                    int storedCol;
+                    if (isBlueAlliance()) {
+                        storedRow = GRID_SIZE - row;
+                        storedCol = GRID_SIZE - col;
+                    } else {
+                        storedRow = row + 1;
+                        storedCol = col + 1;
+                    }
+                    sb.append(storedRow).append(",").append(storedCol).append(";");
                 }
             }
         }
         return sb.toString();
     }
+
     private void loadShotData(String data) {
-        if (data == null || data.isEmpty()) return;
+        if (data == null || data.trim().isEmpty()) return;
+
+        GridLayout grid = findViewById(R.id.shotGrid);
         String[] shots = data.split(";");
         for (String shot : shots) {
+            if (shot == null) continue;
+            shot = shot.trim();
+            if (shot.isEmpty()) continue;
+
             String[] parts = shot.split(",");
-            if (parts.length == 2) {
-                try {
-                    int row = Integer.parseInt(parts[0]);
-                    int col = Integer.parseInt(parts[1]);
-                    if (row >= 0 && row < 8 && col >= 0 && col < 8) {
-                        shotGrid[row][col] = 1;
-                        // Update the corresponding cell's background
-                        GridLayout grid = findViewById(R.id.shotGrid);
-                        int index = row * 8 + col;
-                        View cell = grid.getChildAt(index);
-                        if (cell != null) {
-                            cell.setBackgroundColor(Color.argb(128, 255, 152, 0));
-                        }
+            if (parts.length != 2) continue;
+
+            try {
+                int parsedRow = Integer.parseInt(parts[0].trim());
+                int parsedCol = Integer.parseInt(parts[1].trim());
+
+                int row;
+                int col;
+
+                if (isBlueAlliance()) {
+                    if (parsedRow < 1 || parsedRow > GRID_SIZE || parsedCol < 1 || parsedCol > GRID_SIZE) {
+                        continue;
                     }
-                } catch (NumberFormatException e) {
+                    row = GRID_SIZE - parsedRow;
+                    col = GRID_SIZE - parsedCol;
+                } else {
+                    if (parsedRow < 1 || parsedRow > GRID_SIZE || parsedCol < 1 || parsedCol > GRID_SIZE) {
+                        continue;
+                    }
+                    row = parsedRow - 1;
+                    col = parsedCol - 1;
                 }
+
+                if (row >= 0 && row < GRID_SIZE && col >= 0 && col < GRID_SIZE) {
+                    shotGrid[row][col] = 1;
+                    int index = row * GRID_SIZE + col;
+                    View cell = grid.getChildAt(index);
+                    if (cell != null) {
+                        cell.setBackgroundColor(Color.argb(128, 255, 152, 0));
+                    }
+                }
+            } catch (NumberFormatException ignored) {
             }
         }
+    }
+
+    private boolean isBlueAlliance() {
+        String position = match != null ? match.getPosition() : null;
+        return position != null && !position.isEmpty() && position.charAt(0) != 'R';
     }
 
     // Save the shot data to the match object

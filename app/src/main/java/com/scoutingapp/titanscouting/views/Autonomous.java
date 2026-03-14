@@ -1,22 +1,18 @@
 package com.scoutingapp.titanscouting.views;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.*;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.google.android.gms.common.api.ResultCallback;
 import com.scoutingapp.titanscouting.R;
 import com.scoutingapp.titanscouting.database.Match;
 import com.scoutingapp.titanscouting.database.MatchViewModel;
+import android.widget.ImageButton;
+import java.util.ArrayList;
 
 import java.util.Objects;
 
@@ -24,6 +20,9 @@ public class Autonomous extends AppCompatActivity {
 
     Match match;
     MatchViewModel matchViewModel;
+
+    private final ArrayList<String> pathSteps = new ArrayList<>();
+    private TextView pathListText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,88 +32,92 @@ public class Autonomous extends AppCompatActivity {
                         R.layout.activity_autonomous_blue : R.layout.activity_autonomous_red
         );
 
-        Button toPregame = findViewById(R.id.toPregame);
+        Button toPregame = findViewById(R.id.to_pregame);
         Button toTeleop = findViewById(R.id.to_teleop);
-        Button yesDepot = findViewById(R.id.yes_depot);
-        Button noDepot = findViewById(R.id.no_depot);
-        Button yesClimb = findViewById(R.id.yes_climb);
-        Button noClimb = findViewById(R.id.no_climb);
-        Button yesCollectedFuel = findViewById(R.id.yes_collected_fuel);
-        Button noCollectedFuel = findViewById(R.id.no_collected_fuel);
-        Button yesScored = findViewById(R.id.yes_scored);
-        Button noScored = findViewById(R.id.no_scored);
-        Button yesWentToNeutral = findViewById(R.id.yes_went_to_neutral);
-        Button noWentToNeutral = findViewById(R.id.no_went_to_neutral);
+        ImageButton yesDepot = findViewById(R.id.yes_depot);
+        ImageButton noDepot = findViewById(R.id.no_depot);
+        ImageButton yesClimb = findViewById(R.id.yes_climb);
+        ImageButton noClimb = findViewById(R.id.no_climb);
+        ImageButton yesCollectedFuel = findViewById(R.id.yes_collected_fuel);
+        ImageButton noCollectedFuel = findViewById(R.id.no_collected_fuel);
+        ImageButton yesScored = findViewById(R.id.yes_scored);
+        ImageButton noScored = findViewById(R.id.no_scored);
+        ImageButton yesWentToNeutral = findViewById(R.id.yes_went_to_neutral);
+        ImageButton noWentToNeutral = findViewById(R.id.no_went_to_neutral);
+
+        pathListText = findViewById(R.id.path_list_text);
+        refreshPathDisplay();
 
 
         // 0 for not pressed, 1 for no depot, 2 for yes depot
         yesDepot.setOnClickListener(v->{
-            match.setDepot(2);
-            yesDepot.setAlpha(1);
-            noDepot.setAlpha(0.5f);
+            yesDepot.setImageAlpha(255);
+            noDepot.setImageAlpha(130);
+
+            addPathStep("Depot");
         });
         noDepot.setOnClickListener(
                 v->{
-                    match.setDepot(1);
-                    noDepot.setAlpha(1);
-                    yesDepot.setAlpha(0.5f);
+                    noDepot.setImageAlpha(255);
+                    yesDepot.setImageAlpha(130);
+
+                    removeLastPathStep("Depot");
                 }
         );
-        yesClimb.setOnClickListener(
-                v->{
-                    match.setClimb(2);
-                    yesClimb.setAlpha(1);
-                    noClimb.setAlpha(0.5f);
-                }
-        );
+        yesClimb.setOnClickListener(v -> {
+            yesClimb.setImageAlpha(255);
+            noClimb.setImageAlpha(130);
+
+            showClimbPopup();
+        });
         noClimb.setOnClickListener(
                 v->{
-                    match.setClimb(1);
-                    noClimb.setAlpha(1);
-                    yesClimb.setAlpha(0.5f);
+                    noClimb.setImageAlpha(255);
+                    yesClimb.setImageAlpha(130);
+                    removeLastPathStep("Climb");
                 }
         );
         yesCollectedFuel.setOnClickListener(
                 v->{
-                    match.setCollectedFuel(2);
-                    yesCollectedFuel.setAlpha(1);
-                    noCollectedFuel.setAlpha(0.5f);
+                    yesCollectedFuel.setImageAlpha(255);
+                    noCollectedFuel.setImageAlpha(130);
+                    addPathStep("Collected fuel");
                 }
         );
         noCollectedFuel.setOnClickListener(
                 v->{
-                    match.setCollectedFuel(1);
-                    noCollectedFuel.setAlpha(1);
-                    yesCollectedFuel.setAlpha(0.5f);
+                    noCollectedFuel.setImageAlpha(255);
+                    yesCollectedFuel.setImageAlpha(130);
+                    removeLastPathStep("Collected fuel");
                 }
         );
         yesScored.setOnClickListener(
                 v->{
-                    match.setScored(2);
-                    yesScored.setAlpha(1);
-                    noScored.setAlpha(0.5f);
+                    yesScored.setImageAlpha(255);
+                    noScored.setImageAlpha(130);
+                    addPathStep("Scored");
                 }
         );
         noScored.setOnClickListener(
                 v->{
-                    match.setScored(1);
-                    noScored.setAlpha(1);
-                    yesScored.setAlpha(0.5f);
+                    noScored.setImageAlpha(255);
+                    yesScored.setImageAlpha(130);
+                    removeLastPathStep("Scored");
 
                 }
         );
         yesWentToNeutral.setOnClickListener(
                 v->{
-                    match.setWentToNeutral(2);
-                    yesWentToNeutral.setAlpha(1);
-                    noWentToNeutral.setAlpha(0.5f);
+                    yesWentToNeutral.setImageAlpha(255);
+                    noWentToNeutral.setImageAlpha(130);
+                    addPathStep("Went to neutral");
                 }
         );
         noWentToNeutral.setOnClickListener(
                 v->{
-                    match.setWentToNeutral(1);
-                    noWentToNeutral.setAlpha(1);
-                    yesWentToNeutral.setAlpha(0.5f);
+                    noWentToNeutral.setImageAlpha(255);
+                    yesWentToNeutral.setImageAlpha(130);
+                    removeLastPathStep("Went to neutral");
                 }
         );
 
@@ -129,6 +132,7 @@ public class Autonomous extends AppCompatActivity {
                 return;
             }
             this.match = match;
+            loadPathFromCode(match.getAutoPath());
         });
 
         toPregame.setOnClickListener(v -> {
@@ -147,5 +151,130 @@ public class Autonomous extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
+    }
+
+    private void addPathStep(String step) {
+        pathSteps.add(step);
+        savePathCodeToMatch();
+        refreshPathDisplay();
+    }
+    private void removeLastPathStep(String step) {
+        if (pathSteps.isEmpty()) return;
+
+        String lastStep = pathSteps.get(pathSteps.size() - 1);
+
+        if (step.equals("Climb")) {
+            if (lastStep.equals("Climb Left") ||
+                    lastStep.equals("Climb Center") ||
+                    lastStep.equals("Climb Right")) {
+
+                pathSteps.remove(pathSteps.size() - 1);
+            }
+        } else if (lastStep.equals(step)) {
+            pathSteps.remove(pathSteps.size() - 1);
+        }
+
+        savePathCodeToMatch();
+        refreshPathDisplay();
+    }
+
+    private void showClimbPopup() {
+        String[] options = {"Left", "Center", "Right"};
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Select Climb Location");
+
+        builder.setItems(options, (dialog, which) -> {
+            String climbStep = "";
+
+            if (which == 0) {
+                climbStep = "Climb Left";
+            } else if (which == 1) {
+                climbStep = "Climb Center";
+            } else if (which == 2) {
+                climbStep = "Climb Right";
+            }
+
+            addPathStep(climbStep);
+        });
+
+        builder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
+
+        builder.show();
+    }
+
+    private void refreshPathDisplay() {
+        if (pathListText == null) return;
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("Path:\n");
+
+        for (int i = 0; i < pathSteps.size(); i++) {
+            sb.append(i + 1)
+                    .append(". ")
+                    .append(pathSteps.get(i))
+                    .append("\n");
+        }
+
+        pathListText.setText(sb.toString());
+    }
+
+    private String buildAutonPathCode() {
+        StringBuilder sb = new StringBuilder();
+
+        for (String step : pathSteps) {
+            if ("Depot".equals(step)) {
+                sb.append("D");
+            } else if ("Climb Left".equals(step)) {
+                sb.append("L");
+            } else if ("Climb Center".equals(step)) {
+                sb.append("C");
+            } else if ("Climb Right".equals(step)) {
+                sb.append("R");
+            } else if ("Collected fuel".equals(step)) {
+                sb.append("F");
+            } else if ("Scored".equals(step)) {
+                sb.append("S");
+            } else if ("Went to neutral".equals(step)) {
+                sb.append("N");
+            }
+        }
+        return sb.toString();
+    }
+
+    private void loadPathFromCode(String code) {
+        pathSteps.clear();
+
+        if (code == null || code.isEmpty()) {
+            refreshPathDisplay();
+            return;
+        }
+
+        for (int i = 0; i < code.length(); i++) {
+            char c = code.charAt(i);
+
+            if (c == 'D') {
+                pathSteps.add("Depot");
+            } else if (c == 'C') {
+                pathSteps.add("Climb Center");
+            } else if (c == 'L') {
+                pathSteps.add("Climb Left");
+            } else if (c == 'R') {
+                pathSteps.add("Climb Right");
+            } else if (c == 'F') {
+                pathSteps.add("Collected fuel");
+            } else if (c == 'S') {
+                pathSteps.add("Scored");
+            } else if (c == 'N') {
+                pathSteps.add("Went to neutral");
+            }
+        }
+
+        refreshPathDisplay();
+    }
+
+    private void savePathCodeToMatch() {
+        if (match == null) return;
+        match.setAutoPath(buildAutonPathCode());
     }
 }

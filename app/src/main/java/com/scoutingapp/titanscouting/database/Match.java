@@ -21,16 +21,6 @@ public class Match {
     private boolean noShow;
     @ColumnInfo(name="autoPath", defaultValue = "0")
     private String autoPath;
-    @ColumnInfo(name = "depot", defaultValue = "0")
-    private int depot;
-    @ColumnInfo(name = "climb", defaultValue = "0")
-    private int climb;
-    @ColumnInfo(name = "collectedFuel", defaultValue = "0")
-    private int collectedFuel;
-    @ColumnInfo(name = "scored", defaultValue = "0")
-    private int scored;
-    @ColumnInfo(name = "wentToNeutral", defaultValue = "0")
-    private int wentToNeutral;
     @ColumnInfo(name = "shotWhileMoving", defaultValue = "false")
     private boolean shotWhileMoving;
     @ColumnInfo(name = "shotCoordinates", defaultValue = "")
@@ -53,6 +43,8 @@ public class Match {
     private int antiRamRating;
     @ColumnInfo(name = "endgameClimb", defaultValue = "0")
     private int endgameClimb;
+    @ColumnInfo(name = "endgameClimbSide", defaultValue = "")
+    private int endgameClimbSide;
     @ColumnInfo(name = "notes", defaultValue = "0")
     private String notes;
     @ColumnInfo(name = "trench", defaultValue = "false")
@@ -103,16 +95,6 @@ public class Match {
     }
     public String getAutoPath() { return autoPath; }
     public void setAutoPath(String autoPath) { this.autoPath = autoPath; }
-    public void setDepot(int depot) { this.depot = depot; }
-    public int getDepot() { return depot; }
-    public void setClimb(int climb) { this.climb = climb; }
-    public int getClimb() { return climb; }
-    public void setCollectedFuel(int collectedFuel) { this.collectedFuel = collectedFuel; }
-    public int getCollectedFuel() { return collectedFuel; }
-    public void setScored(int scored) { this.scored = scored; }
-    public int getScored() { return scored; }
-    public void setWentToNeutral(int wentToNeutral) { this.wentToNeutral = wentToNeutral; }
-    public int getWentToNeutral() { return wentToNeutral; }
     public boolean getShotWhileMoving() {
         return shotWhileMoving;
     }
@@ -172,6 +154,12 @@ public class Match {
     }
     public int getEndgameClimb() {
         return endgameClimb;
+    }
+    public void setEndgameClimbSide(int endgameClimbSide) {
+        this.endgameClimbSide = endgameClimbSide;
+    }
+    public int getEndgameClimbSide() {
+        return endgameClimbSide;
     }
     public String getNotes() {
         return notes;
