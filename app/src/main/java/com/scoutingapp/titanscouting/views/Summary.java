@@ -1,16 +1,23 @@
 package com.scoutingapp.titanscouting.views;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.InputType;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.scoutingapp.titanscouting.R;
 import com.scoutingapp.titanscouting.database.Match;
 import com.scoutingapp.titanscouting.database.MatchViewModel;
+import com.scoutingapp.titanscouting.views.logs.Logs;
 
 public class Summary extends AppCompatActivity {
 
@@ -54,8 +61,37 @@ public class Summary extends AppCompatActivity {
 
         Button delete = findViewById(R.id.delete);
         delete.setOnClickListener(v -> {
-            matchViewModel.deleteMatch(match.getMatchNum());
-            finish();
+            AlertDialog.Builder builder = new AlertDialog.Builder(Summary.this);
+            builder.setMessage("Are you sure you want to delete?");
+            builder.setTitle("Confirm Deletion");
+
+            EditText passwordInput = new EditText(Summary.this);
+            passwordInput.setHint("Enter match number to confirm");
+            passwordInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            builder.setView(passwordInput);
+
+            builder.setCancelable(false)
+                    .setPositiveButton("Yes", (dialog, which) -> {
+                        String enteredPassword = passwordInput.getText().toString();
+                        String correctPassword = "" + match.getMatchNum(); // .-.
+
+                        if (enteredPassword.equals(correctPassword)) {
+                            matchViewModel.deleteAllMatches();
+                            SharedPreferences sharedPref = getSharedPreferences("ScoutingPrefs", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPref.edit();
+                            editor.putInt("matchNumber", match.getMatchNum());
+                            editor.putString("position", match.getPosition());
+                            editor.apply();
+                            Toast.makeText(Summary.this, "Match deleted!", Toast.LENGTH_SHORT).show();
+                            matchViewModel.deleteMatch(match.getMatchNum());
+                            dialog.dismiss();
+                            finish();
+                        } else {
+                            Toast.makeText(Summary.this, "Incorrect match number!", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .setNegativeButton("No", (dialog, which) -> dialog.cancel())
+                    .show();
         });
     }
 

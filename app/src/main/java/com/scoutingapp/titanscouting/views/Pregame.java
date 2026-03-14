@@ -33,7 +33,7 @@ public class Pregame extends AppCompatActivity {
 
     private boolean isFromAuto;
 
-    private final Autofill finder = new Autofill();
+    private final Autofill filler = new Autofill();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +64,7 @@ public class Pregame extends AppCompatActivity {
             int savedMatch = sharedPref.getInt("matchNumber", 1);
             String savedPosition = sharedPref.getString("position", "");
 
-            if(Objects.equals(finder.getScouterName(savedMatch, savedPosition), finder.getScouterName(savedMatch - 1, savedPosition))) {
+            if(Objects.equals(filler.getScouterName(savedMatch, savedPosition), filler.getScouterName(savedMatch - 1, savedPosition))) {
                 match.setPosition(savedPosition);
             }
             matchNumberInput.setText(String.valueOf(savedMatch));
@@ -142,6 +142,12 @@ public class Pregame extends AppCompatActivity {
                     && match.getTeamNumber() != 0) {
 
                 matchViewModel.addMatchInformation(match);
+                SharedPreferences sharedPref = getSharedPreferences("ScoutingPrefs", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString("scouterName", scouterNameInput.getText().toString());
+                editor.putInt("matchNumber", match.getMatchNum() + 1);
+                editor.putString("position", match.getPosition());
+                editor.apply();
 
                 Intent i = new Intent(this, match.isNoShow() ? Summary.class : Autonomous.class);
                 i.putExtra("matchNumber", match.getMatchNum());
@@ -165,9 +171,9 @@ public class Pregame extends AppCompatActivity {
             return;
         }
         if (match.getPosition() != null && match.getMatchNum() != 0) {
-            match.setTeamNumber(finder.getTeamNumberFromTable(match.getMatchNum(), match.getPosition()));
+            match.setTeamNumber(filler.getTeamNumberFromTable(match.getMatchNum(), match.getPosition()));
             teamNumberInput.setText(String.valueOf(match.getTeamNumber()));
-            match.setScouterName(finder.getScouterName(match.getMatchNum(), match.getPosition()));
+            match.setScouterName(filler.getScouterName(match.getMatchNum(), match.getPosition()));
             scouterNameInput.setText(match.getScouterName());
         }
     }

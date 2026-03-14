@@ -136,22 +136,19 @@ public class Autofill {
                     "1002\t5109\t1414\t8865\t832\t8080\tSat 11:35 AM*";
 
     // copy chart from google sheets. if in quotes, it'll automatically add the \t and stuff
-    private final String scouterSchedule = "1 - 5\tAaryana Mathad\tAnoop Valavoju\tAnirudh Vijay\tDedeepya Vatti\tHarsh Bhogale\tShlok Gohil\n" +
-            "6 - 10\tRoman Krutau\tAdi Ahuja\tKaitlyn Mak\tSaathvik Sundaram\tAshley Zhang\tAgastya Desai\n" +
-            "11 - 15\tGrace Li\tNile Solomon\tLily Stauffer\tMichael Reyes\tRichard Peng\tAswath Manojkumar\n" +
-            "16 - 20\tArthur Lam\tXiaofu Zhou\tSaathvik Sundaram\tJiayu Wang\tShlok Gohil\tConnor Liu\n" +
-            "21 - 25\tDedeepya Vatti\tAswath Manojkumar\tAshley Zhang\tKaitlyn Mak\tRoman Krutau\tJianing He\n" +
-            "26 - 30\tSelina Lin\tJiayu Wang\tNile Solomon\tMichael Reyes\tHarsh Bhogale\tAdi Ahuja\n" +
-            "31 - 35\tAaryana Mathad\tAnoop Valavoju\tAnirudh Vijay\tConnor Liu\tShlok Gohil\tAswath Manojkumar\n" +
-            "36 - 40\tJianing He\tLily Stauffer\tKaitlyn Mak\tSaathvik Sundaram\tAshley Zhang\tAgastya Desai\n" +
-            "41 - 45\tArthur Lam\tJiayu Wang\tDedeepya Vatti\tMichael Reyes\tHarsh Bhogale\tRichard Peng\n" +
-            "46 - 50\tAaryana Mathad\tXiaofu Zhou\tAnirudh Vijay\tLily Stauffer\tShlok Gohil\tConnor Liu\n" +
-            "51 - 55\tNile Solomon\tAdi Ahuja\tKaitlyn Mak\tSaathvik Sundaram\tRoman Krutau\tJianing He\n" +
-            "56 - 60\tSelina Lin\tAswath Manojkumar\tRichard Peng\tMichael Reyes\tHarsh Bhogale\tAnoop Valavoju\n" +
-            "61 - 65\tAaryana Mathad\tRayna Joann Johncaptain\tBhumi Patel\tAayush Prasad\tXiaofu Zhou\tAbdul Gargodhi\n" +
-            "66 - 70\tLily Stauffer\tAdi Ahuja\tKaitlyn Mak\tAnirudh Vijay\tAshley Zhang\tAgastya Desai\n" +
-            "71 - 75\tSaathvik Sundaram\tShivam Kataria\tBhumi Patel\tMichael Reyes\tJiayu Wang\tRayna Joann Johncaptain\n" +
-            "76 - 80\tArthur Lam\tXiaofu Zhou\tAnirudh Vijay\tAayush Prasad\tAaryana Mathad\tAbdul Gargodhi";
+    private final String scouterSchedule = "1 - 5\tRichard Peng\tAn Nguyen\tYajjat Sinha\tRoman Krutau\tAayush Prasad\tLily Stauffer\n" +
+            "6 - 10\tVivian Tran\tWilliam Lu\tVedha Tamilinian\tPatrick Peng\tRoman Krutau\tSaathvik Sundaram\n" +
+            "11 - 15\tEli Pak\tRishi Pai\tSelina Lin\tAayush Prasad\tMichael Reyes\tJiayu Wang\n" +
+            "16 - 20\tAshley Zhang\tAn Nguyen\tYajjat Sinha\tPatrick Peng\tKaitlyn Mak\tLily Stauffer\n" +
+            "21 - 25\tSelina Lin\tWilliam Lu\tEli Pak\tVedha Tamilinian\tAayush Prasad\tSaathvik Sundaram\n" +
+            "26 - 30\tRichard Peng\tAnirudh Vijay\tWilliam Lu\tKaitlyn Mak\tJiayu Wang\tVincent Ng\n" +
+            "31 - 35\tEli Pak\tRishi Pai\tSelina Lin\tLily Stauffer\tMichael Reyes\tRoman Krutau\n" +
+            "36 - 40\tAshley Zhang\tAnirudh Vijay\tYajjat Sinha\tPatrick Peng\tKaitlyn Mak\tVincent Ng\n" +
+            "41 - 44\tRichard Peng\tAn Nguyen\tVedha Tamilinian\tJiayu Wang\tAayush Prasad\tRoman Krutau\n" +
+            "45 - 49\tAbdul Gargodhi\tAnirudh Vijay\tYajjat Sinha\tTushar Gudeti\tGrace Li\tRayna Johncaptain\n" +
+            "50 - 54\tEli Pak\tRishi Pai\tAswath Manojkumar\tVincent Ng\tMichael Reyes\tEvan Saran\n" +
+            "55 - 59\tAshley Zhang\tKaitlyn Mak\tRayna Johncaptain\tPatrick Peng\tTushar Gudeti\tGrace Li\n" +
+            "60 - 64\tRichard Peng\tEvan Saran\tAswath Manojkumar\tLily Stauffer\tAbdul Gargodhi\tWilliam Lu";
     private final int[] red1 = new int[numMatches];
     private final int[] red2 = new int[numMatches];
     private final int[] red3 = new int[numMatches];
@@ -176,10 +173,8 @@ public class Autofill {
         for (int i = 0; i < lines.length; i++) {
             // look for match lines like "Quals 1", "Quals 2", etc.
             if (lines[i].contains("Quals")) {
-                // The next line contains the team numbers for that match
-                String[] columns = lines[i + 1].split("\t");  // Split by tab
+                String[] columns = lines[i + 1].split("\t");
 
-                // assign the team numbers to the corresponding arrays
                 red1[matchIndex] = Integer.parseInt(columns[0]);
                 red2[matchIndex] = Integer.parseInt(columns[1]);
                 red3[matchIndex] = Integer.parseInt(columns[2]);
@@ -251,8 +246,8 @@ public class Autofill {
 
     public String getScouterName(int matchNumber, String position) {
         if (matchNumber < 0 || matchNumber > numMatches) {
-            System.out.println("erro0");
-            return "Error0";
+            System.out.println("error getting scouter name");
+            return "Error";
         }
 
         if (position != null) {

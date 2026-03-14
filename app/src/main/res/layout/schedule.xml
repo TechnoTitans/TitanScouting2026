@@ -9,7 +9,7 @@
         android:contentDescription="@null"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/Gwinnett_2026"
+        app:srcCompat="@drawable/gwinnett_2026"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
