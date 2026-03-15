@@ -16,28 +16,28 @@ Type in the match number, and choose the position you are scouting on using the 
 
 ## Autonomous Period Page
 This is the page where the autonomous path is recorded. When the game starts, the robots follow a pre-programmed path, moving to the neutral zone, collecting fuel, and/or scoring fuel.
-1. You will see the field and the field elements. You will see a series of questions relating to the robot's actions during autonomous. 
-2. These are true or false questions. If the check mark is pressed, the action will appear in the righ-hand side under the column titled "Path:" To remove an action, click the X mark.
-3. If the robot does not complete any of the actions, it is not necessary to mark the X. If the action was not performed, do not select anything.
-4. The autonomous page should be used only during the autonomous period (first 15 seconds of the game). 
+1. The autonomous page should be used only during the autonomous period (first 15 seconds of the game). 
+2. You will see the field and the field elements. You will see a series of questions relating to the robot's actions during autonomous. 
+3. These are true or false questions. If the check mark is pressed, the action will appear in the righ-hand side under the column titled "Path:" To remove an action, click the X mark.
+4. If the robot does not complete any of the actions, it is not necessary to mark the X. If the action was not performed, do not select anything. If the robot does not move or score during auto, leave this page blank. 
 5. After the autonomous period is over and all entries that apply have been completed, go to the Teleop page by clicking the button labeled **Next** at the top right.
 
 ## Teleoperated Period Page
 This page has two sections. 
 1. One true or false question asking if the robot shot while moving in the teleoperated period.
-2. You are presented with a grid of the playing field of one alliance. Mark every location where the robot shot balls (with the intention of either scoring or ferrying). It's ok of the shots did not go in.
+2. You are presented with a grid of the playing field of one alliance. Mark every location where the robot shot balls (with the intention of either scoring or ferrying). It's ok of the shots did not go in. If you are unsure of exactly where the robot shot from, approximate the location. 
 3. If the robot did not shoot for the entirety of the teleoperated period, leave this page blank.
 4. 5. After the teleop period is over and all entries that apply have been completed, go to the endgame page by clicking the button labeled **Next** at the top right.
 
 ## Endgame Page
 1. On the left-hand side, you will see 5 stars with 4 different sections recording the quality of the defense the bot played. If the bot did not play defense, leave this section blank. 
-2. Below that, you will find the climb ratings. One, two, and three starts indicate a climb to the first, second, and third levels respectively. In the second row, one, two, and three stars represent climb to the left, center, and right respectively. If the robot did not climb, leave this section blank.
+2. Below that, you will find the climb ratings. One, two, and three stars indicate a climb to the first, second, and third levels respectively. In the second row, one, two, and three stars represent climb on the left, center, and right respectively. If the robot did not climb, leave this section blank.
 3. In the center, there will be four true or false questions. Answer them appropriately.
 4. On the right-hand side, you will see 5 stars with 4 different sections recording the quality of the bot's defense-countering abilities. If the bot did not encouter defense, leave this section blank. 
 5. Comments: Type anything important the app did not let you log here (notable details about the robot/team/strategy). Try your best to keep comments very concise (there is a cap of 50 characters).
 
 ## Summary Page
-This page allows you to confirm any information entered. After reviewing and correcting information, you can click, "Submit."
+This page allows you to confirm and review any information entered, with the option to return to previous pages if necessary. After reviewing and correcting information, you can click, **Submit**.
 This brings you to the QR screen.
 
 ## QR Page
