@@ -13,134 +13,136 @@ public class Autofill {
     private final int numMatches = 126;
 
     // copy entire table from TBA for qualification matches
-    private final String matchSchedule =
-            "\tMatch\tRed Alliance\tBlue Alliance\tScores\n" +
-                    "Qualifications\n" +
-                    "Quals 1\n" +
-                    "6340\t2974\t6705\t8736\t8080\t6023\tFri 11:00 AM*\n" +
-                    "Quals 2\n" +
-                    "3635\t4189\t5074\t6829\t8865\t1771\tFri 11:09 AM*\n" +
-                    "Quals 3\n" +
-                    "4112\t4188\t9480\t5109\t3344\t5608\tFri 11:18 AM*\n" +
-                    "Quals 4\n" +
-                    "1833\t8100\t1648\t4026\t7451\t5900\tFri 11:27 AM*\n" +
-                    "Quals 5\n" +
-                    "6905\t1683\t7538\t4509\t9522\t1002\tFri 11:36 AM*\n" +
-                    "Quals 6\n" +
-                    "2415\t832\t1261\t8866\t8577\t3318\tFri 11:45 AM*\n" +
-                    "Quals 7\n" +
-                    "3815\t8080\t1414\t5293\t5608\t4189\tFri 11:55 AM*\n" +
-                    "Quals 8\n" +
-                    "3344\t5074\t1771\t5109\t6340\t4026\tFri 12:04 PM*\n" +
-                    "Quals 9\n" +
-                    "4112\t6023\t6905\t7538\t7451\t8736\tFri 12:13 PM*\n" +
-                    "Quals 10\n" +
-                    "3318\t1002\t832\t4188\t6829\t5900\tFri 12:22 PM*\n" +
-                    "Quals 11\n" +
-                    "1648\t2974\t2415\t1833\t1683\t5293\tFri 12:31 PM*\n" +
-                    "Quals 12\n" +
-                    "9480\t4509\t8866\t8577\t1414\t3635\tFri 2:00 PM*\n" +
-                    "Quals 13\n" +
-                    "8100\t9522\t8865\t6705\t1261\t3815\tFri 2:09 PM*\n" +
-                    "Quals 14\n" +
-                    "7451\t6023\t832\t5074\t1002\t5900\tFri 2:18 PM*\n" +
-                    "Quals 15\n" +
-                    "1771\t1683\t4112\t8080\t5293\t4026\tFri 2:27 PM*\n" +
-                    "Quals 16\n" +
-                    "4509\t6340\t1833\t1648\t8866\t5608\tFri 2:36 PM*\n" +
-                    "Quals 17\n" +
-                    "9522\t6705\t4188\t1414\t2415\t7538\tFri 2:45 PM*\n" +
-                    "Quals 18\n" +
-                    "8736\t8865\t4189\t6905\t3318\t9480\tFri 2:55 PM*\n" +
-                    "Quals 19\n" +
-                    "3635\t6829\t3344\t2974\t3815\t8100\tFri 3:04 PM*\n" +
-                    "Quals 20\n" +
-                    "5900\t5109\t8577\t1261\t8080\t1683\tFri 3:13 PM*\n" +
-                    "Quals 21\n" +
-                    "5293\t6340\t7451\t832\t4188\t4509\tFri 3:22 PM*\n" +
-                    "Quals 22\n" +
-                    "1002\t6905\t8865\t1771\t2415\t4026\tFri 3:31 PM*\n" +
-                    "Quals 23\n" +
-                    "1414\t8100\t8866\t6023\t9480\t2974\tFri 3:40 PM*\n" +
-                    "Quals 24\n" +
-                    "9522\t7538\t3635\t5074\t1648\t8736\tFri 3:50 PM*\n" +
-                    "Quals 25\n" +
-                    "6829\t3815\t1833\t1261\t4112\t5109\tFri 3:59 PM*\n" +
-                    "Quals 26\n" +
-                    "5608\t6705\t8577\t4189\t3318\t3344\tFri 4:08 PM*\n" +
-                    "Quals 27\n" +
-                    "7451\t1002\t1683\t8080\t9480\t6340\tFri 4:17 PM*\n" +
-                    "Quals 28\n" +
-                    "832\t4026\t9522\t6023\t4509\t3635\tFri 4:26 PM*\n" +
-                    "Quals 29\n" +
-                    "5293\t8866\t7538\t6829\t8100\t5109\tFri 4:35 PM*\n" +
-                    "Quals 30\n" +
-                    "5608\t8736\t2415\t5900\t1771\t3815\tFri 4:45 PM*\n" +
-                    "Quals 31\n" +
-                    "8577\t3344\t4188\t8865\t1833\t5074\tFri 4:54 PM*\n" +
-                    "Quals 32\n" +
-                    "1261\t1648\t3318\t4189\t4112\t1414\tFri 5:03 PM*\n" +
-                    "Quals 33\n" +
-                    "832\t5109\t2974\t6905\t7451\t6705\tFri 5:12 PM*\n" +
-                    "Quals 34\n" +
-                    "9480\t4026\t6829\t9522\t5293\t2415\tFri 5:21 PM*\n" +
-                    "Quals 35\n" +
-                    "7538\t1771\t8080\t8866\t3344\t1833\tFri 5:30 PM*\n" +
-                    "Quals 36\n" +
-                    "1683\t1414\t5608\t3318\t8736\t8100\tFri 5:40 PM*\n" +
-                    "Quals 37\n" +
-                    "3815\t8577\t6905\t6023\t1648\t4188\tFri 5:49 PM*\n" +
-                    "Quals 38\n" +
-                    "5900\t1261\t6340\t8865\t3635\t4112\tFri 5:58 PM*\n" +
-                    "Quals 39\n" +
-                    "5074\t2974\t4509\t4189\t6705\t1002\tFri 6:07 PM*\n" +
-                    "Quals 40\n" +
-                    "5608\t1833\t3318\t7451\t9480\t9522\tFri 6:16 PM*\n" +
-                    "Quals 41\n" +
-                    "1683\t3815\t6023\t1648\t832\t1771\tFri 6:25 PM*\n" +
-                    "Quals 42\n" +
-                    "1414\t1261\t6829\t3344\t6905\t6340\tSat 9:00 AM*\n" +
-                    "Quals 43\n" +
-                    "5109\t3635\t8736\t2415\t1002\t8577\tSat 9:09 AM*\n" +
-                    "Quals 44\n" +
-                    "8080\t4509\t4189\t4188\t5074\t8100\tSat 9:18 AM*\n" +
-                    "Quals 45\n" +
-                    "4112\t5900\t5293\t6705\t8865\t8866\tSat 9:27 AM*\n" +
-                    "Quals 46\n" +
-                    "2974\t4026\t1261\t7538\t5608\t832\tSat 9:36 AM*\n" +
-                    "Quals 47\n" +
-                    "1771\t8577\t7451\t6340\t9522\t6829\tSat 9:45 AM*\n" +
-                    "Quals 48\n" +
-                    "8100\t4189\t6023\t8080\t2415\t5109\tSat 9:55 AM*\n" +
-                    "Quals 49\n" +
-                    "4188\t1833\t6905\t1683\t3635\t6705\tSat 10:04 AM*\n" +
-                    "Quals 50\n" +
-                    "3344\t5293\t1648\t8866\t8736\t1002\tSat 10:13 AM*\n" +
-                    "Quals 51\n" +
-                    "9480\t5900\t8865\t4509\t7538\t3815\tSat 10:22 AM*\n" +
-                    "Quals 52\n" +
-                    "4026\t4112\t5074\t3318\t1414\t2974\tSat 10:31 AM*\n" +
-                    "Quals 53\n" +
-                    "8100\t5608\t8080\t3635\t6905\t832\tSat 10:40 AM*\n" +
-                    "Quals 54\n" +
-                    "1002\t4188\t5293\t1833\t6023\t1261\tSat 10:50 AM*\n" +
-                    "Quals 55\n" +
-                    "8736\t1771\t9480\t6705\t6829\t1648\tSat 10:59 AM*\n" +
-                    "Quals 56\n" +
-                    "8577\t4189\t9522\t2974\t5900\t3344\tSat 11:08 AM*\n" +
-                    "Quals 57\n" +
-                    "2415\t3318\t4509\t6340\t7538\t4112\tSat 11:17 AM*\n" +
-                    "Quals 58\n" +
-                    "4026\t8866\t1683\t3815\t5074\t7451\tSat 11:26 AM*\n" +
-                    "Quals 59\n" +
-                    "1002\t5109\t1414\t8865\t832\t8080\tSat 11:35 AM*";
+    private final String matchSchedule = "\n" +
+            "Match\tRed Alliance\tBlue Alliance\tScores\n" +
+            "Qualifications\n" +
+            "Quals 1\n" +
+            "8100\t1833\t8815\t6340\t5074\t1261\tSat 11:00 AM*\n" +
+            "Quals 2\n" +
+            "6705\t4189\t10482\t2415\t6910\t7538\tSat 11:10 AM*\n" +
+            "Quals 3\n" +
+            "9522\t3318\t1648\t1795\t4701\t9561\tSat 11:20 AM*\n" +
+            "Quals 4\n" +
+            "9057\t5293\t5109\t8865\t1771\t4509\tSat 11:30 AM*\n" +
+            "Quals 5\n" +
+            "3091\t1683\t5651\t11174\t4468\t8577\tSat 11:40 AM*\n" +
+            "Quals 6\n" +
+            "1648\t9561\t6705\t1833\t1795\t4189\tSat 11:50 AM*\n" +
+            "Quals 7\n" +
+            "6910\t4701\t8815\t3318\t2415\t4509\tSat 12:00 PM*\n" +
+            "Quals 8\n" +
+            "10482\t4468\t8100\t6340\t5293\t8577\tSat 12:08 PM*\n" +
+            "Quals 9\n" +
+            "5109\t7538\t1683\t5651\t8865\t5074\tSat 12:16 PM*\n" +
+            "Quals 10\n" +
+            "1261\t9057\t3091\t9522\t1771\t11174\tSat 12:24 PM*\n" +
+            "Quals 11\n" +
+            "4189\t1648\t2415\t4468\t4509\t1795\tSat 12:32 PM*\n" +
+            "Quals 12\n" +
+            "5293\t5651\t3318\t9561\t1683\t1833\tSat 12:40 PM*\n" +
+            "Quals 13\n" +
+            "9057\t8577\t8865\t3091\t8100\t6910\tSat 2:00 PM*\n" +
+            "Quals 14\n" +
+            "1771\t8815\t7538\t1261\t9522\t4701\tSat 2:08 PM*\n" +
+            "Quals 15\n" +
+            "6705\t11174\t6340\t10482\t5074\t5109\tSat 2:16 PM*\n" +
+            "Quals 16\n" +
+            "4189\t8100\t9561\t3318\t8865\t4468\tSat 2:24 PM*\n" +
+            "Quals 17\n" +
+            "1795\t2415\t1261\t6910\t4509\t1683\tSat 2:32 PM*\n" +
+            "Quals 18\n" +
+            "1648\t5074\t4701\t5293\t8815\t11174\tSat 2:40 PM*\n" +
+            "Quals 19\n" +
+            "10482\t8577\t7538\t9057\t1833\t1771\tSat 2:48 PM*\n" +
+            "Quals 20\n" +
+            "6705\t5109\t5651\t3091\t9522\t6340\tSat 2:56 PM*\n" +
+            "Quals 21\n" +
+            "8865\t6910\t1261\t4701\t4189\t5293\tSat 3:04 PM*\n" +
+            "Quals 22\n" +
+            "4468\t9057\t1683\t7538\t3318\t9561\tSat 3:12 PM*\n" +
+            "Quals 23\n" +
+            "9522\t1833\t5074\t1648\t3091\t10482\tSat 3:20 PM*\n" +
+            "Quals 24\n" +
+            "11174\t2415\t8100\t8815\t5109\t1795\tSat 3:28 PM*\n" +
+            "Quals 25\n" +
+            "4509\t6340\t6705\t8577\t5651\t1771\tSat 3:36 PM*\n" +
+            "Quals 26\n" +
+            "5293\t8865\t7538\t3318\t1833\t3091\tSat 3:44 PM*\n" +
+            "Quals 27\n" +
+            "5074\t4189\t6910\t5109\t1648\t8100\tSat 3:52 PM*\n" +
+            "Quals 28\n" +
+            "1683\t6705\t11174\t4701\t9057\t10482\tSat 4:00 PM*\n" +
+            "Quals 29\n" +
+            "8577\t9522\t1795\t2415\t9561\t8815\tSat 4:08 PM*\n" +
+            "Quals 30\n" +
+            "4509\t1261\t1771\t4468\t5651\t6340\tSat 4:16 PM*\n" +
+            "Quals 31\n" +
+            "11174\t3091\t5109\t6910\t10482\t3318\tSat 4:24 PM*\n" +
+            "Quals 32\n" +
+            "8865\t1683\t4189\t6705\t5293\t9522\tSat 4:32 PM*\n" +
+            "Quals 33\n" +
+            "6340\t1795\t9057\t8815\t1261\t5651\tSat 4:40 PM*\n" +
+            "Quals 34\n" +
+            "8100\t5074\t4509\t1771\t9561\t2415\tSat 4:48 PM*\n" +
+            "Quals 35\n" +
+            "7538\t4468\t4701\t1833\t1648\t8577\tSat 4:56 PM*\n" +
+            "Quals 36\n" +
+            "8815\t10482\t6340\t3091\t1795\t8865\tSat 5:04 PM*\n" +
+            "Quals 37\n" +
+            "4509\t1261\t9561\t5651\t6910\t6705\tSat 5:12 PM*\n" +
+            "Quals 38\n" +
+            "1683\t1771\t3318\t5109\t8577\t1648\tSat 5:20 PM*\n" +
+            "Quals 39\n" +
+            "5074\t7538\t9057\t5293\t2415\t4468\tSat 5:28 PM*\n" +
+            "Quals 40\n" +
+            "11174\t4701\t1833\t9522\t4189\t8100\tSat 5:36 PM*\n" +
+            "Quals 41\n" +
+            "1261\t8577\t6705\t3318\t8865\t5109\tSat 5:44 PM*\n" +
+            "Quals 42\n" +
+            "1795\t3091\t6910\t1683\t8815\t5074\tSat 5:52 PM*\n" +
+            "Quals 43\n" +
+            "1771\t4468\t4189\t2415\t4701\t5651\tSun 9:30 AM*\n" +
+            "Quals 44\n" +
+            "1833\t4509\t5293\t9057\t8100\t9522\tSun 9:40 AM*\n" +
+            "Quals 45\n" +
+            "9561\t11174\t10482\t7538\t6340\t1648\tSun 9:50 AM*\n" +
+            "Quals 46\n" +
+            "4189\t8815\t3091\t5074\t6705\t1771\tSun 9:58 AM*\n" +
+            "Quals 47\n" +
+            "4701\t9522\t4468\t5109\t9057\t4509\tSun 10:06 AM*\n" +
+            "Quals 48\n" +
+            "9561\t6340\t8865\t2415\t1683\t8577\tSun 10:14 AM*\n" +
+            "Quals 49\n" +
+            "8100\t1795\t3318\t1261\t10482\t5293\tSun 10:22 AM*\n" +
+            "Quals 50\n" +
+            "5651\t7538\t1833\t6910\t11174\t1648\tSun 10:30 AM*\n" +
+            "Quals 51\n" +
+            "4701\t3091\t2415\t1683\t6340\t4189\tSun 10:38 AM*\n" +
+            "Quals 52\n" +
+            "8577\t3318\t5074\t4509\t10482\t9522\tSun 10:46 AM*\n" +
+            "Quals 53\n" +
+            "4468\t5109\t1833\t9561\t6705\t9057\tSun 10:54 AM*\n" +
+            "Quals 54\n" +
+            "8865\t1648\t8815\t8100\t7538\t1261\tSun 11:02 AM*\n" +
+            "Quals 55\n" +
+            "1771\t5293\t6910\t1795\t5651\t11174\tSun 11:10 AM*\n" +
+            "Quals 56\n" +
+            "6340\t5109\t2415\t8577\t4509\t3091\tSun 11:18 AM*\n" +
+            "Quals 57\n" +
+            "1648\t1261\t1683\t4189\t3318\t9057\tSun 11:26 AM*\n" +
+            "Quals 58\n" +
+            "5651\t8100\t9522\t8815\t6705\t4468\tSun 11:34 AM*\n" +
+            "Quals 59\n" +
+            "10482\t1771\t1795\t1833\t6910\t8865\tSun 11:42 AM*\n" +
+            "Quals 60\n" +
+            "5074\t9561\t5293\t7538\t11174\t4701\tSun 11:50 AM*";
 
     // copy chart from google sheets. if in quotes, it'll automatically add the \t and stuff
-    private final String scouterSchedule = "1 - 5\tRichard Peng\tAn Nguyen\tYajjat Sinha\tRoman Krutau\tAayush Prasad\tLily Stauffer\n" +
+    private final String scouterSchedule = "1 - 5\tRichard Peng\tAn Nguyen\tSelina Lin\tRoman Krutau\tAayush Prasad\tLily Stauffer\n" +
             "6 - 10\tVivian Tran\tWilliam Lu\tVedha Tamilinian\tPatrick Peng\tRoman Krutau\tSaathvik Sundaram\n" +
-            "11 - 15\tEli Pak\tRishi Pai\tSelina Lin\tAayush Prasad\tMichael Reyes\tJiayu Wang\n" +
-            "16 - 20\tAshley Zhang\tAn Nguyen\tYajjat Sinha\tPatrick Peng\tKaitlyn Mak\tLily Stauffer\n" +
-            "21 - 25\tSelina Lin\tWilliam Lu\tEli Pak\tVedha Tamilinian\tAayush Prasad\tSaathvik Sundaram\n" +
+            "11 - 15\tEli Pak\tRishi Pai\tYajjat Sinha\tAayush Prasad\tMichael Reyes\tJiayu Wang\n" +
+            "16 - 20\tAshley Zhang\tAn Nguyen\tEli Pak\tPatrick Peng\tKaitlyn Mak\tLily Stauffer\n" +
+            "21 - 25\tSelina Lin\tWilliam Lu\tYajjat Sinha\tVedha Tamilinian\tAayush Prasad\tSaathvik Sundaram\n" +
             "26 - 30\tRichard Peng\tAnirudh Vijay\tWilliam Lu\tKaitlyn Mak\tJiayu Wang\tVincent Ng\n" +
             "31 - 35\tEli Pak\tRishi Pai\tSelina Lin\tLily Stauffer\tMichael Reyes\tRoman Krutau\n" +
             "36 - 40\tAshley Zhang\tAnirudh Vijay\tYajjat Sinha\tPatrick Peng\tKaitlyn Mak\tVincent Ng\n" +
