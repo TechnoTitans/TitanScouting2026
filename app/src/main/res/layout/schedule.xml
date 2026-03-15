@@ -13,7 +13,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/real_gwinnett_2026" />
+        app:srcCompat="@drawable/Gwinnett3" />
 
     <Button
         android:id="@+id/backButton"
