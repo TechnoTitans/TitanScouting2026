@@ -23,8 +23,7 @@ public class Match {
     private String autoPath;
     @ColumnInfo(name = "shotWhileMoving", defaultValue = "false")
     private boolean shotWhileMoving;
-    @ColumnInfo(name = "shotCoordinates", defaultValue = "")
-    private String shotCoordinates;
+
     @ColumnInfo(name = "pinRating", defaultValue = "0")
     private int pinRating;
     @ColumnInfo(name = "stealRating", defaultValue = "0")
@@ -55,8 +54,26 @@ public class Match {
     private boolean penalties;
     @ColumnInfo(name = "brokeDown", defaultValue = "false")
     private boolean brokeDown;
+    @ColumnInfo(name = "cycleCount", defaultValue = "0")
+    private int cycleCount;
+    @ColumnInfo(name = "tier", defaultValue = "0")
+    private int tier;
 
+    public int getCycleCount() {
+        return cycleCount;
+    }
 
+    public void setCycleCount(int cycleCount) {
+        this.cycleCount = cycleCount;
+    }
+
+    public int getTier() {
+        return tier;
+    }
+
+    public void setTier(int tier) {
+        this.tier = tier;
+    }
 
     public int getMatchNum() {
         return matchNum;
@@ -180,13 +197,9 @@ public class Match {
         return this.bump;
     }
 
-    public void setShotCoordinates(String shotCoordinates) {
-        this.shotCoordinates = shotCoordinates;
-    }
 
-    public String getShotCoordinates() {
-        return shotCoordinates;
-    }
+
+
 
     public void setPenalties(boolean penalties) {
         this.penalties = penalties;
