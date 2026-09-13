@@ -53,6 +53,12 @@ public class QRScreen extends AppCompatActivity {
             else if(match.getEndgameClimbSide() == 2) {
                 endgameClimb = "R";
             }
+            String shotCoordinates = "";
+            try {
+                shotCoordinates = match.getShotCoordinates().isEmpty() ? "null" : match.getShotCoordinates();
+            } catch(Exception e) {
+                shotCoordinates = "null";
+            }
             qrString = String.join("\n",
                     "GACMP\n",
                     String.valueOf(match.getTeamNumber()),
