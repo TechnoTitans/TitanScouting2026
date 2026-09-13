@@ -67,7 +67,6 @@ public class QRScreen extends AppCompatActivity {
                     String.valueOf(match.getPosition()),
                     String.valueOf(match.getAutoPath()),
                     String.valueOf(match.getShotWhileMoving()),
-                    String.valueOf(shotCoordinates),
                     String.valueOf(match.getPinRating()),
                     String.valueOf(match.getStealRating()),
                     String.valueOf(match.getBlockRating()),
@@ -81,6 +80,8 @@ public class QRScreen extends AppCompatActivity {
                     String.valueOf(match.getBump()),
                     String.valueOf(match.getPenalties()),
                     String.valueOf(match.getBrokeDown()),
+                    String.valueOf(match.getCycleCount()),
+                    String.valueOf(match.getTier()),
                     match.getNotes()
             );
             Log.d("match_num", String.valueOf(match.getMatchNum()));
