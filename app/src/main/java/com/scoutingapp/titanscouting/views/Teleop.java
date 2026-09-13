@@ -40,7 +40,7 @@ public class Teleop extends AppCompatActivity {
                     if (match.getPosition().charAt(0) == 'R') {
                         setContentView(R.layout.activity_teleop_red);
                     } else {
-                        setContentView(R.layout.activity_teleop_blue);
+                        setContentView(R.layout.activity_teleop_red);
                     }
                     createGrid();
                     loadShotData(match.getShotCoordinates());
