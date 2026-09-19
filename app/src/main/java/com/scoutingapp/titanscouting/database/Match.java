@@ -21,9 +21,6 @@ public class Match {
     private boolean noShow;
     @ColumnInfo(name="autoPath", defaultValue = "0")
     private String autoPath;
-    @ColumnInfo(name = "shotWhileMoving", defaultValue = "false")
-    private boolean shotWhileMoving;
-
     @ColumnInfo(name = "pinRating", defaultValue = "0")
     private int pinRating;
     @ColumnInfo(name = "stealRating", defaultValue = "0")
@@ -32,14 +29,8 @@ public class Match {
     private int blockRating;
     @ColumnInfo(name = "ramRating", defaultValue = "0")
     private int ramRating;
-    @ColumnInfo(name = "antiPinRating", defaultValue = "0")
-    private int antiPinRating;
-    @ColumnInfo(name = "antiStealRating", defaultValue = "0")
-    private int antiStealRating;
-    @ColumnInfo(name = "antiBlockRating", defaultValue = "0")
-    private int antiBlockRating;
-    @ColumnInfo(name = "antiRamRating", defaultValue = "0")
-    private int antiRamRating;
+    @ColumnInfo(name = "defenseRating", defaultValue = "0")
+    private int defenseRating;
     @ColumnInfo(name = "endgameClimb", defaultValue = "0")
     private int endgameClimb;
     @ColumnInfo(name = "endgameClimbSide", defaultValue = "")
@@ -112,12 +103,6 @@ public class Match {
     }
     public String getAutoPath() { return autoPath; }
     public void setAutoPath(String autoPath) { this.autoPath = autoPath; }
-    public boolean getShotWhileMoving() {
-        return shotWhileMoving;
-    }
-    public void setShotWhileMoving(boolean shotWhileMoving) {
-        this.shotWhileMoving = shotWhileMoving;
-    }
     public void setPinRating(int pinRating) {
         this.pinRating = pinRating;
     }
@@ -142,29 +127,11 @@ public class Match {
     public int getRamRating() {
         return ramRating;
     }
-    public void setAntiPinRating(int antiPinRating) {
-        this.antiPinRating = antiPinRating;
+    public void setDefenseRating(int defenseRating) {
+        this.defenseRating = defenseRating;
     }
-    public int getAntiPinRating() {
-        return antiPinRating;
-    }
-    public void setAntiStealRating(int antiStealRating) {
-        this.antiStealRating = antiStealRating;
-    }
-    public int getAntiStealRating() {
-        return antiStealRating;
-    }
-    public void setAntiBlockRating(int antiBlockRating) {
-        this.antiBlockRating = antiBlockRating;
-    }
-    public int getAntiBlockRating() {
-        return antiBlockRating;
-    }
-    public void setAntiRamRating(int antiRamRating) {
-        this.antiRamRating = antiRamRating;
-    }
-    public int getAntiRamRating() {
-        return antiRamRating;
+    public int getDefenseRating() {
+        return defenseRating;
     }
     public void setEndgameClimb(int endgameClimb) {
         this.endgameClimb = endgameClimb;
@@ -196,11 +163,6 @@ public class Match {
     public boolean getBump() {
         return this.bump;
     }
-
-
-
-
-
     public void setPenalties(boolean penalties) {
         this.penalties = penalties;
     }

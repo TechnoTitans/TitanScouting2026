@@ -8,7 +8,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/new_teleop"
     tools:context=".views.Teleop"
-
     >
 
     <!-- CYCLE COUNTER BUTTONS -->

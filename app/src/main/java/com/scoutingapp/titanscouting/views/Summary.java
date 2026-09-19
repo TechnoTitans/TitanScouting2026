@@ -105,7 +105,6 @@ public class Summary extends AppCompatActivity {
 
 
         // Teleop
-        setText(R.id.shotWhileMovingSummary, match.getShotWhileMoving() ? "Yes" : "No");
 
         // Endgame
         setText(R.id.penaltiesSummary,    match.getPenalties() ? "Yes" : "No");
@@ -119,10 +118,6 @@ public class Summary extends AppCompatActivity {
         setText(R.id.stealRatingSummary,     match.getStealRating() + "/5");
         setText(R.id.blockRatingSummary,     match.getBlockRating() + "/5");
         setText(R.id.ramRatingSummary,       match.getRamRating() + "/5");
-        setText(R.id.antiPinRatingSummary,   match.getAntiPinRating() + "/5");
-        setText(R.id.antiStealRatingSummary, match.getAntiStealRating() + "/5");
-        setText(R.id.antiBlockRatingSummary, match.getAntiBlockRating() + "/5");
-        setText(R.id.antiRamRatingSummary,   match.getAntiRamRating() + "/5");
 
         // Notes
         String notes = match.getNotes();
