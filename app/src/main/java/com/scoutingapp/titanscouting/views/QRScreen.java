@@ -56,6 +56,7 @@ public class QRScreen extends AppCompatActivity {
             qrString = String.join("\n",
                     String.valueOf(match.getTeamNumber()),
                     String.valueOf(match.getMatchNum()),
+                    String.valueOf(match.isNoShow()),
                     match.getScouterName(),
                     String.valueOf(match.getPosition()),
                     String.valueOf(match.getAutoPath()),
