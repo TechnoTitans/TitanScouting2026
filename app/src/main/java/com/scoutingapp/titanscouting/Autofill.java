@@ -13,145 +13,81 @@ public class Autofill {
     private final int numMatches = 126;
 
     // copy entire table from TBA for qualification matches
-    private final String matchSchedule =
-            "\tMatch\tRed Alliance\tBlue Alliance\tScores\n" +
-                    "Qualifications\n" +
-                    "Quals 1\n" +
-                    "6340\t2974\t6705\t8736\t8080\t6023\tFri 11:00 AM*\n" +
-                    "Quals 2\n" +
-                    "3635\t4189\t5074\t6829\t8865\t1771\tFri 11:09 AM*\n" +
-                    "Quals 3\n" +
-                    "4112\t4188\t9480\t5109\t3344\t5608\tFri 11:18 AM*\n" +
-                    "Quals 4\n" +
-                    "1833\t8100\t1648\t4026\t7451\t5900\tFri 11:27 AM*\n" +
-                    "Quals 5\n" +
-                    "6905\t1683\t7538\t4509\t9522\t1002\tFri 11:36 AM*\n" +
-                    "Quals 6\n" +
-                    "2415\t832\t1261\t8866\t8577\t3318\tFri 11:45 AM*\n" +
-                    "Quals 7\n" +
-                    "3815\t8080\t1414\t5293\t5608\t4189\tFri 11:55 AM*\n" +
-                    "Quals 8\n" +
-                    "3344\t5074\t1771\t5109\t6340\t4026\tFri 12:04 PM*\n" +
-                    "Quals 9\n" +
-                    "4112\t6023\t6905\t7538\t7451\t8736\tFri 12:13 PM*\n" +
-                    "Quals 10\n" +
-                    "3318\t1002\t832\t4188\t6829\t5900\tFri 12:22 PM*\n" +
-                    "Quals 11\n" +
-                    "1648\t2974\t2415\t1833\t1683\t5293\tFri 12:31 PM*\n" +
-                    "Quals 12\n" +
-                    "9480\t4509\t8866\t8577\t1414\t3635\tFri 2:00 PM*\n" +
-                    "Quals 13\n" +
-                    "8100\t9522\t8865\t6705\t1261\t3815\tFri 2:09 PM*\n" +
-                    "Quals 14\n" +
-                    "7451\t6023\t832\t5074\t1002\t5900\tFri 2:18 PM*\n" +
-                    "Quals 15\n" +
-                    "1771\t1683\t4112\t8080\t5293\t4026\tFri 2:27 PM*\n" +
-                    "Quals 16\n" +
-                    "4509\t6340\t1833\t1648\t8866\t5608\tFri 2:36 PM*\n" +
-                    "Quals 17\n" +
-                    "9522\t6705\t4188\t1414\t2415\t7538\tFri 2:45 PM*\n" +
-                    "Quals 18\n" +
-                    "8736\t8865\t4189\t6905\t3318\t9480\tFri 2:55 PM*\n" +
-                    "Quals 19\n" +
-                    "3635\t6829\t3344\t2974\t3815\t8100\tFri 3:04 PM*\n" +
-                    "Quals 20\n" +
-                    "5900\t5109\t8577\t1261\t8080\t1683\tFri 3:13 PM*\n" +
-                    "Quals 21\n" +
-                    "5293\t6340\t7451\t832\t4188\t4509\tFri 3:22 PM*\n" +
-                    "Quals 22\n" +
-                    "1002\t6905\t8865\t1771\t2415\t4026\tFri 3:31 PM*\n" +
-                    "Quals 23\n" +
-                    "1414\t8100\t8866\t6023\t9480\t2974\tFri 3:40 PM*\n" +
-                    "Quals 24\n" +
-                    "9522\t7538\t3635\t5074\t1648\t8736\tFri 3:50 PM*\n" +
-                    "Quals 25\n" +
-                    "6829\t3815\t1833\t1261\t4112\t5109\tFri 3:59 PM*\n" +
-                    "Quals 26\n" +
-                    "5608\t6705\t8577\t4189\t3318\t3344\tFri 4:08 PM*\n" +
-                    "Quals 27\n" +
-                    "7451\t1002\t1683\t8080\t9480\t6340\tFri 4:17 PM*\n" +
-                    "Quals 28\n" +
-                    "832\t4026\t9522\t6023\t4509\t3635\tFri 4:26 PM*\n" +
-                    "Quals 29\n" +
-                    "5293\t8866\t7538\t6829\t8100\t5109\tFri 4:35 PM*\n" +
-                    "Quals 30\n" +
-                    "5608\t8736\t2415\t5900\t1771\t3815\tFri 4:45 PM*\n" +
-                    "Quals 31\n" +
-                    "8577\t3344\t4188\t8865\t1833\t5074\tFri 4:54 PM*\n" +
-                    "Quals 32\n" +
-                    "1261\t1648\t3318\t4189\t4112\t1414\tFri 5:03 PM*\n" +
-                    "Quals 33\n" +
-                    "832\t5109\t2974\t6905\t7451\t6705\tFri 5:12 PM*\n" +
-                    "Quals 34\n" +
-                    "9480\t4026\t6829\t9522\t5293\t2415\tFri 5:21 PM*\n" +
-                    "Quals 35\n" +
-                    "7538\t1771\t8080\t8866\t3344\t1833\tFri 5:30 PM*\n" +
-                    "Quals 36\n" +
-                    "1683\t1414\t5608\t3318\t8736\t8100\tFri 5:40 PM*\n" +
-                    "Quals 37\n" +
-                    "3815\t8577\t6905\t6023\t1648\t4188\tFri 5:49 PM*\n" +
-                    "Quals 38\n" +
-                    "5900\t1261\t6340\t8865\t3635\t4112\tFri 5:58 PM*\n" +
-                    "Quals 39\n" +
-                    "5074\t2974\t4509\t4189\t6705\t1002\tFri 6:07 PM*\n" +
-                    "Quals 40\n" +
-                    "5608\t1833\t3318\t7451\t9480\t9522\tFri 6:16 PM*\n" +
-                    "Quals 41\n" +
-                    "1683\t3815\t6023\t1648\t832\t1771\tFri 6:25 PM*\n" +
-                    "Quals 42\n" +
-                    "1414\t1261\t6829\t3344\t6905\t6340\tSat 9:00 AM*\n" +
-                    "Quals 43\n" +
-                    "5109\t3635\t8736\t2415\t1002\t8577\tSat 9:09 AM*\n" +
-                    "Quals 44\n" +
-                    "8080\t4509\t4189\t4188\t5074\t8100\tSat 9:18 AM*\n" +
-                    "Quals 45\n" +
-                    "4112\t5900\t5293\t6705\t8865\t8866\tSat 9:27 AM*\n" +
-                    "Quals 46\n" +
-                    "2974\t4026\t1261\t7538\t5608\t832\tSat 9:36 AM*\n" +
-                    "Quals 47\n" +
-                    "1771\t8577\t7451\t6340\t9522\t6829\tSat 9:45 AM*\n" +
-                    "Quals 48\n" +
-                    "8100\t4189\t6023\t8080\t2415\t5109\tSat 9:55 AM*\n" +
-                    "Quals 49\n" +
-                    "4188\t1833\t6905\t1683\t3635\t6705\tSat 10:04 AM*\n" +
-                    "Quals 50\n" +
-                    "3344\t5293\t1648\t8866\t8736\t1002\tSat 10:13 AM*\n" +
-                    "Quals 51\n" +
-                    "9480\t5900\t8865\t4509\t7538\t3815\tSat 10:22 AM*\n" +
-                    "Quals 52\n" +
-                    "4026\t4112\t5074\t3318\t1414\t2974\tSat 10:31 AM*\n" +
-                    "Quals 53\n" +
-                    "8100\t5608\t8080\t3635\t6905\t832\tSat 10:40 AM*\n" +
-                    "Quals 54\n" +
-                    "1002\t4188\t5293\t1833\t6023\t1261\tSat 10:50 AM*\n" +
-                    "Quals 55\n" +
-                    "8736\t1771\t9480\t6705\t6829\t1648\tSat 10:59 AM*\n" +
-                    "Quals 56\n" +
-                    "8577\t4189\t9522\t2974\t5900\t3344\tSat 11:08 AM*\n" +
-                    "Quals 57\n" +
-                    "2415\t3318\t4509\t6340\t7538\t4112\tSat 11:17 AM*\n" +
-                    "Quals 58\n" +
-                    "4026\t8866\t1683\t3815\t5074\t7451\tSat 11:26 AM*\n" +
-                    "Quals 59\n" +
-                    "1002\t5109\t1414\t8865\t832\t8080\tSat 11:35 AM*";
+    private final String matchSchedule = "\tMatch\tRed Alliance\tBlue Alliance\t-Scores\n" +
+            "Qualifications\n" +
+            "Quals 1\n" +
+            "1002\t1833\t8736\t1102\t6919\t7538\tSat 9:30 AM*\n" +
+            "Quals 2\n" +
+            "9971\t1683\t9477\t9086\t1771\t6829\tSat 9:45 AM*\n" +
+            "Quals 3\n" +
+            "9977\t4189\t5293\t1648\t1261\t9999\tSat 10:00 AM*\n" +
+            "Quals 4\n" +
+            "8736\t9086\t4026\t6829\t1102\t1683\tSat 10:15 AM*\n" +
+            "Quals 5\n" +
+            "1002\t1261\t1833\t9971\t1771\t1648\tSat 10:30 AM*\n" +
+            "Quals 6\n" +
+            "9977\t9999\t9477\t4189\t7538\t4026\tSat 10:45 AM*\n" +
+            "Quals 7\n" +
+            "6919\t6829\t1833\t5293\t1648\t1102\tSat 11:00 AM*\n" +
+            "Quals 8\n" +
+            "1261\t9086\t1002\t9977\t4026\t8736\tSat 11:15 AM*\n" +
+            "Quals 9\n" +
+            "9477\t5293\t7538\t9971\t4189\t6919\tSat 11:30 AM*\n" +
+            "Quals 10\n" +
+            "1771\t9999\t1002\t1683\t9977\t1648\tSat 11:45 AM*\n" +
+            "Quals 11\n" +
+            "5293\t4026\t1261\t9086\t7538\t6919\tSat 12:00 PM*\n" +
+            "Quals 12\n" +
+            "6829\t9999\t8736\t1102\t1771\t9971\tSat 12:15 PM*\n" +
+            "Quals 13\n" +
+            "1102\t9477\t1833\t1683\t4189\t1002\tSat 1:30 PM*\n" +
+            "Quals 14\n" +
+            "6829\t8736\t9971\t7538\t1648\t9086\tSat 1:45 PM*\n" +
+            "Quals 15\n" +
+            "6919\t1261\t4189\t1771\t4026\t1683\tSat 2:00 PM*\n" +
+            "Quals 16\n" +
+            "9999\t1833\t5293\t9477\t9977\t9086\tSat 2:15 PM*\n" +
+            "Quals 17\n" +
+            "1648\t8736\t6919\t1261\t1683\t9971\tSat 2:30 PM*\n" +
+            "Quals 18\n" +
+            "9999\t5293\t1102\t9477\t4026\t1771\tSat 2:45 PM*\n" +
+            "Quals 19\n" +
+            "6829\t1833\t4189\t9977\t1002\t7538\tSat 3:00 PM*\n" +
+            "Quals 20\n" +
+            "8736\t1683\t5293\t4026\t9971\t9999\tSat 3:15 PM*\n" +
+            "Quals 21\n" +
+            "1833\t1648\t1261\t1002\t6829\t9477\tSat 4:00 PM*\n" +
+            "Quals 22\n" +
+            "9086\t4189\t1102\t1771\t6919\t9977\tSat 4:15 PM*\n" +
+            "Quals 23\n" +
+            "7538\t9477\t1683\t1648\t1002\t4026\tSat 4:30 PM*\n" +
+            "Quals 24\n" +
+            "5293\t9971\t9086\t9977\t1102\t1261\tSat 4:45 PM*\n" +
+            "Quals 25\n" +
+            "4189\t8736\t1771\t9999\t7538\t6829\tSat 5:00 PM*\n" +
+            "Quals 26\n" +
+            "1833\t9977\t9971\t4026\t6919\t1102\tSun 8:30 AM*\n" +
+            "Quals 27\n" +
+            "9999\t9086\t4189\t1648\t1002\t6829\tSun 8:45 AM*\n" +
+            "Quals 28\n" +
+            "1833\t1771\t5293\t8736\t9477\t1261\tSun 9:00 AM*\n" +
+            "Quals 29\n" +
+            "1683\t6919\t9999\t7538\t9971\t1002\tSun 9:15 AM*\n" +
+            "Quals 30\n" +
+            "4189\t9477\t1648\t8736\t1102\t9977\tSun 9:30 AM*\n" +
+            "Quals 31\n" +
+            "9086\t1833\t1683\t1261\t7538\t1771\tSun 9:45 AM*\n" +
+            "Quals 32\n" +
+            "6919\t5293\t1002\t4026\t6829\t9977\tSun 10:00 AM*";
 
     // copy chart from google sheets. if in quotes, it'll automatically add the \t and stuff
-    private final String scouterSchedule = "1 - 5\tAaryana Mathad\tAnoop Valavoju\tAnirudh Vijay\tDedeepya Vatti\tHarsh Bhogale\tShlok Gohil\n" +
-            "6 - 10\tRoman Krutau\tAdi Ahuja\tKaitlyn Mak\tSaathvik Sundaram\tAshley Zhang\tAgastya Desai\n" +
-            "11 - 15\tGrace Li\tNile Solomon\tLily Stauffer\tMichael Reyes\tRichard Peng\tAswath Manojkumar\n" +
-            "16 - 20\tArthur Lam\tXiaofu Zhou\tSaathvik Sundaram\tJiayu Wang\tShlok Gohil\tConnor Liu\n" +
-            "21 - 25\tDedeepya Vatti\tAswath Manojkumar\tAshley Zhang\tKaitlyn Mak\tRoman Krutau\tJianing He\n" +
-            "26 - 30\tSelina Lin\tJiayu Wang\tNile Solomon\tMichael Reyes\tHarsh Bhogale\tAdi Ahuja\n" +
-            "31 - 35\tAaryana Mathad\tAnoop Valavoju\tAnirudh Vijay\tConnor Liu\tShlok Gohil\tAswath Manojkumar\n" +
-            "36 - 40\tJianing He\tLily Stauffer\tKaitlyn Mak\tSaathvik Sundaram\tAshley Zhang\tAgastya Desai\n" +
-            "41 - 45\tArthur Lam\tJiayu Wang\tDedeepya Vatti\tMichael Reyes\tHarsh Bhogale\tRichard Peng\n" +
-            "46 - 50\tAaryana Mathad\tXiaofu Zhou\tAnirudh Vijay\tLily Stauffer\tShlok Gohil\tConnor Liu\n" +
-            "51 - 55\tNile Solomon\tAdi Ahuja\tKaitlyn Mak\tSaathvik Sundaram\tRoman Krutau\tJianing He\n" +
-            "56 - 60\tSelina Lin\tAswath Manojkumar\tRichard Peng\tMichael Reyes\tHarsh Bhogale\tAnoop Valavoju\n" +
-            "61 - 65\tAaryana Mathad\tRayna Joann Johncaptain\tBhumi Patel\tAayush Prasad\tXiaofu Zhou\tAbdul Gargodhi\n" +
-            "66 - 70\tLily Stauffer\tAdi Ahuja\tKaitlyn Mak\tAnirudh Vijay\tAshley Zhang\tAgastya Desai\n" +
-            "71 - 75\tSaathvik Sundaram\tShivam Kataria\tBhumi Patel\tMichael Reyes\tJiayu Wang\tRayna Joann Johncaptain\n" +
-            "76 - 80\tArthur Lam\tXiaofu Zhou\tAnirudh Vijay\tAayush Prasad\tAaryana Mathad\tAbdul Gargodhi";
+    private final String scouterSchedule = "1 - 5\tAlex Zheng\tAshirvad Manickandan\tRuichen Yang\tRoman Krutau\tRohan Hariharan\tSymon Sediki\tAditya Ahuja\tJiayu Wang\n" +
+            "6 - 10\tShivesh Ramesh\tShrihaan Chowdhury\tPreston Lee\tDedeepya Vatti\tPeggy Liu\tKaitlyn Mak\tAswath Manojkumar\tFarzan Kudchikar\n" +
+            "11- 15\tJianing He\tEli Pak\tShivam Kataria \tRoman Krutau\tRuichen Yang\tSymon Sediki\tEvan Saran\tRichard Peng\n" +
+            "16 - 20\tShrihaan Chowdhury\tRohan Hariharan\tDedeepya Vatti\tAshirvad Manickandan\tAlex Zheng\tPreston Lee\tAayush Prasad\tAshley Zhang\n" +
+            "21 - 25\tPeggy Liu\tRoman Krutau\tRuichen Yang\tJianing He\tEli Pak\tShivam Kataria\tJiayu Wang\tAswath Manojkumar\n" +
+            "26 - 30\tPreston Lee\tAlex Zheng\tSymon Sediki\tShrihaan Chowdhury\tAshirvad Manickandan\tKaitlyn Mak\tFarzan Kudchikar\tAditya Ahuja\n" +
+            "31 - 32\tShivesh Ramesh\tShlok Gohil\tRohan Hariharan\tIshayu Dasgupta\tShivam Kataria\tRishitha Nalukurthy\tAshley Zhang\tEvan Saran";
     private final int[] red1 = new int[numMatches];
     private final int[] red2 = new int[numMatches];
     private final int[] red3 = new int[numMatches];
@@ -176,10 +112,8 @@ public class Autofill {
         for (int i = 0; i < lines.length; i++) {
             // look for match lines like "Quals 1", "Quals 2", etc.
             if (lines[i].contains("Quals")) {
-                // The next line contains the team numbers for that match
-                String[] columns = lines[i + 1].split("\t");  // Split by tab
+                String[] columns = lines[i + 1].split("\t");
 
-                // assign the team numbers to the corresponding arrays
                 red1[matchIndex] = Integer.parseInt(columns[0]);
                 red2[matchIndex] = Integer.parseInt(columns[1]);
                 red3[matchIndex] = Integer.parseInt(columns[2]);
@@ -200,12 +134,12 @@ public class Autofill {
             int start = Integer.parseInt(matchRange[0]);
             int end = Integer.parseInt(matchRange[1]);
 
-            String b1 = columns[1];
-            String b2 = columns[2];
-            String b3 = columns[3];
-            String r1 = columns[4];
-            String r2 = columns[5];
-            String r3 = columns[6];
+            String r1 = columns[1];
+            String r2 = columns[2];
+            String r3 = columns[3];
+            String b1 = columns[4];
+            String b2 = columns[5];
+            String b3  = columns[6];
 
             for (int j = start; j <= end; j++) {
                 b1Scouter[j] = b1;
@@ -251,8 +185,8 @@ public class Autofill {
 
     public String getScouterName(int matchNumber, String position) {
         if (matchNumber < 0 || matchNumber > numMatches) {
-            System.out.println("erro0");
-            return "Error0";
+            System.out.println("error getting scouter name");
+            return "Error";
         }
 
         if (position != null) {

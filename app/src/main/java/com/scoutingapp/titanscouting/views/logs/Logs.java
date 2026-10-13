@@ -70,8 +70,6 @@ public class Logs extends AppCompatActivity {
                     .setNegativeButton("No", (dialog, which) -> dialog.cancel())
                     .show();
         });
-
-
     }
 
     public void back(View v) {

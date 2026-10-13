@@ -54,28 +54,24 @@ public class QRScreen extends AppCompatActivity {
                 endgameClimb = "R";
             }
             qrString = String.join("\n",
-                    "GACMP\n",
                     String.valueOf(match.getTeamNumber()),
                     String.valueOf(match.getMatchNum()),
+                    String.valueOf(match.isNoShow()),
                     match.getScouterName(),
                     String.valueOf(match.getPosition()),
                     String.valueOf(match.getAutoPath()),
-                    String.valueOf(match.getShotWhileMoving()),
+                    String.valueOf(match.getCycleCount()),
+                    String.valueOf(match.getTier()),
                     String.valueOf(match.getPinRating()),
                     String.valueOf(match.getStealRating()),
                     String.valueOf(match.getBlockRating()),
                     String.valueOf(match.getRamRating()),
-                    String.valueOf(match.getAntiPinRating()),
-                    String.valueOf(match.getAntiStealRating()),
-                    String.valueOf(match.getAntiBlockRating()),
-                    String.valueOf(match.getAntiRamRating()),
+                    String.valueOf(match.getDefenseRating()),
                     (match.getEndgameClimb() + endgameClimb),
-                    String.valueOf(match.getTrench()),
                     String.valueOf(match.getBump()),
+                    String.valueOf(match.getTrench()),
                     String.valueOf(match.getPenalties()),
                     String.valueOf(match.getBrokeDown()),
-                    String.valueOf(match.getCycleCount()),
-                    String.valueOf(match.getTier()),
                     match.getNotes()
             );
             Log.d("match_num", String.valueOf(match.getMatchNum()));
