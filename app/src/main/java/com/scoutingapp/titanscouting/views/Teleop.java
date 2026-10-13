@@ -24,6 +24,7 @@ public class Teleop extends AppCompatActivity {
 
     private static final int GRID_SIZE = 8;
 
+//hi
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
