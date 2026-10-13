@@ -36,6 +36,10 @@ public class Endgame extends AppCompatActivity {
         CheckBox brokeDown = findViewById(R.id.brokeDown);
         CheckBox usedTrench = findViewById(R.id.trench);
         CheckBox usedBump = findViewById(R.id.bump);
+        CheckBox pins = findViewById(R.id.pins);
+        CheckBox rams = findViewById(R.id.rams);
+        CheckBox blocks = findViewById(R.id.blocks);
+        CheckBox steals = findViewById(R.id.steals);
         matchViewModel = new ViewModelProvider(this).get(MatchViewModel.class);
 
         final boolean[] isRed = {true};
@@ -61,15 +65,24 @@ public class Endgame extends AppCompatActivity {
             usedBump.setOnClickListener(v -> {
                 match.setBump(!match.getBump());
             });
+            pins.setChecked(match.getPinRating()==1);
+            pins.setOnClickListener(v -> {
+                match.setPinRating(match.getPinRating() == 1 ? 0 : 1);
+            });
+            rams.setChecked(match.getRamRating()==1);
+            rams.setOnClickListener(v -> {
+                match.setRamRating(match.getRamRating() == 1 ? 0 : 1);
+            });
+            blocks.setChecked(match.getBlockRating()==1);
+            blocks.setOnClickListener(v -> {
+                match.setBlockRating(match.getBlockRating() == 1 ? 0 : 1);
+            });
+            steals.setChecked(match.getStealRating()==1);
+            steals.setOnClickListener(v -> {
+                match.setStealRating(match.getStealRating() == 1 ? 0 : 1);
+            });
 
-            setupRatingBar(R.id.pinning, match.getPinRating(), match::setPinRating);
-            setupRatingBar(R.id.stealing, match.getStealRating(), match::setStealRating);
-            setupRatingBar(R.id.blocking, match.getBlockRating(), match::setBlockRating);
-            setupRatingBar(R.id.ramming, match.getRamRating(), match::setRamRating);
-            setupRatingBar(R.id.antiPinning, match.getAntiPinRating(), match::setAntiPinRating);
-            setupRatingBar(R.id.antiStealing, match.getAntiStealRating(), match::setAntiStealRating);
-            setupRatingBar(R.id.antiBlocking, match.getAntiBlockRating(), match::setAntiBlockRating);
-            setupRatingBar(R.id.antiRamming, match.getAntiRamRating(), match::setAntiRamRating);
+            setupRatingBar(R.id.defenseRating, match.getDefenseRating(), match::setDefenseRating);
             setupRatingBar(R.id.climb, match.getEndgameClimb(), match::setEndgameClimb);
             setupRatingBar(R.id.climbLocation, match.getEndgameClimbSide(), match::setEndgameClimbSide);
 
