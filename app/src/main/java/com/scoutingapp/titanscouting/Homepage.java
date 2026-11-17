@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import com.scoutingapp.titanscouting.views.Pregame;
+import com.scoutingapp.titanscouting.views.Summary;
 import com.scoutingapp.titanscouting.views.logs.Logs;
 
 public class Homepage extends AppCompatActivity {
@@ -20,6 +21,7 @@ public class Homepage extends AppCompatActivity {
         Button pregameButton = findViewById(R.id.button);
         Button logsButton = findViewById(R.id.logs_btn);
         Button buttonNext = findViewById(R.id.button2);
+        Button buttonNew = findViewById(R.id.button3);
 
         // pregameButton opens Pregame activity
         pregameButton.setOnClickListener(v -> {
@@ -41,6 +43,14 @@ public class Homepage extends AppCompatActivity {
                 // Return to the main layout
                 recreate();
             });
+        });
+
+        // newButton to match 5(?)
+        buttonNew.setOnClickListener(v -> {
+            Intent i = new Intent(Homepage.this, Summary.class);
+            i.putExtra("matchNumber", 5);
+            startActivity(i);
+            finish();
         });
     }
 
